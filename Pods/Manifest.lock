@@ -1,0 +1,28 @@
+PODS:
+  - CryptoSwift (1.0.0)
+  - IQKeyboardManagerSwift (6.2.1)
+  - lottie-ios (3.0.4)
+  - ViewPager-Swift (2.0.1)
+
+DEPENDENCIES:
+  - CryptoSwift
+  - IQKeyboardManagerSwift
+  - lottie-ios
+  - ViewPager-Swift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CryptoSwift
+    - IQKeyboardManagerSwift
+    - lottie-ios
+    - ViewPager-Swift
+
+SPEC CHECKSUMS:
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
+  lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
+  ViewPager-Swift: 7d83f5d4888a0fa808c08c8405ba84e603a2eb58
+
+PODFILE CHECKSUM: 3cce431402a6399076d443f64f1c1b845694154e
+
+COCOAPODS: 1.6.1
