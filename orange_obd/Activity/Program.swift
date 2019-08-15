@@ -53,10 +53,14 @@ class Program: UIViewController {
     let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var nnyname: UILabel!
     var mmynum:String!=nil
+    var titmmy=""
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(mmynum==nil){ query()
 nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
-        query()
+        }else{
+         nnyname.text=titmmy
+        }
         queryid()
         queryLf()
        
@@ -244,7 +248,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     }
     func query(){
         if deledate.db != nil {
-            let sql="select distinct `Orangepart(ProgramName)` from mmy_table where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)'"
+            let sql="select `Direct Fit` from `Summary table` where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)' and `Direct Fit` not in('NA') limit 0,1"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
@@ -259,7 +263,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 } }  } }
     func queryLf(){
         if deledate.db != nil {
-            let sql="select `Lf` from mmy_table where `Orangepart(ProgramName)`='\(mmynum!)' limit 0,1"
+            let sql="select `Lf` from `Summary table` where `Direct Fit`='\(mmynum!)' limit 0,1"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
@@ -274,7 +278,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 } }  } }
     func queryid(){
         if deledate.db != nil {
-            let sql="select `count` from idcopy where s19='\(mmynum!)'"
+            let sql="select `ID_Count` from `Summary table` where `Direct Fit`='\(mmynum!)' and `make` not in('NA') limit 0,1"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))

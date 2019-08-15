@@ -39,12 +39,15 @@ return item[row]
     @IBOutlet var lan: UILabel!
     @IBOutlet var area: UILabel!
     @IBOutlet var togive: UILabel!
+    
+    @IBOutlet var setup: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         area.text=SetLan.Setlan("Area")
         togive.text=SetLan.Setlan("to_give")
         info.text=SetLan.Setlan("Languages_info")
         lan.text=SetLan.Setlan("Languages")
+        setup.setTitle(SetLan.Setlan("Set_up"), for: .normal)
     }
 
     @IBAction func SelectLan(_ sender: Any) {

@@ -127,7 +127,7 @@ class ViewController: UIViewController,CBCentralManagerDelegate, CBPeripheralDel
          TmpData=""
          Rx=""
         var Tda=""
-        let spi=170
+        let spi=350
         if(data.count>spi){
             var long=0
     if(data.count%spi==0){long=data.count/spi}else{
@@ -314,7 +314,7 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         
     }
     func dowload_mmy(){
-        self.play()
+        self.DataLoading()
         DispatchQueue.global().async {
             let res=FtpManage().DowloadMmy(self.deledate)
             DispatchQueue.main.async {
@@ -392,12 +392,12 @@ let newViewController=Pagememory[Pagememory.count-2]
         goscanner(to: a)
     }
     func DataLoading(){
-        Connectlabel.text="data loading"
+       Connectlabel.text=SetLan.Setlan("Data_Loading")
         play()
     }
     func Connecting(){
         centralManager.scanForPeripherals(withServices: nil, options: nil)
-        Connectlabel.text="Connecting"
+        Connectlabel.text=SetLan.Setlan("paired with your device")
         play()
         DispatchQueue.global().async {
             var fal=0
@@ -406,9 +406,12 @@ let newViewController=Pagememory[Pagememory.count-2]
                     DispatchQueue.main.async {
                         self.pause()
                         if(self.IsConnect){
-                            let a=peacedefine().SelectMake
-                            a.act=self
-                            self.changepage(to: a)
+                            if(PadSelect.Scanner_OR_Select==0){ let a=peacedefine().QrScanner
+                                self.changepage(to: a)}else{
+                                let a=peacedefine().SelectMake
+                                a.act=self
+                                self.changepage(to: a)
+                            }
                         }
                         if(fal==10){self.connectblename=""}
                     }

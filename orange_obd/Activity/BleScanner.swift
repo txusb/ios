@@ -11,6 +11,7 @@ import UIKit
 class BleScanner: UIViewController,UITableViewDataSource,UITableViewDelegate{
     var act:ViewController?=nil
     var timer: Timer?
+    @IBOutlet var selectdevice: UILabel!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return act!.bles.count
     }
@@ -28,7 +29,8 @@ class BleScanner: UIViewController,UITableViewDataSource,UITableViewDelegate{
     @IBOutlet var cancel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        cancel.setTitle(SetLan.Setlan("cancel"), for: .normal)
+     selectdevice.text=SetLan.Setlan("Select Device")
+cancel.setTitle(SetLan.Setlan("cancel"), for: .normal)
         self.tb.separatorStyle = .none
         self.tb.bounces=false
         self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updatemessage), userInfo: nil, repeats: true)

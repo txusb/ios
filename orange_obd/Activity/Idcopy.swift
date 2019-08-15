@@ -9,17 +9,27 @@
 import UIKit
 import SQLite3
 class Idcopy: UIViewController,UITextFieldDelegate {
+var Scan_or_Key=0
 let act=(UIApplication.shared.delegate as! AppDelegate).act!
     @IBOutlet var lft: UITextField!
     @IBOutlet var Rft: UITextField!
 let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var Rrt: UITextField!
     @IBOutlet var Lrt: UITextField!
+    
+    @IBOutlet var keyin: UILabel!
+    @IBOutlet var Scancode: UILabel!
+    @IBOutlet var Rfbt: UIButton!
+    @IBOutlet var Lfbt: UIButton!
+    @IBOutlet var Rrbt: UIButton!
+    @IBOutlet var Lrbt: UIButton!
+    @IBOutlet var SelectKey: UIView!
     var mmynum:String!=nil
      let placeholserAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]
     @IBOutlet var Next: UIButton!
     @IBOutlet var tit: UILabel!
     @IBOutlet var toptitle: UILabel!
+    var tt:String!=nil
     var first=true
     var idcount=8
     override func viewDidDisappear(_ animated: Bool) {
@@ -27,9 +37,17 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        Scancode.text=SetLan.Setlan("Scan_Code")
+        keyin.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
         first=true
-        query()
-toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
+        if(mmynum==nil){
+    toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
+             query()
+        }else{
+         toptitle.text=tt
+            queryid()
+        }
+
         tit.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
          lft.attributedPlaceholder = NSAttributedString(string: "LF ID Number",attributes: placeholserAttributes)
          Rft.attributedPlaceholder = NSAttributedString(string: "RF ID Number",attributes: placeholserAttributes)
@@ -41,9 +59,11 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
          Rrt.delegate = self
         dowloadmmy()
         Next.setTitle(SetLan.Setlan("Next"), for: .normal)
-        DispatchQueue.global().async {
-            self.UdCondition()
-        }
+    
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        first=true
+      UdCondition()
     }
     func dowloadmmy(){
         act.DataLoading()
@@ -98,6 +118,10 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
              return
         }
          let a=peacedefine().Program
+        if(tt != nil){
+            a.mmynum=mmynum
+            a.titmmy=tt
+        }
         a.WriteRR=insert(Rrt.text!)
          a.WriteLf=insert(lft.text!)
          a.WriteLr=insert(Lrt.text!)
@@ -106,7 +130,7 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     }
     func queryid(){
         if deledate.db != nil {
-            let sql="select `count` from idcopy where s19='\(mmynum!)'"
+            let sql="select `ID_Count` from `Summary table` where `Direct Fit`='\(mmynum!)' and `make` not in('NA') limit 0,1"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
@@ -121,7 +145,7 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 } }  } }
     func query(){
         if deledate.db != nil {
-            let sql="select distinct `Orangepart(ProgramName)` from mmy_table where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)'"
+            let sql="select `Direct Fit` from `Summary table` where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)' and `Direct Fit` not in('NA') limit 0,1"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
@@ -154,7 +178,10 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
         a.act=self.act
         self.act.changepage(to: a)
     }
+    var run=false
     func UdCondition(){
+        if(run){return}
+        run=true
         DispatchQueue.global().async {
             for i in 0...1{
                 let CH1=self.act.command.Command11(i, 1)
@@ -163,46 +190,90 @@ toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                     if(CH1){
                         if(i==0){
                            self.lft.isEnabled=true
+                            if(self.Scan_or_Key==0){self.Lfbt.isHidden=false}
                             self.lft.attributedPlaceholder = NSAttributedString(string: "LF ID Number",attributes: self.placeholserAttributes)
                         }else{
                             self.Rft.isEnabled=true
+                            if(self.Scan_or_Key==0){self.Rfbt.isHidden=false}
                             self.Rft.attributedPlaceholder = NSAttributedString(string: "RF ID Number",attributes: self.placeholserAttributes)
                         }
                     }else{
                         if(i==0){
                             self.lft.isEnabled=false
                             self.lft.text=""
+                            if(self.Scan_or_Key==0){self.Lfbt.isHidden=true}
                             self.lft.attributedPlaceholder = NSAttributedString(string: SetLan.Setlan("Unlinked"),attributes: self.placeholserAttributes)
                         }else{
                             self.Rft.isEnabled=false
                             self.Rft.text=""
+                            if(self.Scan_or_Key==0){self.Rfbt.isHidden=true}
                             self.Rft.attributedPlaceholder = NSAttributedString(string: SetLan.Setlan("Unlinked"),attributes: self.placeholserAttributes)
                         }
                     }
                     if(CH2){
                         if(i==0){
                             self.Lrt.isEnabled=true
+                             if(self.Scan_or_Key==0){self.Lrbt.isHidden=false}
                             self.Lrt.attributedPlaceholder = NSAttributedString(string: "LR ID Number",attributes: self.placeholserAttributes)
                         }else{
                             self.Rrt.isEnabled=true
+                             if(self.Scan_or_Key==0){self.Rrbt.isHidden=false}
                             self.Rrt.attributedPlaceholder = NSAttributedString(string: "RR ID Number",attributes: self.placeholserAttributes)
                         }
                     }else{
                         if(i==0){
                             self.Lrt.isEnabled=false
+                            if(self.Scan_or_Key==0){self.Lrbt.isHidden=true}
                             self.Lrt.text=""
                             self.Lrt.attributedPlaceholder = NSAttributedString(string: SetLan.Setlan("Unlinked"),attributes: self.placeholserAttributes)
                         }else{
                             self.Rrt.isEnabled=false
                             self.Rrt.text=""
+                             if(self.Scan_or_Key==0){self.Rrbt.isHidden=true}
                             self.Rrt.attributedPlaceholder = NSAttributedString(string: SetLan.Setlan("Unlinked"),attributes: self.placeholserAttributes)
                         }
                     }
                 }
             }
             sleep(4)
+            self.run=false
             if(self.first){
                 self.UdCondition()}
         }
+    }
+    
+    @IBAction func Scanner(_ sender: Any) {
+        SelectKey.isHidden=true
+        Scan_or_Key=0
+    }
+    
+    @IBAction func Keyin(_ sender: Any) {
+        SelectKey.isHidden=true
+        Scan_or_Key=1
+        Lrbt.isHidden=true
+        Rrbt.isHidden=true
+        Lfbt.isHidden=true
+        Rfbt.isHidden=true
+    }
+    
+    @IBAction func Rfaction(_ sender: Any) {
+       toscanner(Rft)
+    }
+    @IBAction func Lfaction(_ sender: Any) {
+       toscanner(lft)
+    }
+    @IBAction func Rraction(_ sender: Any) {
+       toscanner(Rrt)
+    }
+    @IBAction func Lraction(_ sender: Any) {
+       toscanner(Lrt)
+    }
+    func toscanner(_ edit:UITextField) {
+        let a=peacedefine().QrScanner
+        a.idcopy=self
+        a.VS_or_ID=1
+        a.idcount=idcount
+        a.editext=edit
+        self.act.changepage(to: a)
     }
 }

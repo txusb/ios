@@ -14,12 +14,16 @@ import UIKit
 class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    
+    var idcopy:Idcopy!=nil
+    var VS_or_ID=0
+    var idcount=0
+    var editext:UITextField!=nil
+     let act=(UIApplication.shared.delegate as! AppDelegate).act!
     @IBOutlet var scantitle: UILabel!
     @IBOutlet var Qrplace: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
@@ -97,6 +101,22 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     func found(code: String) {
         scantitle.text=code
+    let fullNameArr = code.components(separatedBy: ":")
+       print(fullNameArr)
+        if(fullNameArr.count==5){
+            if(VS_or_ID==1){
+                if(fullNameArr[1].count != idcount){
+                    if (captureSession?.isRunning == false) {
+                        captureSession.startRunning()
+                    }
+            act.view.showToast(text:SetLan.Setlan("ID_code_should_be_8_characters").replace("8", "\(idcount)") )
+                    return }
+                editext.text=fullNameArr[1]
+                act.GoBack(self)
+            }
+           
+        }
+
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -105,4 +125,5 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+
 }

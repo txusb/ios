@@ -7,26 +7,64 @@
 //
 
 import UIKit
-
+import SQLite3
 class Relarm: UIViewController {
-var tit=""
+let deledate = UIApplication.shared.delegate as! AppDelegate
+       let activity=(UIApplication.shared.delegate as! AppDelegate).act!
     
+    @IBOutlet var relarlmtext: UITextView!
+    @IBOutlet var menu: UIButton!
     @IBOutlet var toper: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-toper.text=tit
-       
+        toper.text="\(activity.Selectmake)/\(activity.Selectmodel)/\(activity.Selectyear)"
+    menu.setTitle(SetLan.Setlan("MENU"), for: .normal)
+        query()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func Gomenu(_ sender: Any) {
+        let a=peacedefine().HomePage
+        activity.changepage(to: a)
     }
-    */
-
+    func query(){
+        if deledate.db != nil {
+             let a=ViewController.getShare("lan")
+            var colume="Relearn Procedure (English)"
+            switch(a){
+            case "English":
+                colume="Relearn Procedure (English)"
+                break
+            case "繁體中文":
+                 colume="Relearn Procedure (Traditional Chinese)"
+                break
+            case "简体中文":
+                 colume="Relearn Procedure (Jane)"
+                break
+            case "Deutsche":
+                 colume="Relearn Procedure (German)"
+                break
+            case "Italiano":
+                 colume="Relearn Procedure (Italian)"
+                break
+            default:
+                break;
+            }
+            let sql="select `\(colume)` from `Summary table` where make='\(activity.Selectmake)' and model='\(activity.Selectmodel)' and year='\(activity.Selectyear)' limit 0,1"
+            var statement:OpaquePointer? = nil
+            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                print(errmsg)
+            }
+            while sqlite3_step(statement)==SQLITE_ROW{
+                let iid = sqlite3_column_text(statement,0)
+                if iid != nil{
+                    var iids = String(cString: iid!)
+            if(iids.count==0){iids=SetLan.Setlan("norelarm")}
+                    let paraph = NSMutableParagraphStyle()
+                    paraph.lineSpacing = 10
+                    let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
+                                      NSAttributedString.Key.paragraphStyle: paraph]
+                    relarlmtext.attributedText = NSAttributedString(string: iids, attributes: attributes)
+                    print("s19:\(iids)")
+                } }  } }
 }

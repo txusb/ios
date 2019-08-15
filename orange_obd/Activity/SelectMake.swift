@@ -50,7 +50,7 @@ query()
 
     func query(){
         if deledate.db != nil {
-            let sql="select distinct `Make`,`Make_img` from mmy_table where `Orangepart(ProgramName)` not in('INDIRECT')  order by `Make` asc"
+            let sql="select distinct `Make`,`Make_img` from `Summary table` where `Direct Fit` not in('NA') and `Make` IS NOT NULL and `Make_img` not in('NA')  order by `Make` asc"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))

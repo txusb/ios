@@ -134,5 +134,5 @@ class ChineseSi{
         "step4_9":"步骤8.\nUSB TPMS 将自动依序读取PAD中的传感器，读取完成后请按下 PROGRAM SENSOR ",
         "step4_10":"步骤9.\n烧录完成后，如需复制其他的传感器，请更换USB PAD中的传感器，并按下PROG.SENSOR",
         "step4_11":"步骤10.\n烧录错误，请按下RE-PROGRAM按键，重新执行烧录 ",
-        "openble":"请打开蓝牙来连设备"]
+        "openble":"请打开蓝牙来连设备","Set_up":"确认","Check for updates":"检查更新","update":"更新","Automatic update":"自动更新","USB TPMS APP will automatically install updates.":"USB TPMS APP将自动安装更新","paired with your device":"配对中","Select Device":"选择设备","For developer":"关于开发者资讯，请访问网站：www.orange-electronic.com","norelarm":"学码流程尚未完成，请耐心等待，我们会尽快更新"]
 }

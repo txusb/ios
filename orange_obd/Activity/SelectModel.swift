@@ -22,7 +22,7 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         cell.b1.setTitle(it[place].modele, for: .normal)
         if(place+1<it.count){
             cell.b2.setTitle(it[place+1].modele, for: .normal)
-            cell.n2=it[place].modele
+            cell.n2=it[place+1].modele
             cell.b2.isHidden=false
         }else{
             cell.b2.isHidden=true
@@ -39,7 +39,7 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         super.viewDidLoad()
         tb.bounces=false
         tb.separatorStyle = .none
-        print("select make\(act?.Selectmake)")
+        print("select make\(act!.Selectmake)")
         query()
         tit.text=SetLan.Setlan("Select_CAR_Model")
         print(it.count)
@@ -47,7 +47,7 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     
     func query(){
         if deledate.db != nil {
-            let sql="select distinct model from mmy_table where make='\(act!.Selectmake)' and `Orangepart(ProgramName)` not in('INDIRECT')"
+            let sql="select distinct model from `Summary table` where make='\(act!.Selectmake)' and `Direct Fit` not in('NA') order by model asc"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
@@ -56,7 +56,6 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
             while sqlite3_step(statement)==SQLITE_ROW{
                 let item=model()
                 let iid = sqlite3_column_text(statement,0)
-                let cname = sqlite3_column_text(statement,1)
                 if iid != nil{
                     let iids = String(cString: iid!)
                     item.modele=iids

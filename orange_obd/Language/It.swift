@@ -133,5 +133,5 @@ class it{
         "step4_8":"Step 7.\nSi prega di inserire manualmente gli ID originali rispettando le posizioni. Dopo averli inseriti seguire il punto successivo",
         "step4_9":"Step 8.\nVerranno letti automaticamente i sensori USB TPMS dal PAD.Una volta letti cliccare su PROGRAMMA SENSORI",
         "step4_10":"Step 9.\nUna volta che la programmazione è completata, e si vuole copiare altri sensori, si prega di sostituire con dei nuovi sensori e premere PROGRAMMA SENSORE",
-        "step4_11":"Step 10.\nSe la programmazione fallisce si prega di schiacciare il tasto Riprogramma per riprogrammarli","openble":"Attiva il Bluetooth per connettere il tuo dispositivo"]
+        "step4_11":"Step 10.\nSe la programmazione fallisce si prega di schiacciare il tasto Riprogramma per riprogrammarli","openble":"Attiva il Bluetooth per connettere il tuo dispositivo","Set_up":"Impostare","Check for updates":"Controlla aggiornamenti","update":"aggiornare","Automatic update":"Aggiornamento automatico","USB TPMS APP will automatically install updates.":"L'APP TPMS USB installa automaticamente gli aggiornamenti.","paired with your device":"associato al tuo dispositivo","Select Device":"Seleziona dispositivo","For developer":"Per informazioni sugli sviluppatori,visitare questo sito Web: www.orange-electronic.com ","norelarm":"Apprendimento in fase di Controllo."]
 }

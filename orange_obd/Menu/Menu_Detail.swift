@@ -178,6 +178,7 @@ class Menu_Detail: UIViewController,ViewPagerDataSource,ViewPagerDelegate{
     @IBOutlet var c5: UIView!
     @IBOutlet var c4: UIView!
     @IBOutlet var c3: UIView!
+    @IBOutlet var goback: UIButton!
     var place=0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,6 +196,7 @@ class Menu_Detail: UIViewController,ViewPagerDataSource,ViewPagerDelegate{
         DispatchQueue.global().async {
             self.Changer()
         }
+        goback.setTitle(SetLan.Setlan("Users_manual"), for: .normal)
     }
     func Changer(){
      
@@ -205,6 +207,9 @@ class Menu_Detail: UIViewController,ViewPagerDataSource,ViewPagerDelegate{
         }else{
              act.tit.text="ID COPY"
         }
-       
+    }
+    
+    @IBAction func Tomenu(_ sender: Any) {
+        act.GoBack(self)
     }
 }

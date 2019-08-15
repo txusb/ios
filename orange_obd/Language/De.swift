@@ -134,5 +134,5 @@ class De{
     "step4_8":"Schritt 7.\nBitte stecken sie die Original-Sensoren nach der Reihenfolge der Räder ein. Danach drücken sie bitte den nächsten Schritt",
     "step4_9":"Schritt 8. \nDas USB RDKS wird automatisch die Sequenz der Sensoren lesen. Nachdem das Lesen beendet ist, drücken sie bitte PROGRAM SENSOR",
     "step4_10":"Schritt 7.\nNachdem die Programmierung vollständig ist und sie mit dem programmieren eines identischen Sensors fortfahren wollen, tauschen sie den Sensor im USB PAD aus und drücken PROG.Sensor",
-    "step4_11":"Schritt 10.\nBei Programmier-Fehler drücken sie den RE-PROGRAM Knopf um das Programm erneut auszuführen","openble":"Bitte schalten Sie Bluetooth ein, um Ihr Gerät zu verbinden"]
+    "step4_11":"Schritt 10.\nBei Programmier-Fehler drücken sie den RE-PROGRAM Knopf um das Programm erneut auszuführen","openble":"Bitte schalten Sie Bluetooth ein, um Ihr Gerät zu verbinden","Set_up":"Konfiguration","Check for updates":"Auf Updates prüfen","update":"Updates","Automatic update":"Automatische Updates","USB TPMS APP will automatically install updates.":"Die USB TPMS APP installiert die Updates automatisch.","paired with your device":"mit Ihrem Gerät gepaart","Select Device":"Wählen Sie Gerät","For developer":"Informationen für Entwickler finden Sie auf dieser Website: www.orange-electronic.com ","norelarm":"Im Bau"]
 }

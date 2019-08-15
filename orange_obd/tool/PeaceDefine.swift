@@ -45,4 +45,5 @@ let HomePage=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(w
     let LanguageSetting=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LanguageSetting")as!LanguageSetting
      let Policy=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Policy")as!Policy
     let Relarm=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Relarm")as!Relarm
+    let VersionUpdate=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VersionUpdate")as!VersionUpdate
 }

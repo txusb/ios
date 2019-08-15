@@ -10,12 +10,12 @@ import UIKit
 import SQLite3
 class FtpManage{
     func DowloadS19(_ s19:String)->String{
-        let url = URL(string: "ftp://orangetpms:12345678@61.221.15.194:21/orangetpms/s19file/\(s19).s19")
+        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/SensorCode/SIII/\(s19)/\(GetS19name(s19))")
         var data: Data? = nil
         if let anUrl = url {
             do{
                 try data = Data(contentsOf: anUrl)
-                var ds=String(decoding: data!, as: UTF8.self).replace("\r", "").replace("\n", "")
+                let ds=String(decoding: data!, as: UTF8.self).replace("\r", "").replace("\n", "")
                 print(ds)
                 return ds
             }catch{print(error)
@@ -24,13 +24,27 @@ class FtpManage{
         }
         return "false"
     }
-    func DowloadMmy(_ deledate:AppDelegate)->Bool{
-        let url = URL(string: "ftp://orangetpms:12345678@61.221.15.194:21/orangetpms/mmytable/usb_tx_mmy.db")
+    func GetS19name(_ name:String) -> String {
+        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/SensorCode/SIII/\(name)/")
         var data: Data? = nil
         if let anUrl = url {
             do{
                 try data = Data(contentsOf: anUrl)
-                let fm=FileManager.default
+                  var ds=String(decoding: data!, as: UTF8.self).split(separator: " ")
+                print(String(ds[ds.count-1]).replace("\n","").replace("\r", "")+"ss")
+                return String(ds[ds.count-1]).replace("\n","").replace("\r", "")
+            }catch{print(error)
+                return "false"
+            }
+        }
+        return "false"
+    }
+    func DowloadMmy(_ deledate:AppDelegate)->Bool{
+        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/\(mmyname())")
+        var data: Data? = nil
+        if let anUrl = url {
+            do{
+                try data = Data(contentsOf: anUrl)
                 let dst=NSHomeDirectory()+"/Documents/mmytb.db"
                 let urlfrompath = URL(fileURLWithPath: dst)
                 try data?.write(to: urlfrompath)
@@ -48,5 +62,20 @@ class FtpManage{
             
         }
         return false
+    }
+    func mmyname()->String {
+        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/")
+        var data: Data? = nil
+        if let anUrl = url {
+            do{
+                try data = Data(contentsOf: anUrl)
+                var ds=String(decoding: data!, as: UTF8.self).split(separator: " ")
+                print(String(ds[ds.count-1]).replace("\n","").replace("\r", "")+"ss")
+                return String(ds[ds.count-1]).replace("\n","").replace("\r", "")
+            }catch{print(error)
+                return "false"
+            }
+        }
+        return "false"
     }
 }

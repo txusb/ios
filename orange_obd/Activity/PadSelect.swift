@@ -10,7 +10,7 @@ import UIKit
 class PadSelect: UIViewController {
     var act:ViewController?=nil
    static var Function=0
-    
+    static var Scanner_OR_Select=0
     @IBOutlet var veselection: UILabel!
     @IBOutlet var scan: UILabel!
     @IBOutlet var tit: UILabel!
@@ -48,6 +48,7 @@ class PadSelect: UIViewController {
 //        let a=peacedefine().SelectMake
 //        a.act=self.act
 //        self.act?.changepage(to: a)
+        PadSelect.Scanner_OR_Select=1
         if(!act!.haveble){
             act!.view.showToast(text: SetLan.Setlan("openble"))
             return
@@ -114,7 +115,31 @@ padimg.image=UIImage.init(named: "img_ID copy")
             }
     
     @IBAction func ToScanner(_ sender: Any) {
-        let a=peacedefine().QrScanner
-        self.act?.changepage(to: a)
+        PadSelect.Scanner_OR_Select=0
+        if(!act!.haveble){
+            act!.view.showToast(text: SetLan.Setlan("openble"))
+            return
+        }
+        if(act!.IsConnect){
+            DispatchQueue.global().async {
+                let responds=self.act!.command.Command03()
+                DispatchQueue.main.async {
+                    if(responds){
+                        let a=peacedefine().QrScanner
+                        self.act?.changepage(to: a)
+                    }else{
+                        let a=peacedefine().BleScanner
+                        a.act=self.act
+                        self.act?.goscanner(to: a)
+                    self.act!.centralManager.scanForPeripherals(withServices: nil, options: nil)
+                    }
+                }
+            }
+        }else{
+            let a=peacedefine().BleScanner
+            a.act=self.act
+            self.act?.goscanner(to: a)
+        }
+       
     }
 }

@@ -50,7 +50,7 @@ class SelectYear: UIViewController,UITableViewDataSource,UITableViewDelegate {
     }
     func query(){
         if deledate.db != nil {
-            let sql="select distinct Year from mmy_table where model='\(act!.Selectmodel)' and make='\(act!.Selectmake)' and `Orangepart(ProgramName)` not in('INDIRECT') order by Year asc"
+            let sql="select distinct Year from `Summary table` where model='\(act!.Selectmodel)' and make='\(act!.Selectmake)' and `Direct Fit` not in('INDIRECT') order by Year asc"
             var statement:OpaquePointer? = nil
             if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
                 let errmsg=String(cString:sqlite3_errmsg(deledate.db))
