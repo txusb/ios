@@ -9,22 +9,26 @@
 import UIKit
 
 class ResetPassword: UIViewController {
-
+let act=(UIApplication.shared.delegate as! AppDelegate).act!
+    @IBOutlet var mail: UITextField!
+    
+    @IBOutlet var sub: UIButton!
+    @IBOutlet var l2: UILabel!
+    @IBOutlet var l1: UILabel!
+    var run=false
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        l1.text=SetLan.Setlan("Og_email")
+        l2.text=SetLan.Setlan("Go_email")
+        sub.setTitle(SetLan.Setlan("Submit"), for: .normal)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func submit(_ sender: Any) {
+        if(run){return}
+        act.DataLoading()
+        run=true
+        Function.ResetPass(mail.text!,self)
     }
-    */
-
+    
+ 
 }

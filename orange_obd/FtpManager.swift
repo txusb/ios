@@ -7,6 +7,7 @@
 //
 //
 import UIKit
+
 import SQLite3
 class FtpManage{
     func DowloadS19(_ s19:String)->String{
@@ -40,7 +41,9 @@ class FtpManage{
         return "false"
     }
     func DowloadMmy(_ deledate:AppDelegate)->Bool{
-        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/\(mmyname())")
+        var mmyan=mmyname()
+        if(mmyan==ViewController.getShare("mmy")){return true}
+        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/\(mmyan)")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -50,6 +53,7 @@ class FtpManage{
                 try data?.write(to: urlfrompath)
                 if sqlite3_open(dst, &deledate.db) == SQLITE_OK{
                     print("資料庫開啟成功")
+                    ViewController.writeshare(mmyan,"mmy")
                   return true
                 }else{
                     print("資料庫開啟失敗")

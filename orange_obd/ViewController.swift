@@ -303,8 +303,15 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         let queue = DispatchQueue.main
         centralManager = CBCentralManager(delegate: self, queue: queue)
        dowload_mmy()
-       let a=peacedefine().HomePage
-        changepage(to:a)
+        if(ViewController.getShare("admin")=="nodata"){
+            let a=peacedefine().LanguageSetting
+            a.page=1
+            changepage(to:a)
+        }else{
+            let a=peacedefine().HomePage
+            changepage(to:a)
+        }
+       
         animationView.center = self.view.center
         animationView.frame = CGRect(x: animationView.frame.minX, y: animationView.frame.minY+20, width: 200, height: 200)
         animationView.contentMode = .scaleAspectFill
@@ -432,12 +439,13 @@ let newViewController=Pagememory[Pagememory.count-2]
         let preferences = UserDefaults.standard
         let currentLevelKey = name
         if preferences.object(forKey: currentLevelKey) == nil {
-            return "English"
+            return "nodata"
         } else {
             let currentLevel = preferences.string(forKey: currentLevelKey)!
             return currentLevel
         }
     }
+  
     static func writeshare(_ name:String,_ key:String){
         let preferences = UserDefaults.standard
         preferences.set(name,forKey: key)

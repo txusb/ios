@@ -9,6 +9,7 @@
 import UIKit
 
 class LanguageSetting: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    var place=0
     let act=(UIApplication.shared.delegate as! AppDelegate).act!
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -24,15 +25,15 @@ return item[row]
         print(pickerView.selectedRow(inComponent: 0))
         if(place==0){
             SelectAr.setTitle(item[pickerView.selectedRow(inComponent: 0)], for: .normal)
-        }else{
-             SelectLa.setTitle(item[pickerView.selectedRow(inComponent: 0)], for: .normal)
+        }else{ SelectLa.setTitle(item[pickerView.selectedRow(inComponent: 0)], for: .normal)
         }
+        picker.isHidden=true
+        closebt.isHidden=true
     }
  
     @IBOutlet var SelectLa: UIButton!
     @IBOutlet var SelectAr: UIButton!
     @IBOutlet var closebt: UIButton!
-    var place=0
     var item=["EU","North America","台灣","中國大陸"]
     @IBOutlet var picker: UIPickerView!
     @IBOutlet var info: UILabel!
@@ -68,7 +69,7 @@ return item[row]
          picker.isHidden=true
         closebt.isHidden=true
     }
-    
+    var page=0
     @IBAction func Set(_ sender: Any) {
         if(SelectLa.titleLabel?.text=="Select"){
            return
@@ -78,7 +79,14 @@ return item[row]
         }
         ViewController.writeshare(SelectAr.titleLabel!.text!, "Area")
         ViewController.writeshare(SelectLa.titleLabel!.text!, "lan")
-        let a=peacedefine().HomePage
-        act.changepage(to: a)
+        if(page==0){
+            let a=peacedefine().HomePage
+            act.changepage(to: a)
+        }else{
+            let a=peacedefine().Policy
+            a.position=1
+            act.changepage(to: a)
+        }
+      
     }
 }

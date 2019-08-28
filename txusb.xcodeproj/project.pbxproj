@@ -53,6 +53,10 @@
 		1095687722D324C600C58666 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1095687622D324C600C58666 /* Command.swift */; };
 		1095687F22D33F7D00C58666 /* try.srec in Resources */ = {isa = PBXBuildFile; fileRef = 1095687E22D33F7C00C58666 /* try.srec */; };
 		109568AF22DC087000C58666 /* FtpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109568AE22DC087000C58666 /* FtpManager.swift */; };
+		109B5B87230F84B80092FA47 /* Sign in.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B5B86230F84B80092FA47 /* Sign in.swift */; };
+		109B5B8A230F86BB0092FA47 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B5B89230F86BB0092FA47 /* Function.swift */; };
+		109B5B8C230FA19C0092FA47 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B5B8B230FA19C0092FA47 /* Registration.swift */; };
+		109B5B9723136FF70092FA47 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B5B9623136FF70092FA47 /* ResetPassword.swift */; };
 		10AC61D522F7BA5300F49C08 /* Users_Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC61D422F7BA5300F49C08 /* Users_Manual.swift */; };
 		10AC61D922F7BC3E00F49C08 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AC61D822F7BC3E00F49C08 /* Menu.storyboard */; };
 		10AC61DB22F7BE7400F49C08 /* Menu_Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC61DA22F7BE7400F49C08 /* Menu_Detail.swift */; };
@@ -124,6 +128,10 @@
 		1095687622D324C600C58666 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		1095687E22D33F7C00C58666 /* try.srec */ = {isa = PBXFileReference; lastKnownFileType = text; path = try.srec; sourceTree = "<group>"; };
 		109568AE22DC087000C58666 /* FtpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FtpManager.swift; sourceTree = "<group>"; };
+		109B5B86230F84B80092FA47 /* Sign in.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sign in.swift"; sourceTree = "<group>"; };
+		109B5B89230F86BB0092FA47 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		109B5B8B230FA19C0092FA47 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		109B5B9623136FF70092FA47 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		10AC61D422F7BA5300F49C08 /* Users_Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users_Manual.swift; sourceTree = "<group>"; };
 		10AC61D822F7BC3E00F49C08 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		10AC61DA22F7BE7400F49C08 /* Menu_Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu_Detail.swift; sourceTree = "<group>"; };
@@ -202,6 +210,9 @@
 				107D150922F91F6D00CDA789 /* LanguageSetting.swift */,
 				107D150B22F9398100CDA789 /* Policy.swift */,
 				10DB8AE922FD63BE00C1A7A0 /* VersionUpdate.swift */,
+				109B5B86230F84B80092FA47 /* Sign in.swift */,
+				109B5B8B230FA19C0092FA47 /* Registration.swift */,
+				109B5B9623136FF70092FA47 /* ResetPassword.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 		1095681E22CDEAEC00C58666 /* orange_obd */ = {
 			isa = PBXGroup;
 			children = (
+				109B5B88230F869B0092FA47 /* HttpResponse */,
 				107D150622F9162D00CDA789 /* Setting */,
 				107D14F522F8258D00CDA789 /* Language */,
 				10AC61D322F7BA3200F49C08 /* Menu */,
@@ -307,6 +319,14 @@
 				10B6D0C422DD7E2200A084F1 /* CRC16.swift */,
 			);
 			path = tool;
+			sourceTree = "<group>";
+		};
+		109B5B88230F869B0092FA47 /* HttpResponse */ = {
+			isa = PBXGroup;
+			children = (
+				109B5B89230F86BB0092FA47 /* Function.swift */,
+			);
+			path = HttpResponse;
 			sourceTree = "<group>";
 		};
 		10AC61D322F7BA3200F49C08 /* Menu */ = {
@@ -498,7 +518,9 @@
 				10AC61DB22F7BE7400F49C08 /* Menu_Detail.swift in Sources */,
 				107D150522F90DD900CDA789 /* It.swift in Sources */,
 				107D14E122F80D7300CDA789 /* I8.swift in Sources */,
+				109B5B8C230FA19C0092FA47 /* Registration.swift in Sources */,
 				10BAAE4B22E0684B00AC2DE4 /* Signout.swift in Sources */,
+				109B5B9723136FF70092FA47 /* ResetPassword.swift in Sources */,
 				10B6D0C122DC784C00A084F1 /* PadSelect.swift in Sources */,
 				107D14D322F80D2C00CDA789 /* I1.swift in Sources */,
 				10AC61EB22F7FB7C00F49C08 /* P6.swift in Sources */,
@@ -506,6 +528,7 @@
 				10DB8AEA22FD63BE00C1A7A0 /* VersionUpdate.swift in Sources */,
 				107D150E22FA715C00CDA789 /* Relarm.swift in Sources */,
 				107D14FE22F82C1F00CDA789 /* SetLan.swift in Sources */,
+				109B5B87230F84B80092FA47 /* Sign in.swift in Sources */,
 				107D14E522F80D8500CDA789 /* I10.swift in Sources */,
 				10AC61ED22F7FB8B00F49C08 /* P7.swift in Sources */,
 				10AC61EF22F7FB9400F49C08 /* P8.swift in Sources */,
@@ -536,6 +559,7 @@
 				107D150A22F91F6D00CDA789 /* LanguageSetting.swift in Sources */,
 				10B6D0D122E0568C00A084F1 /* QrScanner.swift in Sources */,
 				107D14D722F80D4400CDA789 /* I3.swift in Sources */,
+				109B5B8A230F86BB0092FA47 /* Function.swift in Sources */,
 				1095683722CEDEC200C58666 /* HomePage.swift in Sources */,
 				107D150C22F9398100CDA789 /* Policy.swift in Sources */,
 				1095682022CDEAEC00C58666 /* AppDelegate.swift in Sources */,
@@ -717,7 +741,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "orange_obd/txusb-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -741,7 +765,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "orange_obd/txusb-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

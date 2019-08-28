@@ -9,7 +9,8 @@
 import Foundation
 class SetLan{
     static func Setlan(_ lan:String)->String{
-        let a=ViewController.getShare("lan")
+        var a=ViewController.getShare("lan")
+        if(a=="nodata"){a="English"}
         switch a {
         case "English":
             return English.dic[lan] ?? ""

@@ -46,4 +46,7 @@ let HomePage=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(w
      let Policy=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Policy")as!Policy
     let Relarm=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Relarm")as!Relarm
     let VersionUpdate=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VersionUpdate")as!VersionUpdate
+    let Sign_in=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Sign_in")as!Sign_in
+    let Registration=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Registration")as!Registration
+     let ResetPassword=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResetPassword")as!ResetPassword
 }

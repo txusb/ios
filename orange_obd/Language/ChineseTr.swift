@@ -134,5 +134,5 @@ class ChineseTr{
         "step4_8":"步驟7.\n請依照輪位順序輸入原始Sensor ID, 輸入完後請按下一步",
         "step4_9":"步驟8.\nUSB TPMS 將自動依序讀取PAD中的sensor，讀取完成後請按下 PROGRAM SENSOR",
         "step4_10":"步驟9.\n燒錄完成後，如需複製其他的sensor，請更換USB PAD中的sensor，並按下PROG.SENSOR",
-        "step4_11":"步驟10.\n燒錄錯誤，請按下RE-PROGRAM按鍵，重新執行燒錄 ","openble":"請打開藍牙來連設備!","Set_up":"確認","Check for updates":"檢查更新","update":"更新","Automatic update":"自動更新","USB TPMS APP will automatically install updates.":"USB TPMS APP將自動動安裝更新","paired with your device":"配對中","Select Device":"選擇設備","For developer":"關於開發者資訊，請訪問網站：www.orange-electronic.com","norelarm":"學碼流程尚未完成，請耐心等待，我們會儘快更新"]
+        "step4_11":"步驟10.\n燒錄錯誤，請按下RE-PROGRAM按鍵，重新執行燒錄 ","openble":"請打開藍牙來連設備!","Set_up":"確認","Check for updates":"檢查更新","update":"更新","Automatic update":"自動更新","USB TPMS APP will automatically install updates.":"USB TPMS APP將自動動安裝更新","paired with your device":"配對中","Select Device":"選擇設備","For developer":"關於開發者資訊，請訪問網站：www.orange-electronic.com","norelarm":"學碼流程尚未完成，請耐心等待，我們會儘快更新","Store_type":"商店類型","Distributor":"經銷商","Retailer":"輪胎行","nointer":"網路連線逾時","be_register":"裝置已被註冊","errorpass":"帳號或密碼錯誤"]
 }

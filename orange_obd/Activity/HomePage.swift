@@ -18,6 +18,9 @@ class HomePage: UIViewController {
     @IBOutlet var t1: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        activity.Pagememory.removeAll()
+        activity.Pagememory.append(self)
+        activity.back.isHidden=true
         activity.rightop.isHidden=false
         activity.ISRUN=false
         t3.text=SetLan.Setlan("Cloud_information")
@@ -26,6 +29,41 @@ class HomePage: UIViewController {
         t6.text=SetLan.Setlan("Setting")
     }
 
+    @IBAction func Shopping(_ sender: Any) {
+        var ur=""
+        var a=ViewController.getShare("lan")
+        if(a=="nodata"){a="English"}
+        switch a {
+        case "English":
+            ur="http://simple-sensor.com"
+            break
+        case "繁體中文":
+               ur="http://simple-sensor.com"
+           break
+        case "简体中文":
+               ur="http://simple-sensor.com"
+           break
+        case "Deutsche":
+               ur="http://orange-rdks.de"
+           break
+        case "Italiano":
+               ur="http://orange-like.it"
+            break
+        default:
+           break
+        }
+        if let url = URL(string: ur)
+        {
+            if #available(iOS 10.0, *)
+            {
+                UIApplication.shared.open(url, options: [:])
+            }
+            else
+            {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     @IBAction func tomake(_ sender: Any) {
         PadSelect.Function=1
                     let a=peacedefine().PadSelect
