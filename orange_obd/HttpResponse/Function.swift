@@ -5,11 +5,31 @@
 //  Created by 王建智 on 2019/8/23.
 //  Copyright © 2019 王建智. All rights reserved.
 //
-
+import UIKit
 import Foundation
 class Function{
+    static func GetVersion(){
+        let act=(UIApplication.shared.delegate as! AppDelegate).act!
+        let url = URL(string: "https://itunes.apple.com/lookup?bundleId=com.orange.txusb")!
+        
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            let DaS=String(data: data, encoding: .utf8)!
+       let NewVersion=DaS.components(separatedBy: "\"version\"")[1].components(separatedBy:"\"")[1]
+            if let currentUserInstallVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                if(currentUserInstallVersion != NewVersion){
+    print("current\(currentUserInstallVersion) new:\(NewVersion)")
+                    DispatchQueue.main.async {
+                        act.view.showToast(text: SetLan.Setlan("newversion"))
+                    }
+                }
+            }
+        }
+        
+        task.resume()
+    }
     static func ResetPass(_ admin:String,_ act:ResetPassword){
-        let url = URL(string: "http://demo1.cinet.tw:8360/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -84,7 +104,7 @@ class Function{
     }
     
     static func Register(_ admin:String,_ password:String,_ SerialNum:String,_ storetype:String,_ companyname:String,_ firstname:String,_ lastname:String,_ phone:String,_ State:String,_ city:String,_ streat:String,_ zp:String,_ act:Registration){
-        let url = URL(string: "http://demo1.cinet.tw:8360/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -194,7 +214,7 @@ class Function{
     
     
     static func Signin(_ admin:String,_ password:String,_ act:Sign_in){
-        let url = URL(string: "http://demo1.cinet.tw:8360/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
         var request = URLRequest(url: url)
     request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -270,6 +290,91 @@ class Function{
                     break
                 }
             }
+            
+        }
+        task.resume()
+    }
+    static func Upload_IDCopyRecord(_ make:String,_ model:String, _ year:String, _ startime:String, _ Endtime:String, _ SreialNum:String, _ Devicetype:String, _ Mode:String, _ SensorCount:Int, _ position:String
+        ,_ idrecord:[SersorRecord]){
+        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
+        var request = URLRequest(url: url)
+        request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        var data="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+            "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
+            "  <soap12:Body>\n" +
+            "    <Upload_IDCopyRecord xmlns=\"http://tempuri.org/\">\n" +
+            "      <SerialNum>\(SreialNum)</SerialNum>\n" +
+            "      <data>\n" +
+            "        <Device_BurnIDCopy>\n" +
+            "          <DeviceInfo>\n" +
+            "            <enum_DeviceType>\(Devicetype)</enum_DeviceType>\n" +
+            "            <SerialNum>\(SreialNum)</SerialNum>\n" +
+            "            <enum_SensorMode>\(Mode)</enum_SensorMode>\n" +
+            "            <DateTime_Start>\(startime)</DateTime_Start>\n" +
+            "            <DateTime_End>\(Endtime)</DateTime_End>\n" +
+            "            <SensorCount>\(SensorCount)</SensorCount>\n" +
+            "            <enum_BurnPosition>\(position)</enum_BurnPosition>\n" +
+            "          </DeviceInfo>\n" +
+            "          <CarInfo>\n" +
+            "            <Type>\(make)</Type>\n" +
+            "            <Model>\(model)</Model>\n" +
+            "            <Year>\(year)</Year>\n" +
+            "            <CarNum>nodata</CarNum>\n" +
+            "          </CarInfo>\n" +
+            "          <TireInfo>\n" +
+            "            <TireBrand>nodata</TireBrand>\n" +
+            "            <TireModel>nodata</TireModel>\n" +
+            "            <TireProcDate>nodata</TireProcDate>\n" +
+            "          </TireInfo>\n" +
+            "          <ConsumerInfo>\n" +
+            "            <Name>nodata</Name>\n" +
+            "            <Age>0</Age>\n" +
+            "            <Sex>男</Sex>\n" +
+            "            <Tel>nodata</Tel>\n" +
+            "            <Email>nodata</Email>\n" +
+            "            <Continent>nodata</Continent>\n" +
+            "            <Country>nodata</Country>\n" +
+            "            <State>nodata</State>\n" +
+            "            <City>nodata</City>\n" +
+            "            <Street>nodata</Street>\n" +
+            "          </ConsumerInfo>\n" +
+        "          <Record>\n"
+        for  record in idrecord{
+            data="\(data)<IDCopy_Record>\n" +
+                " <SensorID>\(record.SerSorId)</SensorID>\n" +
+                " <Car_SensorID>\(record.Car_SersorId)</Car_SensorID>\n" +
+                "<IsSuccess>\(record.Issucesss)</IsSuccess>\n" +
+                "<ModelNo>\(record.ModelNo)</ModelNo>\n" +
+                "<enum_BurnResult>\(record.enum_burnResult)</enum_BurnResult>\n" +
+            "</IDCopy_Record>\n"
+        }
+        data="\(data)</Record>\n" +
+            "</Device_BurnIDCopy>\n" +
+            "      </data>\n" +
+            "    </Upload_IDCopyRecord>\n" +
+            "  </soap12:Body>\n" +
+        "</soap12:Envelope>"
+        request.httpBody = data.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,
+                let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "Unknown error")
+                    
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            print(responseString!.components(separatedBy: "ValidateUserResult").count)
             
         }
         task.resume()

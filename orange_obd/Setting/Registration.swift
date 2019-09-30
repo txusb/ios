@@ -128,6 +128,16 @@ Distribut.setTitle(item[pickerView.selectedRow(inComponent: 0)], for: .normal)
         let ct=city.text!
         let state=country.titleLabel!.text!
         let zpcod=zpcode.text!
+        if(email.count==0){return}
+        if(sn.count==0){return}
+        if(fname.count==0){return}
+        if(lname.count==0){return}
+        if(com.count==0){return}
+        if(ph.count==0){return}
+        if(str.count==0){return}
+        if(ct.count==0){return}
+        if(state.count==0){return}
+        if(zpcod.count==0){return}
          if(pass.count<8){
             act.view.showToast(text: SetLan.Setlan("Password")+SetLan.Setlan("At_least_8_characters"))
             return

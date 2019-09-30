@@ -10,11 +10,12 @@ import UIKit
 
 import AVFoundation
 import UIKit
-
+import SQLite3
 class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var idcopy:Idcopy!=nil
+    let deledate = UIApplication.shared.delegate as! AppDelegate
     var VS_or_ID=0
     var idcount=0
     var editext:UITextField!=nil
@@ -23,7 +24,7 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var Qrplace: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
+scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
@@ -101,9 +102,9 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     func found(code: String) {
         scantitle.text=code
-    let fullNameArr = code.components(separatedBy: ":")
+    let fullNameArr = code.components(separatedBy: "*")
        print(fullNameArr)
-        if(fullNameArr.count==5){
+        if(fullNameArr.count==3){
             if(VS_or_ID==1){
                 if(fullNameArr[1].count != idcount){
                     if (captureSession?.isRunning == false) {
@@ -113,12 +114,37 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     return }
                 editext.text=fullNameArr[1]
                 act.GoBack(self)
+            }else{
+                GoOk(fullNameArr[0])
             }
            
         }
 
     }
-    
+    func GoOk(_ code:String){
+        if deledate.db != nil {
+            let sql="select  `Make`,`Model`,`Year`,`Make_Img`  from `Summary table` where `Direct Fit` not in('NA') and `Make_Img` not in('NA') and `MMY number`='\(code)' limit 0,1"
+            var statement:OpaquePointer? = nil
+            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                print(errmsg)
+            }
+            while sqlite3_step(statement)==SQLITE_ROW{
+                let Make = sqlite3_column_text(statement,0)
+                 let Model = sqlite3_column_text(statement,1)
+                 let Year = sqlite3_column_text(statement,2)
+              act.Selectmake=String(cString: Make!)
+                 act.Selectmodel=String(cString: Model!)
+                 act.Selectyear=String(cString: Year!)
+                if(PadSelect.Function==0){
+                    let a=peacedefine().Idcopy
+                    act.changepage(to: a)
+                }else{
+                    let a=peacedefine().Program
+                    act.changepage(to: a)
+                }
+            }  }
+    }
     override var prefersStatusBarHidden: Bool {
         return true
     }

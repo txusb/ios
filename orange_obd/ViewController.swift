@@ -303,7 +303,7 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         let queue = DispatchQueue.main
         centralManager = CBCentralManager(delegate: self, queue: queue)
        dowload_mmy()
-        if(ViewController.getShare("admin")=="nodata"){
+    if(ViewController.getShare("admin")=="nodata"){
             let a=peacedefine().LanguageSetting
             a.page=1
             changepage(to:a)
@@ -318,7 +318,7 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         animationView.loopMode=LottieLoopMode.loop
         view.addSubview(animationView)
     self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(CheckPlace), userInfo: nil, repeats: true)
-        
+        Function.GetVersion()
     }
     func dowload_mmy(){
         self.DataLoading()

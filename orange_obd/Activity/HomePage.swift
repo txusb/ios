@@ -16,9 +16,12 @@ class HomePage: UIViewController {
     @IBOutlet var t3: UILabel!
     @IBOutlet var t2: UILabel!
     @IBOutlet var t1: UILabel!
+    
+    @IBOutlet var settingbt: UIButton!
+    @IBOutlet var ShoppingBt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity.Pagememory.removeAll()
+    activity.Pagememory.removeAll()
         activity.Pagememory.append(self)
         activity.back.isHidden=true
         activity.rightop.isHidden=false
@@ -27,6 +30,12 @@ class HomePage: UIViewController {
         t4.text=SetLan.Setlan("Online_shopping")
         t5.text=SetLan.Setlan("Users_manual")
         t6.text=SetLan.Setlan("Setting")
+if(ViewController.getShare("lan")=="Italiano"){
+    ShoppingBt.setImage(UIImage.init(named: "btn_setting_normal"), for: .normal)
+    t4.text=SetLan.Setlan("Setting")
+    t6.isHidden=true
+    settingbt.isHidden=true
+        }
     }
 
     @IBAction func Shopping(_ sender: Any) {
@@ -48,7 +57,8 @@ class HomePage: UIViewController {
            break
         case "Italiano":
                ur="http://orange-like.it"
-            break
+               ToSetting(self)
+               return
         default:
            break
         }

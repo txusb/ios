@@ -69,6 +69,7 @@
 		10AC61ED22F7FB8B00F49C08 /* P7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC61EC22F7FB8A00F49C08 /* P7.swift */; };
 		10AC61EF22F7FB9400F49C08 /* P8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC61EE22F7FB9400F49C08 /* P8.swift */; };
 		10AC61F122F7FBA700F49C08 /* P9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC61F022F7FBA700F49C08 /* P9.swift */; };
+		10B2390723190BF40063072F /* SensorRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B2390623190BF40063072F /* SensorRecord.swift */; };
 		10B6D0C122DC784C00A084F1 /* PadSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0C022DC784C00A084F1 /* PadSelect.swift */; };
 		10B6D0C322DD69B600A084F1 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0C222DD69B600A084F1 /* Program.swift */; };
 		10B6D0C522DD7E2200A084F1 /* CRC16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0C422DD7E2200A084F1 /* CRC16.swift */; };
@@ -144,6 +145,8 @@
 		10AC61EC22F7FB8A00F49C08 /* P7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P7.swift; sourceTree = "<group>"; };
 		10AC61EE22F7FB9400F49C08 /* P8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P8.swift; sourceTree = "<group>"; };
 		10AC61F022F7FBA700F49C08 /* P9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P9.swift; sourceTree = "<group>"; };
+		10B239032318B4720063072F /* txusb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = txusb.entitlements; sourceTree = "<group>"; };
+		10B2390623190BF40063072F /* SensorRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRecord.swift; sourceTree = "<group>"; };
 		10B6D0C022DC784C00A084F1 /* PadSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadSelect.swift; sourceTree = "<group>"; };
 		10B6D0C222DD69B600A084F1 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		10B6D0C422DD7E2200A084F1 /* CRC16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRC16.swift; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 		1095681322CDEAEC00C58666 = {
 			isa = PBXGroup;
 			children = (
+				10B239032318B4720063072F /* txusb.entitlements */,
 				1095687E22D33F7C00C58666 /* try.srec */,
 				1095687322D3105700C58666 /* simple-loader2.json */,
 				1095684622CEFA2B00C58666 /* sql */,
@@ -325,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				109B5B89230F86BB0092FA47 /* Function.swift */,
+				10B2390623190BF40063072F /* SensorRecord.swift */,
 			);
 			path = HttpResponse;
 			sourceTree = "<group>";
@@ -411,6 +416,11 @@
 					1095681B22CDEAEC00C58666 = {
 						CreatedOnToolsVersion = 10.2;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -564,6 +574,7 @@
 				107D150C22F9398100CDA789 /* Policy.swift in Sources */,
 				1095682022CDEAEC00C58666 /* AppDelegate.swift in Sources */,
 				10B6D0C522DD7E2200A084F1 /* CRC16.swift in Sources */,
+				10B2390723190BF40063072F /* SensorRecord.swift in Sources */,
 				10AC61E522F7FB5900F49C08 /* P3.swift in Sources */,
 				107D150122F907F700CDA789 /* ChineseSi.swift in Sources */,
 				107D14D922F80D4D00CDA789 /* I4.swift in Sources */,

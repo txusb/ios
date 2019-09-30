@@ -49,6 +49,7 @@ return item[row]
         info.text=SetLan.Setlan("Languages_info")
         lan.text=SetLan.Setlan("Languages")
         setup.setTitle(SetLan.Setlan("Set_up"), for: .normal)
+        closebt.setTitle(SetLan.Setlan("cancel"), for: .normal)
     }
 
     @IBAction func SelectLan(_ sender: Any) {

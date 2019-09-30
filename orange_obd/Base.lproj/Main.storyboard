@@ -676,7 +676,7 @@
                                             <fragment>
                                                 <string key="content">USB TPMS 1.01
 Orange Electronic
-822.1MB</string>
+36.1MB</string>
                                                 <attributes>
                                                     <font key="NSFont" metaFont="system" size="17"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
@@ -720,17 +720,6 @@ Orange Electronic
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2T1-4b-Ksw">
-                                        <rect key="frame" x="279" y="7.5" width="125" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="cEG-Rs-5es"/>
-                                            <constraint firstAttribute="width" constant="125" id="wpq-TN-hgx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="Version Update" backgroundImage="button">
-                                            <color key="titleColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </state>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-cL-ns0">
                                         <rect key="frame" x="0.0" y="54" width="414" height="1"/>
                                         <color key="backgroundColor" name="btncolor"/>
@@ -738,94 +727,43 @@ Orange Electronic
                                             <constraint firstAttribute="height" constant="1" id="YcQ-jK-IWU"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJe-1h-3dQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                        <connections>
+                                            <action selector="checkVersion:" destination="yTe-3e-4vV" eventType="touchUpInside" id="ppj-GR-DTk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
                                 <constraints>
                                     <constraint firstItem="QF8-Oa-DfM" firstAttribute="top" secondItem="0Zh-c0-Vm3" secondAttribute="top" id="58i-ep-Mak"/>
                                     <constraint firstAttribute="height" constant="55" id="7ee-Te-SxU"/>
                                     <constraint firstItem="hJj-cL-ns0" firstAttribute="leading" secondItem="0Zh-c0-Vm3" secondAttribute="leading" id="B93-cU-Fer"/>
+                                    <constraint firstItem="hJj-cL-ns0" firstAttribute="top" secondItem="bJe-1h-3dQ" secondAttribute="bottom" id="K5v-uW-WSw"/>
                                     <constraint firstItem="hJj-cL-ns0" firstAttribute="top" secondItem="QF8-Oa-DfM" secondAttribute="bottom" id="Lqs-g9-D3Q"/>
-                                    <constraint firstItem="2T1-4b-Ksw" firstAttribute="centerY" secondItem="0Zh-c0-Vm3" secondAttribute="centerY" id="RJO-ac-BDm"/>
+                                    <constraint firstItem="bJe-1h-3dQ" firstAttribute="leading" secondItem="0Zh-c0-Vm3" secondAttribute="leading" id="O3e-PS-SAb"/>
+                                    <constraint firstItem="bJe-1h-3dQ" firstAttribute="top" secondItem="0Zh-c0-Vm3" secondAttribute="top" id="O8Q-jQ-4g9"/>
                                     <constraint firstItem="QF8-Oa-DfM" firstAttribute="leading" secondItem="0Zh-c0-Vm3" secondAttribute="leading" constant="35" id="Vwl-U4-aEU"/>
                                     <constraint firstAttribute="trailing" secondItem="hJj-cL-ns0" secondAttribute="trailing" id="WtD-vO-WDE"/>
-                                    <constraint firstAttribute="trailing" secondItem="2T1-4b-Ksw" secondAttribute="trailing" constant="10" id="mMt-GZ-DUT"/>
+                                    <constraint firstAttribute="trailing" secondItem="bJe-1h-3dQ" secondAttribute="trailing" id="e22-TF-haT"/>
                                     <constraint firstAttribute="bottom" secondItem="hJj-cL-ns0" secondAttribute="bottom" id="qaD-vW-SRX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfB-tm-vAD">
-                                <rect key="frame" x="0.0" y="348" width="414" height="55"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-xm-Shg">
-                                        <rect key="frame" x="35" y="0.0" width="136" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag9-cC-mu3">
-                                        <rect key="frame" x="0.0" y="54" width="414" height="1"/>
-                                        <color key="backgroundColor" name="btncolor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Z2A-n6-eR4"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7C-je-7NH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
-                                        <color key="backgroundColor" name="btncolor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Wg0-Lc-gs1"/>
-                                        </constraints>
-                                    </view>
-                                    <switch opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGc-32-Gcw">
-                                        <rect key="frame" x="355" y="12" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.1101967469" green="0.27926084400000001" blue="0.41178178789999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </switch>
-                                </subviews>
-                                <color key="backgroundColor" name="backcolor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="h7C-je-7NH" secondAttribute="trailing" id="Ffm-zJ-uLq"/>
-                                    <constraint firstItem="Ag9-cC-mu3" firstAttribute="leading" secondItem="lfB-tm-vAD" secondAttribute="leading" id="JbD-vs-N5J"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ag9-cC-mu3" secondAttribute="trailing" id="KK5-R2-YrS"/>
-                                    <constraint firstItem="Ag9-cC-mu3" firstAttribute="top" secondItem="9ZQ-xm-Shg" secondAttribute="bottom" id="KM9-T7-sdT"/>
-                                    <constraint firstAttribute="height" constant="55" id="PfR-ks-uMI"/>
-                                    <constraint firstItem="h7C-je-7NH" firstAttribute="leading" secondItem="lfB-tm-vAD" secondAttribute="leading" id="Tov-Cr-aAB"/>
-                                    <constraint firstItem="9ZQ-xm-Shg" firstAttribute="leading" secondItem="lfB-tm-vAD" secondAttribute="leading" constant="35" id="VtN-jT-0No"/>
-                                    <constraint firstAttribute="trailing" secondItem="NGc-32-Gcw" secondAttribute="trailing" constant="10" id="dyV-dX-jrV"/>
-                                    <constraint firstItem="h7C-je-7NH" firstAttribute="top" secondItem="lfB-tm-vAD" secondAttribute="top" id="eG6-tm-ZZH"/>
-                                    <constraint firstItem="NGc-32-Gcw" firstAttribute="centerY" secondItem="lfB-tm-vAD" secondAttribute="centerY" id="ge7-24-bAY"/>
-                                    <constraint firstItem="9ZQ-xm-Shg" firstAttribute="top" secondItem="lfB-tm-vAD" secondAttribute="top" id="l5u-w7-jDg"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ag9-cC-mu3" secondAttribute="bottom" id="rw5-fx-9ks"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USB TPMS APP will automatically install updates." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-op-iKP">
-                                <rect key="frame" x="0.0" y="416" width="414" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" name="backcolor"/>
                         <constraints>
-                            <constraint firstItem="cbc-op-iKP" firstAttribute="top" secondItem="lfB-tm-vAD" secondAttribute="bottom" constant="13" id="689-gF-KaK"/>
                             <constraint firstItem="FVs-bh-rmC" firstAttribute="trailing" secondItem="GXE-zG-l0O" secondAttribute="trailing" id="GTi-Xy-FLq"/>
-                            <constraint firstItem="FVs-bh-rmC" firstAttribute="trailing" secondItem="cbc-op-iKP" secondAttribute="trailing" id="I0k-9D-1kn"/>
-                            <constraint firstItem="lfB-tm-vAD" firstAttribute="trailing" secondItem="FVs-bh-rmC" secondAttribute="trailing" id="K8X-8v-nbn"/>
-                            <constraint firstItem="lfB-tm-vAD" firstAttribute="top" secondItem="0Zh-c0-Vm3" secondAttribute="bottom" constant="19" id="Mdz-zM-19u"/>
                             <constraint firstItem="FVs-bh-rmC" firstAttribute="trailing" secondItem="0Zh-c0-Vm3" secondAttribute="trailing" id="QIq-PX-OuS"/>
-                            <constraint firstItem="lfB-tm-vAD" firstAttribute="leading" secondItem="FVs-bh-rmC" secondAttribute="leading" id="R0i-SM-pWW"/>
                             <constraint firstItem="GXE-zG-l0O" firstAttribute="leading" secondItem="FVs-bh-rmC" secondAttribute="leading" id="agG-3M-RZJ"/>
                             <constraint firstItem="GXE-zG-l0O" firstAttribute="top" secondItem="FVs-bh-rmC" secondAttribute="top" constant="30" id="gAl-El-Z5c"/>
                             <constraint firstItem="0Zh-c0-Vm3" firstAttribute="leading" secondItem="FVs-bh-rmC" secondAttribute="leading" id="vdW-DL-fB2"/>
                             <constraint firstItem="0Zh-c0-Vm3" firstAttribute="top" secondItem="GXE-zG-l0O" secondAttribute="bottom" id="vnh-BD-HhO"/>
-                            <constraint firstItem="cbc-op-iKP" firstAttribute="leading" secondItem="FVs-bh-rmC" secondAttribute="leading" id="yht-Cy-96q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FVs-bh-rmC"/>
                     </view>
                     <connections>
-                        <outlet property="autoupdate" destination="9ZQ-xm-Shg" id="MQG-d8-Oae"/>
                         <outlet property="chechupdate" destination="QF8-Oa-DfM" id="w5S-UT-3Sw"/>
                         <outlet property="fordeveloper" destination="Z6q-WD-fzb" id="7h4-i1-us4"/>
-                        <outlet property="versionupdate" destination="2T1-4b-Ksw" id="U2D-me-hak"/>
-                        <outlet property="willauto" destination="cbc-op-iKP" id="rP6-b3-lmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7A-ly-yo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,6 +1111,8 @@ Orange Electronic
                         <viewLayoutGuide key="safeArea" id="0JV-HD-UVx"/>
                     </view>
                     <connections>
+                        <outlet property="ShoppingBt" destination="hgK-8J-7Ai" id="BhV-Pa-75K"/>
+                        <outlet property="settingbt" destination="Ah4-7d-oU0" id="t5m-OW-JpJ"/>
                         <outlet property="t1" destination="xrA-7V-cIu" id="lWv-d1-09p"/>
                         <outlet property="t2" destination="oU0-OJ-l3Y" id="Jpo-hI-5G7"/>
                         <outlet property="t3" destination="asb-JS-SVb" id="OOc-Hq-mjV"/>
@@ -1212,7 +1152,6 @@ Orange Electronic
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <connections>
                                                             <action selector="Lraction:" destination="F2w-NJ-IJ2" eventType="touchUpInside" id="Z0M-3K-ya0"/>
-                                                            <action selector="Lrbt:" destination="F2w-NJ-IJ2" eventType="touchUpInside" id="Cv4-Gb-hMu"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -3718,7 +3657,7 @@ you local content.</string>
                                             <constraint firstAttribute="height" constant="48" id="Exv-D1-o0G"/>
                                         </constraints>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Select">
+                                        <state key="normal" title="EU">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -3751,7 +3690,7 @@ you local content.</string>
                                             <constraint firstAttribute="height" constant="48" id="v42-Pu-nRz"/>
                                         </constraints>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Select">
+                                        <state key="normal" title="繁體中文">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>

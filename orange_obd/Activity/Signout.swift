@@ -33,6 +33,7 @@ logout.text=SetLan.Setlan("Log_out")
     
 
     @IBAction func yes(_ sender: Any) {
+        ViewController.writeshare("nodata", "admin")
        exit(0)
     }
 }

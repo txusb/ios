@@ -11,7 +11,7 @@ import UIKit
 import SQLite3
 class FtpManage{
     func DowloadS19(_ s19:String)->String{
-        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/SensorCode/SIII/\(s19)/\(GetS19name(s19))")
+        let url = URL(string: "ftp://orangerd:orangetpms(~2@35.240.51.141:21/Database/SensorCode/SIII/\(s19)/\(GetS19name(s19))")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -26,7 +26,7 @@ class FtpManage{
         return "false"
     }
     func GetS19name(_ name:String) -> String {
-        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/SensorCode/SIII/\(name)/")
+        let url = URL(string: "ftp://orangerd:orangetpms(~2@35.240.51.141:21/Database/SensorCode/SIII/\(name)/")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -41,9 +41,20 @@ class FtpManage{
         return "false"
     }
     func DowloadMmy(_ deledate:AppDelegate)->Bool{
-        var mmyan=mmyname()
-        if(mmyan==ViewController.getShare("mmy")){return true}
-        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/\(mmyan)")
+        let mmyan=mmyname()
+        if(mmyan==ViewController.getShare("mmy")){
+             let dst=NSHomeDirectory()+"/Documents/mmytb.db"
+            if sqlite3_open(dst, &deledate.db) == SQLITE_OK{
+                print("資料庫開啟成功")
+                ViewController.writeshare(mmyan,"mmy")
+                return true
+            }else{
+                print("資料庫開啟失敗")
+                deledate.db=nil
+                return false
+            }
+            }
+        let url = URL(string: "ftp://orangerd:orangetpms(~2@35.240.51.141:21/Database/MMY/EU/\(mmyan)")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -68,7 +79,7 @@ class FtpManage{
         return false
     }
     func mmyname()->String {
-        let url = URL(string: "ftp://orangerd:orangetpms@61.221.15.194:21/OrangeTool/Database/MMY/EU/")
+        let url = URL(string: "ftp://orangerd:orangetpms(~2@35.240.51.141:21/Database/MMY/EU/")
         var data: Data? = nil
         if let anUrl = url {
             do{

@@ -86,8 +86,18 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
         let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
         if(string == numberFiltered&&(textField.text!+string).count<=idcount){
-             return true
+            if((textField.text!+string).count==idcount){
+                textField.background=UIImage.init(named: "icon_input_box_write")
+            }else{
+                textField.background=UIImage.init(named: "icon_input_box_locked")
+            }
+            return true
         }else{
+            if((textField.text!+string).count>=idcount){
+                textField.background=UIImage.init(named: "icon_input_box_write")
+            }else{
+                textField.background=UIImage.init(named: "icon_input_box_locked")
+            }
             return false
         }
     }

@@ -427,7 +427,11 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     }
     
     @IBAction func StartProgram(_ sender: Any) {
-        Program()
+       
+        if(program.titleLabel!.text=="RE-PROGRAM"&&self.WriteLf.count==8){
+            act.GoBack(self)
+        }else{Program()}
+        
     }
     func Program(){
         if(!ISPROGRAMMING){
@@ -438,7 +442,11 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
             DispatchQueue.global().async {
             var condition=false
 if(self.WriteLf.count==8&&self.WriteLr.count==8&&self.WriteRR.count==8&&self.WriteRf.count==8){
+    let dateFormat:DateFormatter = DateFormatter()
+    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let starttime:String = dateFormat.string(from: Date())
 condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
+      let endtime:String = dateFormat.string(from: Date())
 }else{
     condition=self.act.command.ProgramAll(self.mmynum!, self.Lf)
                 }
