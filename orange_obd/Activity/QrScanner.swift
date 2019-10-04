@@ -102,8 +102,9 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
     
     func found(code: String) {
         scantitle.text=code
-    let fullNameArr = code.components(separatedBy: "*")
-       print(fullNameArr)
+        var fullNameArr = code.components(separatedBy:"*")
+        if(fullNameArr.count<3){fullNameArr=code.components(separatedBy:":")}
+       print("\(code) \(fullNameArr)\t\(idcount) \(fullNameArr.count)")
         if(fullNameArr.count==3){
             if(VS_or_ID==1){
                 if(fullNameArr[1].count != idcount){

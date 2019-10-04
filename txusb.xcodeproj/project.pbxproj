@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10008D3F2347225F00922A3F /* DataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D3E2347225E00922A3F /* DataStream.swift */; };
+		10008D422347229500922A3F /* E_Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D412347229500922A3F /* E_Command.swift */; };
+		10008D472347255200922A3F /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D462347255200922A3F /* MessageItem.swift */; };
 		107D14D322F80D2C00CDA789 /* I1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D222F80D2C00CDA789 /* I1.swift */; };
 		107D14D522F80D3600CDA789 /* I2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D422F80D3600CDA789 /* I2.swift */; };
 		107D14D722F80D4400CDA789 /* I3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D622F80D4400CDA789 /* I3.swift */; };
@@ -80,6 +83,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10008D3E2347225E00922A3F /* DataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStream.swift; sourceTree = "<group>"; };
+		10008D412347229500922A3F /* E_Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_Command.swift; sourceTree = "<group>"; };
+		10008D462347255200922A3F /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		107D14D222F80D2C00CDA789 /* I1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I1.swift; sourceTree = "<group>"; };
 		107D14D422F80D3600CDA789 /* I2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I2.swift; sourceTree = "<group>"; };
 		107D14D622F80D4400CDA789 /* I3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I3.swift; sourceTree = "<group>"; };
@@ -175,6 +181,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10008D402347228000922A3F /* E_Talking */ = {
+			isa = PBXGroup;
+			children = (
+				10008D3E2347225E00922A3F /* DataStream.swift */,
+				10008D412347229500922A3F /* E_Command.swift */,
+				10008D462347255200922A3F /* MessageItem.swift */,
+			);
+			path = E_Talking;
+			sourceTree = "<group>";
+		};
 		107D14D122F80D1B00CDA789 /* USB_COPY */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +261,7 @@
 		1095681E22CDEAEC00C58666 /* orange_obd */ = {
 			isa = PBXGroup;
 			children = (
+				10008D402347228000922A3F /* E_Talking */,
 				109B5B88230F869B0092FA47 /* HttpResponse */,
 				107D150622F9162D00CDA789 /* Setting */,
 				107D14F522F8258D00CDA789 /* Language */,
@@ -518,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10008D472347255200922A3F /* MessageItem.swift in Sources */,
 				10B6D0C322DD69B600A084F1 /* Program.swift in Sources */,
 				1095687722D324C600C58666 /* Command.swift in Sources */,
 				107D14D522F80D3600CDA789 /* I2.swift in Sources */,
@@ -559,6 +577,7 @@
 				1095685422CF347B00C58666 /* Idcopy.swift in Sources */,
 				1095685622CF3CA500C58666 /* extension.swift in Sources */,
 				107D14E722F80DA000CDA789 /* I11.swift in Sources */,
+				10008D3F2347225F00922A3F /* DataStream.swift in Sources */,
 				1095683922CEE4FB00C58666 /* PeaceDefine.swift in Sources */,
 				107D14E322F80D7B00CDA789 /* I9.swift in Sources */,
 				1095686622D2E66600C58666 /* BleScanner.swift in Sources */,
@@ -570,6 +589,7 @@
 				10B6D0D122E0568C00A084F1 /* QrScanner.swift in Sources */,
 				107D14D722F80D4400CDA789 /* I3.swift in Sources */,
 				109B5B8A230F86BB0092FA47 /* Function.swift in Sources */,
+				10008D422347229500922A3F /* E_Command.swift in Sources */,
 				1095683722CEDEC200C58666 /* HomePage.swift in Sources */,
 				107D150C22F9398100CDA789 /* Policy.swift in Sources */,
 				1095682022CDEAEC00C58666 /* AppDelegate.swift in Sources */,
