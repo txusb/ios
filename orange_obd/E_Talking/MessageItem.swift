@@ -28,7 +28,7 @@ class MessageItem {
          file.removeAll()
          reader.removeAll()
     }
-    func add(_ id:String,_ admin:String,_ message:String,_ time:String,_ head:String,_ pick:String,_ file:String,_ reader:String)  {
+    func add(_ id:String,_ admin:String,_ file:String,_ message:String,_ time:String,_ head:String,_ pick:String)  {
         self.id.append(id)
         self.admin.append(admin)
         self.message.append(message)
@@ -36,9 +36,9 @@ class MessageItem {
         self.head.append(head)
         self.pick.append(pick)
         self.file.append(file)
-        self.reader.append(reader)
+//        self.reader.append(reader)
     }
-    func addzero(_ id:String,_ admin:String,_ message:String,_ time:String,_ head:String,_ pick:String,_ file:String,_ reader:String){
+    func addzero(_ id:String,_ admin:String,_ file:String,_ message:String,_ time:String,_ head:String,_ pick:String){
         self.id.insert(id, at: 0)
         self.admin.insert(admin, at: 0)
         self.message.insert(message, at: 0)
@@ -46,6 +46,5 @@ class MessageItem {
         self.head.insert(head, at: 0)
         self.pick.insert(pick, at: 0)
         self.file.insert(file, at: 0)
-        self.reader.insert(reader, at: 0)
     }
 }

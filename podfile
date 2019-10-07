@@ -6,8 +6,11 @@ target 'txusb' do
   use_frameworks!
 
   # Pods for orange_obd
+pod 'Firebase/Storage'
+pod 'Firebase/Analytics'
 pod 'ViewPager-Swift'
 pod 'CryptoSwift'
 pod 'lottie-ios'
+pod 'Kingfisher'
 pod 'IQKeyboardManagerSwift'
 end

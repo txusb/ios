@@ -10,6 +10,8 @@
 		10008D3F2347225F00922A3F /* DataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D3E2347225E00922A3F /* DataStream.swift */; };
 		10008D422347229500922A3F /* E_Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D412347229500922A3F /* E_Command.swift */; };
 		10008D472347255200922A3F /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D462347255200922A3F /* MessageItem.swift */; };
+		102E8F242349ACBC00328DE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */; };
+		102E8F2B2349B99500328DE1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E8F2A2349B99500328DE1 /* ImagePicker.swift */; };
 		107D14D322F80D2C00CDA789 /* I1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D222F80D2C00CDA789 /* I1.swift */; };
 		107D14D522F80D3600CDA789 /* I2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D422F80D3600CDA789 /* I2.swift */; };
 		107D14D722F80D4400CDA789 /* I3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D622F80D4400CDA789 /* I3.swift */; };
@@ -79,6 +81,9 @@
 		10B6D0D122E0568C00A084F1 /* QrScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0D022E0568C00A084F1 /* QrScanner.swift */; };
 		10BAAE4B22E0684B00AC2DE4 /* Signout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAAE4A22E0684B00AC2DE4 /* Signout.swift */; };
 		10DB8AEA22FD63BE00C1A7A0 /* VersionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB8AE922FD63BE00C1A7A0 /* VersionUpdate.swift */; };
+		10FBEAF72348374C00A1B8C5 /* TalkingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */; };
+		10FBEAFD23483C4500A1B8C5 /* TalkingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */; };
+		10FBEAFF2348464500A1B8C5 /* TalkingAdapterYou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFE2348464500A1B8C5 /* TalkingAdapterYou.swift */; };
 		E843A1897532756B7DF26204 /* Pods_txusb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B844DF50EAE00CC6CDF6E786 /* Pods_txusb.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +91,8 @@
 		10008D3E2347225E00922A3F /* DataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStream.swift; sourceTree = "<group>"; };
 		10008D412347229500922A3F /* E_Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_Command.swift; sourceTree = "<group>"; };
 		10008D462347255200922A3F /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		102E8F2A2349B99500328DE1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		107D14D222F80D2C00CDA789 /* I1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I1.swift; sourceTree = "<group>"; };
 		107D14D422F80D3600CDA789 /* I2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I2.swift; sourceTree = "<group>"; };
 		107D14D622F80D4400CDA789 /* I3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I3.swift; sourceTree = "<group>"; };
@@ -161,6 +168,9 @@
 		10B6D0D022E0568C00A084F1 /* QrScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanner.swift; sourceTree = "<group>"; };
 		10BAAE4A22E0684B00AC2DE4 /* Signout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signout.swift; sourceTree = "<group>"; };
 		10DB8AE922FD63BE00C1A7A0 /* VersionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdate.swift; sourceTree = "<group>"; };
+		10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingActivity.swift; sourceTree = "<group>"; };
+		10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAdapter.swift; sourceTree = "<group>"; };
+		10FBEAFE2348464500A1B8C5 /* TalkingAdapterYou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAdapterYou.swift; sourceTree = "<group>"; };
 		130170DB3429E1CABB2AFD2A /* Pods-txusb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-txusb.release.xcconfig"; path = "Target Support Files/Pods-txusb/Pods-txusb.release.xcconfig"; sourceTree = "<group>"; };
 		32D230216B9F40EA7F95C876 /* Pods_orange_obd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_orange_obd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762F8FCEE067C2388EE523EB /* Pods-orange_obd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orange_obd.debug.xcconfig"; path = "Target Support Files/Pods-orange_obd/Pods-orange_obd.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +197,10 @@
 				10008D3E2347225E00922A3F /* DataStream.swift */,
 				10008D412347229500922A3F /* E_Command.swift */,
 				10008D462347255200922A3F /* MessageItem.swift */,
+				10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */,
+				10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */,
+				10FBEAFE2348464500A1B8C5 /* TalkingAdapterYou.swift */,
+				102E8F2A2349B99500328DE1 /* ImagePicker.swift */,
 			);
 			path = E_Talking;
 			sourceTree = "<group>";
@@ -261,6 +275,7 @@
 		1095681E22CDEAEC00C58666 /* orange_obd */ = {
 			isa = PBXGroup;
 			children = (
+				102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */,
 				10008D402347228000922A3F /* E_Talking */,
 				109B5B88230F869B0092FA47 /* HttpResponse */,
 				107D150622F9162D00CDA789 /* Setting */,
@@ -466,6 +481,7 @@
 			files = (
 				10AC61D922F7BC3E00F49C08 /* Menu.storyboard in Resources */,
 				1095687F22D33F7D00C58666 /* try.srec in Resources */,
+				102E8F242349ACBC00328DE1 /* GoogleService-Info.plist in Resources */,
 				1095687422D3105800C58666 /* simple-loader2.json in Resources */,
 				1095682A22CDEAF200C58666 /* LaunchScreen.storyboard in Resources */,
 				1095682722CDEAF200C58666 /* Assets.xcassets in Resources */,
@@ -488,18 +504,26 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-txusb/Pods-txusb-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewPager-Swift/ViewPager_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewPager_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -571,6 +595,7 @@
 				1095684022CEEDBC00C58666 /* model.swift in Sources */,
 				1095684322CEF1A200C58666 /* Make.swift in Sources */,
 				107D150322F90B3900CDA789 /* De.swift in Sources */,
+				102E8F2B2349B99500328DE1 /* ImagePicker.swift in Sources */,
 				107D150822F9163D00CDA789 /* Setting.swift in Sources */,
 				1095682222CDEAEC00C58666 /* ViewController.swift in Sources */,
 				1095686D22D2ED6A00C58666 /* BleItem.swift in Sources */,
@@ -579,6 +604,7 @@
 				107D14E722F80DA000CDA789 /* I11.swift in Sources */,
 				10008D3F2347225F00922A3F /* DataStream.swift in Sources */,
 				1095683922CEE4FB00C58666 /* PeaceDefine.swift in Sources */,
+				10FBEAF72348374C00A1B8C5 /* TalkingActivity.swift in Sources */,
 				107D14E322F80D7B00CDA789 /* I9.swift in Sources */,
 				1095686622D2E66600C58666 /* BleScanner.swift in Sources */,
 				1095684C22CF090E00C58666 /* SelectModel.swift in Sources */,
@@ -593,7 +619,9 @@
 				1095683722CEDEC200C58666 /* HomePage.swift in Sources */,
 				107D150C22F9398100CDA789 /* Policy.swift in Sources */,
 				1095682022CDEAEC00C58666 /* AppDelegate.swift in Sources */,
+				10FBEAFF2348464500A1B8C5 /* TalkingAdapterYou.swift in Sources */,
 				10B6D0C522DD7E2200A084F1 /* CRC16.swift in Sources */,
+				10FBEAFD23483C4500A1B8C5 /* TalkingAdapter.swift in Sources */,
 				10B2390723190BF40063072F /* SensorRecord.swift in Sources */,
 				10AC61E522F7FB5900F49C08 /* P3.swift in Sources */,
 				107D150122F907F700CDA789 /* ChineseSi.swift in Sources */,
@@ -759,6 +787,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				INFOPLIST_FILE = orange_obd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -766,6 +795,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -784,6 +814,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				INFOPLIST_FILE = orange_obd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -791,6 +822,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

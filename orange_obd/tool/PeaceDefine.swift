@@ -49,4 +49,5 @@ let HomePage=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(w
     let Sign_in=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Sign_in")as!Sign_in
     let Registration=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Registration")as!Registration
      let ResetPassword=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResetPassword")as!ResetPassword
+     let TalkingActivity=UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TalkingActivity")as!TalkingActivity
 }

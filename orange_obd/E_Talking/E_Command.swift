@@ -24,7 +24,7 @@ class E_Command {
             return false
         }
     }
-    func Getmail(take:String,it:MessageItem,ad:String)->MessageItem {
+    func Getmail(_ take:String,_ it:MessageItem,_ ad:String) {
         do{
             let originsize=it.admin.count
             let stream=DataStream()
@@ -36,18 +36,17 @@ class E_Command {
             try stream.writeUTF(take)
             var a=try stream.ReadUTf()
             while(a != "完畢"){
-                it.add(a, try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf())
+                it.add(a, try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf())
                 a=try stream.ReadUTf()
             }
             if(originsize==it.admin.count){it.button=true}
             it.success=true
-            return it
         }catch{
+            print(error)
             it.success=false
-            return it
         }
     }
-    func GetNewMail(take:String,it:MessageItem,ad:String)->MessageItem {
+    func GetNewMail(_ take:String,_ it:MessageItem,_ ad:String) {
         do{
             let stream=DataStream()
             stream.SetStream()
@@ -58,14 +57,12 @@ class E_Command {
             try stream.writeUTF(take)
             var a=try stream.ReadUTf()
             while(a != "完畢"){
-                it.addzero(a, try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf())
+                it.addzero(a, try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf(), try stream.ReadUTf())
                 a=try stream.ReadUTf()
             }
             it.success=true
-            return it
         }catch{
             it.success=false
-            return it
         }
     }
 }

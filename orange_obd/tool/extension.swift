@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 extension Numeric {
     var data: Data {
         var source = self
@@ -89,6 +90,63 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }}}
 extension String {
+    func compareCurrentTime() -> String {
+
+        //将时间戳转换为日期
+      let dateFormatter = DateFormatter.init()
+             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+             let timeDate = dateFormatter.date(from: self)
+
+        print("\(self)\(timeDate)")
+
+        let currentDate = NSDate()
+
+     let timeInterval = currentDate.timeIntervalSince(timeDate!)
+
+        var temp:Double = 0
+
+        var result:String = ""
+
+        if timeInterval/60 < 1 {
+
+            result = SetLan.Setlan("secago")
+
+        }else if (timeInterval/60) < 60{
+
+            temp = timeInterval/60
+            
+            result = SetLan.Setlan("minuteago").replace("1", "\(Int(temp))")
+
+        }else if timeInterval/60 * 60 < 24 * 60 {
+
+            temp = timeInterval/(60)
+
+            result = SetLan.Setlan("hourago").replace("1", "\(Int(temp))")
+
+        }else if timeInterval/(24 * 60 * 60) < 30 * 24 * 60 {
+
+            temp = timeInterval / (24 * 60 * 60)
+
+           result = SetLan.Setlan("dayago").replace("1", "\(Int(temp))")
+
+        }else if timeInterval/(30 * 24 * 60 * 60)  < 12 * 30 * 24 * 60{
+
+            temp = timeInterval/(30 * 24 * 60 * 60)
+
+           result = SetLan.Setlan("monthago").replace("1", "\(Int(temp))")
+
+        }else{
+
+            temp = timeInterval/(12 * 30 * 24 * 60 * 60)
+
+             result = SetLan.Setlan("yeargo").replace("1", "\(Int(temp))")
+
+
+        }
+
+        return result
+
+    }
     func  sub(_ range: CountableRange<Int>) -> String {
         let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
         let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
@@ -187,4 +245,15 @@ extension UIView{
 }
 
 
-
+extension UIImageView{
+    func rectimage(_ ur:String) {
+        let url = URL(string:ur)
+        let processor = RoundCornerImageProcessor(cornerRadius: 30)
+        self.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(processor)
+            ])
+    }
+}

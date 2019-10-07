@@ -275,8 +275,8 @@ class Function{
                 act.act.pause()
                 switch (res){
                 case 0:
-                    ViewController.writeshare("admin", admin)
-                    ViewController.writeshare("password", password)
+                    ViewController.writeshare(admin, "admin")
+                    ViewController.writeshare( password,"password")
                     let a=peacedefine().HomePage
                     act.act.changepage(to: a)
                     break;

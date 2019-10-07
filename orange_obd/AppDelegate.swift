@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import SQLite3
+import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var act: ViewController?
@@ -17,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
-       
+       FirebaseApp.configure()
         return true
     }
 

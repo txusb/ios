@@ -14,7 +14,7 @@ class DataStream{
         case readerror
     }
     func SetStream(){
-        let _ = Stream.getStreamsToHost(withName: "192.168.3.136", port: 12345, inputStream: &iStream, outputStream: &oStream)
+        let _ = Stream.getStreamsToHost(withName: "35.240.51.141", port: 5021, inputStream: &iStream, outputStream: &oStream)
         iStream?.open()
         oStream?.open()
     }
@@ -51,11 +51,10 @@ class DataStream{
                 readsize += readcount
                 if(readcount==1){buf += buf2}
             }
-            let string = String(data: Data(bytes: buf, count: long), encoding: .utf8)
-            
-            if(string==nil){
-                throw customError.readerror
-            }else{return string!}
+            let data=Data(bytes: buf, count: long)
+            let string = String(decoding: data, as: UTF8.self)
+            print(string)
+            return string.replace("������", "�")
         }
     }
     func ReadInt()throws ->Int{

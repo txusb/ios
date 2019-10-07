@@ -279,9 +279,12 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
     
     
     /////
-      let deledate = UIApplication.shared.delegate as! AppDelegate
-    var timer: Timer?
     
+   
+    @IBOutlet var tlkingBt: UIButton!
+    let deledate = UIApplication.shared.delegate as! AppDelegate
+    var timer: Timer?
+    var etalk=E_Command()
     @IBOutlet var tit: UILabel!
     @IBOutlet var LoadingView: UIView!
     var selectedPageContainer: UIViewController!
@@ -354,6 +357,7 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         newViewController.didMove(toParent: self)
     }
     func changepage(to newViewController: UIViewController) {
+        tlkingBt.isHidden=true
         Pagememory.append(newViewController)
         if selectedPageContainer != nil {
             selectedPageContainer.willMove(toParent: nil)
@@ -454,5 +458,9 @@ let newViewController=Pagememory[Pagememory.count-2]
             print("saverror")
         }
 }
-
+    @IBAction func ToTalking(_ sender: Any) {
+        let a=peacedefine().TalkingActivity
+        changepage(to: a)
+    }
+    
 }
