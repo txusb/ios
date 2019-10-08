@@ -117,19 +117,20 @@ extension String {
             
             result = SetLan.Setlan("minuteago").replace("1", "\(Int(temp))")
 
-        }else if timeInterval/60 * 60 < 24 * 60 {
+        }else if timeInterval/60 / 60 < 24 {
 
-            temp = timeInterval/(60)
+            temp = timeInterval/60/60
+            print("time\(temp)")
 
             result = SetLan.Setlan("hourago").replace("1", "\(Int(temp))")
 
-        }else if timeInterval/(24 * 60 * 60) < 30 * 24 * 60 {
+        }else if timeInterval/(24 * 60 * 60) < 30 {
 
             temp = timeInterval / (24 * 60 * 60)
 
            result = SetLan.Setlan("dayago").replace("1", "\(Int(temp))")
 
-        }else if timeInterval/(30 * 24 * 60 * 60)  < 12 * 30 * 24 * 60{
+        }else if timeInterval/(30 * 24 * 60 * 60)  < 12 {
 
             temp = timeInterval/(30 * 24 * 60 * 60)
 

@@ -29,7 +29,7 @@ class DataStream{
         if(writesize != alldata.count){ throw customError.readerror}
     }
     func writeUTF(_ string: String)throws{
-        let data = string.data(using: .utf8)!
+        let data = encode(string).data(using: .utf8)!
         let buf=[UInt8](data)
         var alldata=Array(repeating: UInt8(0), count: 2)
         alldata[0]=UInt8(buf.count/256)
@@ -52,11 +52,26 @@ class DataStream{
                 if(readcount==1){buf += buf2}
             }
             let data=Data(bytes: buf, count: long)
-            let string = String(decoding: data, as: UTF8.self)
-            print(string)
+            let string = decode(String(decoding: data, as: UTF8.self))
+            if(string.contains("�")){print("error"+bytesToHex(buf))}
             return string.replace("������", "�")
         }
     }
+    func decode(_ s: String) -> String {
+        let data = s.data(using: .utf8)!
+        return String(data: data, encoding: .nonLossyASCII) ?? s
+    }
+    func encode(_ s: String) -> String {
+        let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!
+        return String(data: data, encoding: .utf8)!
+    }
+    func bytesToHex(_ bt:[UInt8])->String{
+             var re=""
+             for i in 0..<bt.count{
+                 re=re.appending(String(format:"%02X",bt[i]))
+             }
+             return re
+         }
     func ReadInt()throws ->Int{
         var buf = Array(repeating: UInt8(0), count: 4)
          let tmp=iStream?.read(&buf, maxLength: 4)
