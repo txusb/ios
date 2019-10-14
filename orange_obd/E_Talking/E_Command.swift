@@ -19,7 +19,8 @@ class E_Command {
             try stream.writeUTF(ad)
             try stream.writeUTF(file)
             try stream.writeUTF(message)
-            if(try stream.ReadInt()==1){return true}else{return false}
+//            if(try stream.ReadInt()==1){return true}else{return false}
+            return true
         }catch{
             return false
         }

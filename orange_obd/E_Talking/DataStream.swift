@@ -29,13 +29,14 @@ class DataStream{
         if(writesize != alldata.count){ throw customError.readerror}
     }
     func writeUTF(_ string: String)throws{
-        let data = encode(string).data(using: .utf8)!
-        let buf=[UInt8](data)
+        let data = encode(string).data(using: .utf8)
+        let buf=[UInt8](data!)
         var alldata=Array(repeating: UInt8(0), count: 2)
         alldata[0]=UInt8(buf.count/256)
         alldata[1]=UInt8(buf.count%256)
         alldata += buf
         let writesize=oStream?.write(alldata, maxLength: alldata.count)
+        print("size==\(writesize):\(alldata.count)")
         if(writesize != alldata.count){ throw customError.readerror}
     }
     func ReadUTf()throws ->String{
