@@ -195,7 +195,6 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     }
     override func viewWillAppear(_ animated: Bool) {
         self.first=true
-         act.tit.text=SetLan.Setlan("Program_USB_PAD")
         UpdateUiCondition(PROGRAM_WAIT)
         UpdateUI(LF,UN_LINK)
         UpdateUI(RF,UN_LINK)
@@ -452,6 +451,7 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
                 }
                 DispatchQueue.main.async {
                     self.ISPROGRAMMING=false
+                    self.act.back.setImage(UIImage.init(named: "btn_Menu"), for: .normal)
                     for i in 0..<self.act.command.CHANNEL_BLE.count{
                         let a=self.act.command.CHANNEL_BLE[i]
                         if(a.sub(0..<2)=="04"){

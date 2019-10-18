@@ -47,8 +47,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
          toptitle.text=tt
             queryid()
         }
-
-        tit.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
+         tit.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
          lft.attributedPlaceholder = NSAttributedString(string: "LF ID Number",attributes: placeholserAttributes)
          Rft.attributedPlaceholder = NSAttributedString(string: "RF ID Number",attributes: placeholserAttributes)
          Lrt.attributedPlaceholder = NSAttributedString(string: "LR ID Number",attributes: placeholserAttributes)
@@ -254,6 +253,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func Scanner(_ sender: Any) {
         SelectKey.isHidden=true
+        tit.text=SetLan.Setlan("checkscan")
         Scan_or_Key=0
     }
     

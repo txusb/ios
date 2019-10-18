@@ -11,7 +11,7 @@ import UIKit
 class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
     var timer:Timer?
     var ImageUrl="nodata"
-    
+    var talkingwho="orangetpms"
     @IBOutlet var Nointerlabel: UILabel!
     @IBOutlet var ShowImage: UIImageView!
     @IBOutlet var ShowIngImage: UIView!
@@ -85,7 +85,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         
         DispatchQueue.global().async {
             let originsize=self.it.id.count
-            self.act.etalk.GetNewMail(self.it.id[0],self.it,"admin")
+            self.act.etalk.GetNewMail(self.it.id[0],self.it,self.talkingwho)
             DispatchQueue.main.async {
                 if(originsize != self.it.id.count){self.tb.reloadData()}
                 self.refresh=true
@@ -97,7 +97,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         refresh=false
         act.DataLoading()
         DispatchQueue.global().async {
-            self.act.etalk.Getmail(take,self.it,"admin")
+            self.act.etalk.Getmail(take,self.it,self.talkingwho)
             DispatchQueue.main.async {
                 self.act.pause()
                 self.refresh=true
@@ -119,7 +119,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         let a=sender.text
         self.act.play()
         DispatchQueue.global().async {
-            let response=self.act.etalk.Sendmail("admin",self.ImageUrl, a!)
+            let response=self.act.etalk.Sendmail(self.talkingwho,self.ImageUrl, a!)
             DispatchQueue.main.async {
                 self.ShowIngImage.isHidden=true
                     self.selInmage=nil

@@ -11,20 +11,30 @@ import SQLite3
 class Relarm: UIViewController {
 let deledate = UIApplication.shared.delegate as! AppDelegate
        let activity=(UIApplication.shared.delegate as! AppDelegate).act!
-    
+    var position=0
     @IBOutlet var relarlmtext: UITextView!
     @IBOutlet var menu: UIButton!
     @IBOutlet var toper: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         toper.text="\(activity.Selectmake)/\(activity.Selectmodel)/\(activity.Selectyear)"
-    menu.setTitle(SetLan.Setlan("MENU"), for: .normal)
+        if(position==0){    menu.setTitle(SetLan.Setlan("MENU"), for: .normal)}else{    menu.setTitle(SetLan.Setlan("Next"), for: .normal)}
         query()
     }
     
     @IBAction func Gomenu(_ sender: Any) {
-        let a=peacedefine().HomePage
-        activity.changepage(to: a)
+        if(position==0){
+            let a=peacedefine().HomePage
+            activity.changepage(to: a)
+        }else{
+            if(PadSelect.Function==0){
+                let a=peacedefine().Idcopy
+                activity.changepage(to: a)
+            }else{
+                let a=peacedefine().Program
+                activity.changepage(to: a)
+            }
+        }
     }
     func query(){
         if deledate.db != nil {

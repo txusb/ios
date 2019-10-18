@@ -21,7 +21,7 @@ class HomePage: UIViewController {
     @IBOutlet var ShoppingBt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-    activity.Pagememory.removeAll()
+        activity.Pagememory.removeAll()
         activity.Pagememory.append(self)
         activity.back.isHidden=true
         activity.rightop.isHidden=false

@@ -25,9 +25,7 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
-        view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
         
@@ -101,7 +99,6 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
     }
     
     func found(code: String) {
-        scantitle.text=code
         var fullNameArr = code.components(separatedBy:"*")
         if(fullNameArr.count<3){fullNameArr=code.components(separatedBy:":")}
        print("\(code) \(fullNameArr)\t\(idcount) \(fullNameArr.count)")
@@ -112,6 +109,7 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
                         captureSession.startRunning()
                     }
             act.view.showToast(text:SetLan.Setlan("ID_code_should_be_8_characters").replace("8", "\(idcount)") )
+                    captureSession.startRunning()
                     return }
                 editext.text=fullNameArr[1]
                 act.GoBack(self)
@@ -119,10 +117,14 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
                 GoOk(fullNameArr[0])
             }
            
+        }else{
+            view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
+            captureSession.startRunning()
         }
 
     }
     func GoOk(_ code:String){
+        print("GOOK")
         if deledate.db != nil {
             let sql="select  `Make`,`Model`,`Year`,`Make_Img`  from `Summary table` where `Direct Fit` not in('NA') and `Make_Img` not in('NA') and `MMY number`='\(code)' limit 0,1"
             var statement:OpaquePointer? = nil
@@ -140,11 +142,16 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
                 if(PadSelect.Function==0){
                     let a=peacedefine().Idcopy
                     act.changepage(to: a)
+                    return
                 }else{
                     let a=peacedefine().Program
                     act.changepage(to: a)
+                    return
                 }
-            }  }
+            }
+            view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
+                           captureSession.startRunning()
+        }
     }
     override var prefersStatusBarHidden: Bool {
         return true

@@ -28,26 +28,15 @@ class Year: UITableViewCell {
     }
 
     @IBAction func B2(_ sender: Any) {
-        if(PadSelect.Function==0){
-            let a=peacedefine().Idcopy
-            act?.Selectyear=name2
-            act?.changepage(to: a)
-        }else{
-            let a=peacedefine().Program
-            act?.Selectyear=name2
-            act?.changepage(to: a)
-        }
+        act?.Selectyear=name2
+        let a=peacedefine().Relarm
+        a.position=1
+      act?.changepage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
-         if(PadSelect.Function==0){
-            let a=peacedefine().Idcopy
-            act?.Selectyear=name1
-            act?.changepage(to: a)
-         }else{
-            let a=peacedefine().Program
-            act?.Selectyear=name1
-            act?.changepage(to: a)
-        }
-    
+         act?.Selectyear=name1
+          let a=peacedefine().Relarm
+               a.position=1
+             act?.changepage(to: a)
     }
 }

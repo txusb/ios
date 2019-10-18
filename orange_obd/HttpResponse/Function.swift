@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 class Function{
+    static let link="http://bento2.orange-electronic.com/App_Asmx/ToolApp.asmx"
     static func GetVersion(){
         let act=(UIApplication.shared.delegate as! AppDelegate).act!
         let url = URL(string: "https://itunes.apple.com/lookup?bundleId=com.orange.txusb")!
@@ -25,11 +26,10 @@ class Function{
                 }
             }
         }
-        
         task.resume()
     }
     static func ResetPass(_ admin:String,_ act:ResetPassword){
-        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
+        let url = URL(string:link)!
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -104,7 +104,7 @@ class Function{
     }
     
     static func Register(_ admin:String,_ password:String,_ SerialNum:String,_ storetype:String,_ companyname:String,_ firstname:String,_ lastname:String,_ phone:String,_ State:String,_ city:String,_ streat:String,_ zp:String,_ act:Registration){
-        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: link)!
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -214,7 +214,7 @@ class Function{
     
     
     static func Signin(_ admin:String,_ password:String,_ act:Sign_in){
-        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: link)!
         var request = URLRequest(url: url)
     request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -296,7 +296,7 @@ class Function{
     }
     static func Upload_IDCopyRecord(_ make:String,_ model:String, _ year:String, _ startime:String, _ Endtime:String, _ SreialNum:String, _ Devicetype:String, _ Mode:String, _ SensorCount:Int, _ position:String
         ,_ idrecord:[SersorRecord]){
-        let url = URL(string: "http://35.240.51.141/App_Asmx/ToolApp.asmx")!
+        let url = URL(string: link)!
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"

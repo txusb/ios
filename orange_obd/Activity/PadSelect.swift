@@ -18,7 +18,6 @@ class PadSelect: UIViewController {
     @IBOutlet var ProgramView: UIButton!
     @IBOutlet var copyview: UIButton!
     override func viewWillAppear(_ animated: Bool) {
-    act!.tit.text=SetLan.Setlan("Program_USB_PAD")
         if(act!.IsConnect){
             act!.padicon.isHidden=false
         }else{
@@ -95,6 +94,7 @@ class PadSelect: UIViewController {
         ProgramView.backgroundColor=UIColor.init(named: "backcolor")
         switch position {
         case 0:
+            act!.tit.text=SetLan.Setlan("ID_COPY")
 copyview.setTitleColor(UIColor.white, for: .normal)
 copyview.backgroundColor=UIColor.init(named: "btncolor")
 padimg.image=UIImage.init(named: "img_ID copy")
@@ -102,6 +102,7 @@ padimg.image=UIImage.init(named: "img_ID copy")
         default:
             ProgramView.setTitleColor(UIColor.white, for: .normal)
             ProgramView.backgroundColor=UIColor.init(named: "btncolor")
+            act!.tit.text=SetLan.Setlan("Program")
             padimg.image=UIImage.init(named: "img_program")
             break
         }

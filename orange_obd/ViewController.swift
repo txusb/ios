@@ -357,6 +357,7 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
         newViewController.didMove(toParent: self)
     }
     func changepage(to newViewController: UIViewController) {
+          back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
         tlkingBt.isHidden=true
         Pagememory.append(newViewController)
         if selectedPageContainer != nil {
@@ -376,13 +377,19 @@ print("傳送\(data)\n資料長度\(data.count)/\(data.HexToByte())")
 
     @IBAction func GoBack(_ sender: Any) {
         if(isloading){return}
+        
         if selectedPageContainer != nil {
             selectedPageContainer.willMove(toParent: nil)
             selectedPageContainer.view.removeFromSuperview()
             selectedPageContainer.removeFromParent()
         }
-let newViewController=Pagememory[Pagememory.count-2]
-        ;
+        if(back.image(for: .normal)==UIImage.init(named: "btn_Menu")){
+            back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
+            let a=peacedefine().HomePage
+            changepage(to: a)
+            return
+        }
+let newViewController=Pagememory[Pagememory.count-2];
         addChild(newViewController)
         self.Container.addSubview(newViewController.view)
         newViewController.view.frame = Container.bounds
