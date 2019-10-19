@@ -99,7 +99,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         DispatchQueue.global().async {
             self.act.etalk.Getmail(take,self.it,self.talkingwho)
             DispatchQueue.main.async {
-                self.act.pause()
+                self.act.LoadingSuccess()
                 self.refresh=true
                 if(self.it.success){
                     self.tb.reloadData()
@@ -117,14 +117,14 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
     
     func SendMail(){
         let a=sender.text
-        self.act.play()
+        self.act.LoadIng("Data Loading")
         DispatchQueue.global().async {
             let response=self.act.etalk.Sendmail(self.talkingwho,self.ImageUrl, a!)
             DispatchQueue.main.async {
                 self.ShowIngImage.isHidden=true
                     self.selInmage=nil
                 self.ImageUrl="nodata"
-                self.act.pause()
+                self.act.LoadingSuccess()
                 if(response){
                     self.act.view.showToast(text: SetLan.Setlan("sendsuccess"))
                     self.sender.text=""
@@ -156,7 +156,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
     if(a?.count==0){
         act.view.showToast(text: SetLan.Setlan("notempty"))
                 return}
-        self.act.play()
+        self.act.LoadingSuccess()
         if(self.selInmage==nil){
             SendMail()
         }else{
@@ -164,10 +164,10 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         }
     }
     func SendMailWithPicture(){
-        self.act.play()
+        self.act.LoadIng("Data Loading")
         let currentTime = Date().timeIntervalSince1970
              let storageRef = Storage.storage().reference().child(act.etalk.admin).child("\(currentTime).jpg")
-                act.play()
+                act.LoadIng("Data Loading")
         if let uploadData = selInmage!.jpegData(compressionQuality: 1) {
                  // 這行就是 FirebaseStorage 關鍵的存取方法。
 
@@ -180,7 +180,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
                          return
                      }
                         storageRef.downloadURL(completion: { (url, error) in
-                           self.act.pause()
+                           self.act.LoadingSuccess()
                         guard let downloadURL = url else {
                             self.act.view.showToast(text: SetLan.Setlan("sendfalse"))
                            return

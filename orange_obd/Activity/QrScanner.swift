@@ -141,11 +141,11 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
                  act.Selectyear=String(cString: Year!)
                 if(PadSelect.Function==0){
                     let a=peacedefine().Idcopy
-                    act.changepage(to: a)
+                    act.ChangePage(to: a)
                     return
                 }else{
                     let a=peacedefine().Program
-                    act.changepage(to: a)
+                    act.ChangePage(to: a)
                     return
                 }
             }

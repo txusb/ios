@@ -35,11 +35,11 @@ forget.setTitle(SetLan.Setlan("Forgot_password"), for: .normal)
     
     @IBAction func Registration(_ sender: Any) {
         let a=peacedefine().Registration
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     
     @IBAction func goreset(_ sender: Any) {
         let a=peacedefine().ResetPassword
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
 }

@@ -51,7 +51,7 @@ class Function{
                     res = -1
                     DispatchQueue.main.async {
                         act.run=false
-                        act.act.pause()
+                        act.act.LoadingSuccess()
                         act.act.view.showToast(text: SetLan.Setlan("nointer"))
                     }
                     return
@@ -63,7 +63,7 @@ class Function{
                 res = -1
                 DispatchQueue.main.async {
                     act.run=false
-                    act.act.pause()
+                    act.act.LoadingSuccess()
                     act.act.view.showToast(text: SetLan.Setlan("nointer"))
                 }
                 return
@@ -83,7 +83,7 @@ class Function{
             }
             DispatchQueue.main.async {
                 act.run=false
-                act.act.pause()
+                act.act.LoadingSuccess()
                 switch (res){
                 case 0:
                     act.act.GoBack(self)
@@ -154,7 +154,7 @@ class Function{
                     res = -1
                     DispatchQueue.main.async {
                         act.run=false
-                        act.act.pause()
+                        act.act.LoadingSuccess()
                         act.act.view.showToast(text: SetLan.Setlan("nointer"))
                     }
                     return
@@ -166,7 +166,7 @@ class Function{
                 res = -1
                 DispatchQueue.main.async {
                     act.run=false
-                    act.act.pause()
+                    act.act.LoadingSuccess()
                     act.act.view.showToast(text: SetLan.Setlan("nointer"))
                 }
                 return
@@ -188,13 +188,13 @@ class Function{
             
             DispatchQueue.main.async {
                 act.run=false
-                act.act.pause()
+                act.act.LoadingSuccess()
                 switch (res){
                 case 0:
                     ViewController.writeshare("admin", admin)
                      ViewController.writeshare("password", password)
                     let a=peacedefine().HomePage
-                    act.act.changepage(to: a)
+                    act.act.ChangePage(to: a)
                     break;
                 case 1:
                     act.act.view.showToast(text: SetLan.Setlan("be_register"))
@@ -237,7 +237,7 @@ class Function{
                  res = -1
                     DispatchQueue.main.async {
                         act.run=false
-                        act.act.pause()
+                        act.act.LoadingSuccess()
                         act.act.view.showToast(text: SetLan.Setlan("nointer"))
                     }
                     return
@@ -249,7 +249,7 @@ class Function{
                res = -1
                 DispatchQueue.main.async {
                     act.run=false
-                    act.act.pause()
+                    act.act.LoadingSuccess()
                     act.act.view.showToast(text: SetLan.Setlan("nointer"))
                 }
                return
@@ -272,13 +272,13 @@ class Function{
            
             DispatchQueue.main.async {
                 act.run=false
-                act.act.pause()
+                act.act.LoadingSuccess()
                 switch (res){
                 case 0:
                     ViewController.writeshare(admin, "admin")
                     ViewController.writeshare( password,"password")
                     let a=peacedefine().HomePage
-                    act.act.changepage(to: a)
+                    act.act.ChangePage(to: a)
                     break;
                 case 1:
                     act.act.view.showToast(text: SetLan.Setlan("errorpass"))

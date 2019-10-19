@@ -20,13 +20,13 @@ class Users_Manual: UIViewController {
     
     @IBAction func ProgramUsb(_ sender: Any) {
         let a=peacedefine().Menu_Detail
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     
     @IBAction func ProgramCopy(_ sender: Any) {
         let a=peacedefine().Menu_Detail
         a.place=1
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     override func viewWillAppear(_ animated: Bool) {
         act.tit.text="Users_manual"

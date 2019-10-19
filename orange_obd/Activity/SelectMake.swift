@@ -12,7 +12,7 @@ class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
     var it=[model]()
     
     @IBOutlet var tit: UILabel!
-    var act:ViewController? = nil
+    var act:ViewController = (UIApplication.shared.delegate as! AppDelegate).act!
     let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var tb: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

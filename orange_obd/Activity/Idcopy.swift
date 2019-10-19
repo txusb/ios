@@ -72,7 +72,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
                 if(a=="false"){
                     self.dowloadmmy()
                 }else{
-                    self.act.pause()
+                    self.act.LoadingSuccess()
                     self.act.command.mmydata=a
                 }
             }
@@ -135,7 +135,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
          a.WriteLf=insert(lft.text!)
          a.WriteLr=insert(Lrt.text!)
          a.WriteRf=insert(Rft.text!)
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     func queryid(){
         if deledate.db != nil {
@@ -185,7 +185,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
         PadSelect.Function=1
         let a=peacedefine().PadSelect
         a.act=self.act
-        self.act.changepage(to: a)
+        self.act.ChangePage(to: a)
     }
     var run=false
     func UdCondition(){
@@ -284,6 +284,6 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
         a.VS_or_ID=1
         a.idcount=idcount
         a.editext=edit
-        self.act.changepage(to: a)
+        self.act.ChangePage(to: a)
     }
 }

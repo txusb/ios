@@ -25,14 +25,14 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBAction func Gomenu(_ sender: Any) {
         if(position==0){
             let a=peacedefine().HomePage
-            activity.changepage(to: a)
+            activity.ChangePage(to: a)
         }else{
             if(PadSelect.Function==0){
                 let a=peacedefine().Idcopy
-                activity.changepage(to: a)
+                activity.ChangePage(to: a)
             }else{
                 let a=peacedefine().Program
-                activity.changepage(to: a)
+                activity.ChangePage(to: a)
             }
         }
     }

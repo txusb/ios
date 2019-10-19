@@ -31,12 +31,12 @@ class Year: UITableViewCell {
         act?.Selectyear=name2
         let a=peacedefine().Relarm
         a.position=1
-      act?.changepage(to: a)
+      act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
          act?.Selectyear=name1
           let a=peacedefine().Relarm
                a.position=1
-             act?.changepage(to: a)
+             act?.ChangePage(to: a)
     }
 }

@@ -82,11 +82,11 @@ return item[row]
         ViewController.writeshare(SelectLa.titleLabel!.text!, "lan")
         if(page==0){
             let a=peacedefine().HomePage
-            act.changepage(to: a)
+            act.ChangePage(to: a)
         }else{
             let a=peacedefine().Policy
             a.position=1
-            act.changepage(to: a)
+            act.ChangePage(to: a)
         }
       
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 class BleScanner: UIViewController,UITableViewDataSource,UITableViewDelegate{
-    var act:ViewController?=nil
+    var act:BleActivity?=nil
     var timer: Timer?
     @IBOutlet var selectdevice: UILabel!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

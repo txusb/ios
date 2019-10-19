@@ -22,17 +22,17 @@ let act=(UIApplication.shared.delegate as! AppDelegate).act!
     
     @IBAction func ToLan(_ sender: Any) {
         let a=peacedefine().LanguageSetting
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     
     @IBAction func ToPolicy(_ sender: Any) {
         let a=peacedefine().Policy
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     
     @IBAction func ToUpdate(_ sender: Any) {
         let a=peacedefine().VersionUpdate
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
     
 }

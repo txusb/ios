@@ -27,12 +27,12 @@ var n2=""
         act?.Selectmodel=n2
         let a=peacedefine().SelectYear
         a.act=act
-        act?.changepage(to: a)
+        act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
         act?.Selectmodel=n1
         let a=peacedefine().SelectYear
         a.act=act
-        act?.changepage(to: a)
+        act?.ChangePage(to: a)
     }
 }

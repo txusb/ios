@@ -31,7 +31,7 @@ text.text=SetLan.Setlan("Welcome")
             act.GoBack(self)
         }else{
         let a=peacedefine().Sign_in
-            act.changepage(to: a)
+            act.ChangePage(to: a)
         }
     }
 }

@@ -29,18 +29,18 @@ class Make: UITableViewCell {
         act?.Selectmake=name3
       let a=peacedefine().SelectModel
         a.act=act
-        act?.changepage(to: a)
+        act?.ChangePage(to: a)
     }
     @IBAction func B2(_ sender: Any) {
         act?.Selectmake=name2
         let a=peacedefine().SelectModel
         a.act=act
-        act?.changepage(to: a)
+        act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
         act?.Selectmake=name1
         let a=peacedefine().SelectModel
         a.act=act
-        act?.changepage(to: a)
+        act?.ChangePage(to: a)
     }
 }

@@ -80,6 +80,7 @@
 		10B6D0C522DD7E2200A084F1 /* CRC16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0C422DD7E2200A084F1 /* CRC16.swift */; };
 		10B6D0D122E0568C00A084F1 /* QrScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6D0D022E0568C00A084F1 /* QrScanner.swift */; };
 		10BAAE4B22E0684B00AC2DE4 /* Signout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAAE4A22E0684B00AC2DE4 /* Signout.swift */; };
+		10D96ADC235AE591009FAE67 /* BleActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D96ADB235AE591009FAE67 /* BleActivity.swift */; };
 		10DB8AEA22FD63BE00C1A7A0 /* VersionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB8AE922FD63BE00C1A7A0 /* VersionUpdate.swift */; };
 		10FBEAF72348374C00A1B8C5 /* TalkingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */; };
 		10FBEAFD23483C4500A1B8C5 /* TalkingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */; };
@@ -167,6 +168,7 @@
 		10B6D0CA22DDA0E000A084F1 /* txusb-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "txusb-Bridging-Header.h"; sourceTree = "<group>"; };
 		10B6D0D022E0568C00A084F1 /* QrScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanner.swift; sourceTree = "<group>"; };
 		10BAAE4A22E0684B00AC2DE4 /* Signout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signout.swift; sourceTree = "<group>"; };
+		10D96ADB235AE591009FAE67 /* BleActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleActivity.swift; sourceTree = "<group>"; };
 		10DB8AE922FD63BE00C1A7A0 /* VersionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdate.swift; sourceTree = "<group>"; };
 		10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingActivity.swift; sourceTree = "<group>"; };
 		10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingAdapter.swift; sourceTree = "<group>"; };
@@ -285,17 +287,18 @@
 				1095683A22CEEBFE00C58666 /* mmy */,
 				1095684122CEF0D200C58666 /* Adapter */,
 				1095683522CEDE9900C58666 /* Activity */,
-				1095681F22CDEAEC00C58666 /* AppDelegate.swift */,
 				1095682122CDEAEC00C58666 /* ViewController.swift */,
 				1095682322CDEAEC00C58666 /* Main.storyboard */,
 				1095682622CDEAF200C58666 /* Assets.xcassets */,
 				1095682822CDEAF200C58666 /* LaunchScreen.storyboard */,
+				1095681F22CDEAEC00C58666 /* AppDelegate.swift */,
 				1095682B22CDEAF200C58666 /* Info.plist */,
 				109568AE22DC087000C58666 /* FtpManager.swift */,
 				10B6D0C922DDA0B200A084F1 /* Header.h */,
 				10AC61D822F7BC3E00F49C08 /* Menu.storyboard */,
 				10B6D0CA22DDA0E000A084F1 /* txusb-Bridging-Header.h */,
 				107D14F022F8135100CDA789 /* Localizable.strings */,
+				10D96ADB235AE591009FAE67 /* BleActivity.swift */,
 			);
 			path = orange_obd;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				107D14DB22F80D5700CDA789 /* I5.swift in Sources */,
 				107D14F922F825C000CDA789 /* English.swift in Sources */,
 				1095684E22CF1BC000C58666 /* Model.swift in Sources */,
+				10D96ADC235AE591009FAE67 /* BleActivity.swift in Sources */,
 				10AC61E722F7FB6500F49C08 /* P4.swift in Sources */,
 				10AC61F122F7FBA700F49C08 /* P9.swift in Sources */,
 				107D14F722F825B500CDA789 /* ChineseTr.swift in Sources */,

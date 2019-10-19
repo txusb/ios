@@ -79,10 +79,10 @@ if(ViewController.getShare("lan")=="Italiano"){
         PadSelect.Function=1
                     let a=peacedefine().PadSelect
                     a.act=activity
-        activity.changepage(to: a)
+        activity.ChangePage(to: a)
 //        let a=peacedefine().PadSelect
 //        a.act=activity
-//        activity?.changepage(to: a)
+//        activity?.ChangePage(to: a)
 
     }
     
@@ -90,13 +90,13 @@ if(ViewController.getShare("lan")=="Italiano"){
         PadSelect.Function=0
         let a=peacedefine().PadSelect
         a.act=activity
-        activity.changepage(to: a)
+        activity.ChangePage(to: a)
     }
     
  
     @IBAction func ToManual(_ sender: Any) {
         let a=peacedefine().Users_Manual
-        activity.changepage(to: a)
+        activity.ChangePage(to: a)
     }
     override func viewWillAppear(_ animated: Bool) {
         activity.tit.text="Orange TPMS"
@@ -104,6 +104,6 @@ if(ViewController.getShare("lan")=="Italiano"){
     }
     @IBAction func ToSetting(_ sender: Any) {
         let a=peacedefine().Setting
-        activity.changepage(to: a)
+        activity.ChangePage(to: a)
     }
 }

@@ -104,7 +104,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 if(a=="false"){
                     self.dowloadmmy()
                 }else{
-                  self.act.pause()
+                  self.act.LoadingSuccess()
                   self.act.command.mmydata=a
                   self.ISPROGRAMMING=false
                 }
@@ -120,7 +120,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
         animationView.isHidden=false
         animationView.play()
     }
-    func pause() {
+    func LoadingSuccess() {
         animationView.pause()
         loader.isHidden=true
         animationView.isHidden=true
@@ -208,7 +208,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     func UpdateUiCondition(_ position:Int){
         relearn.isHidden=true
         program.isHidden=true
-        pause()
+        LoadingSuccess()
         loader.isHidden=true
         success.isHidden=true
         switch position {
@@ -549,7 +549,7 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
             PadSelect.Function=0
             let a=peacedefine().PadSelect
             a.act=self.act
-            self.act.changepage(to: a)
+            self.act.ChangePage(to: a)
         }
     }
     @IBAction func ToProgram(_ sender: Any) {
@@ -557,12 +557,12 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
             PadSelect.Function=1
             let a=peacedefine().PadSelect
             a.act=self.act
-            self.act.changepage(to: a)
+            self.act.ChangePage(to: a)
         }
     }
     
     @IBAction func Gorelarm(_ sender: Any) {
         let a=peacedefine().Relarm
-        act.changepage(to: a)
+        act.ChangePage(to: a)
     }
 }
