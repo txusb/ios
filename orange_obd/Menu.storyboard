@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,7 +29,7 @@ Please connect the power cable first, confirm if the USB PAD is over-current ( t
                                 <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step1_ID copy" translatesAutoresizingMaskIntoConstraints="NO" id="2Kq-0p-JcB">
-                                        <rect key="frame" x="0.0" y="-200" width="414" height="1080.5"/>
+                                        <rect key="frame" x="0.0" y="-740" width="414" height="2160.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -81,8 +80,8 @@ Clik Program ( USB PAD )</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLa-tQ-n0e">
                                 <rect key="frame" x="0.0" y="121" width="414" height="741"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step2_ID COPY" translatesAutoresizingMaskIntoConstraints="NO" id="fxn-GH-y4i">
-                                        <rect key="frame" x="90" y="-221.5" width="234" height="1184"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id2" translatesAutoresizingMaskIntoConstraints="NO" id="fxn-GH-y4i">
+                                        <rect key="frame" x="90" y="-813.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -133,8 +132,8 @@ USB PAD will pair with your phone for Bluetooth.(Please make sure the phone loca
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="602-gM-pOx">
                                 <rect key="frame" x="0.0" y="161.5" width="414" height="700.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step3_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="wY3-SF-gb3">
-                                        <rect key="frame" x="90" y="-242" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id3" translatesAutoresizingMaskIntoConstraints="NO" id="wY3-SF-gb3">
+                                        <rect key="frame" x="90" y="-834" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -187,8 +186,8 @@ USB PAD will pair with your phone for Bluetooth.(Please make sure the phone loca
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tl4-Ab-gTZ">
                                 <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step4_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qg0-G4-ljl">
-                                        <rect key="frame" x="90" y="-252" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id4" translatesAutoresizingMaskIntoConstraints="NO" id="Qg0-G4-ljl">
+                                        <rect key="frame" x="90" y="-844" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -239,8 +238,8 @@ press the scan button, scan the QR code of the vehicle information you need in t
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-wu-WvP">
                                 <rect key="frame" x="0.0" y="161.5" width="414" height="700.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step5-1_ID COPY" translatesAutoresizingMaskIntoConstraints="NO" id="LdM-q0-mJu">
-                                        <rect key="frame" x="90" y="-242" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id5" translatesAutoresizingMaskIntoConstraints="NO" id="LdM-q0-mJu">
+                                        <rect key="frame" x="90" y="-834" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -291,8 +290,8 @@ press the vehicle information button, select the make →   model → year </str
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTN-9T-CuE">
                                 <rect key="frame" x="0.0" y="141" width="414" height="721"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step5-2_ID COPY" translatesAutoresizingMaskIntoConstraints="NO" id="VlX-Tt-aXl">
-                                        <rect key="frame" x="90" y="-231.5" width="234" height="1184"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id6" translatesAutoresizingMaskIntoConstraints="NO" id="VlX-Tt-aXl">
+                                        <rect key="frame" x="90" y="-823.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -343,8 +342,8 @@ Select original sensor ID input method  </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irR-Jn-T6v">
                                 <rect key="frame" x="0.0" y="121" width="414" height="741"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step6_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="m6C-BB-ZoY">
-                                        <rect key="frame" x="90" y="-221.5" width="234" height="1184"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id8" translatesAutoresizingMaskIntoConstraints="NO" id="m6C-BB-ZoY">
+                                        <rect key="frame" x="90" y="-813.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -395,8 +394,8 @@ Please input the original sensor ID according to the order of the wheels. After 
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxz-Hk-8RN">
                                 <rect key="frame" x="0.0" y="161.5" width="414" height="700.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step7_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="SyO-Q4-txh">
-                                        <rect key="frame" x="90" y="-242" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id9" translatesAutoresizingMaskIntoConstraints="NO" id="SyO-Q4-txh">
+                                        <rect key="frame" x="90" y="-834" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -448,8 +447,8 @@ After reading is completed, please press PROGRAM SENSOR </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6t-1m-Apw">
                                 <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step8_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-M4-Bkl">
-                                        <rect key="frame" x="90" y="-252" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id10" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-M4-Bkl">
+                                        <rect key="frame" x="90" y="-844" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -500,8 +499,8 @@ After the program is completed, if you need to  copy other sensor, please replac
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-SW-LgA">
                                 <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step9_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-0u-6S4">
-                                        <rect key="frame" x="90" y="-252" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id11" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-0u-6S4">
+                                        <rect key="frame" x="90" y="-844" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -552,8 +551,8 @@ Program fail , please press RE-PROGRAM button to re-execute program. </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-Vf-xH5">
                                 <rect key="frame" x="0.0" y="141" width="414" height="721"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step10_ID COPY.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wd-xO-wtq">
-                                        <rect key="frame" x="90" y="-231.5" width="234" height="1184"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="id7" translatesAutoresizingMaskIntoConstraints="NO" id="8wd-xO-wtq">
+                                        <rect key="frame" x="90" y="-823.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -605,7 +604,7 @@ Please connect the power cable first, confirm if the USB PAD is over-current ( t
                                 <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step1_program" translatesAutoresizingMaskIntoConstraints="NO" id="hgN-Bb-1ec">
-                                        <rect key="frame" x="0.0" y="-200" width="414" height="1080.5"/>
+                                        <rect key="frame" x="0.0" y="-740" width="414" height="2160.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -661,8 +660,8 @@ Clik Program ( USB PAD )</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpI-Lk-Wfy">
                                 <rect key="frame" x="0.0" y="107" width="414" height="755"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step2_program" translatesAutoresizingMaskIntoConstraints="NO" id="8OM-NW-9Fw">
-                                        <rect key="frame" x="90" y="369.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr2" translatesAutoresizingMaskIntoConstraints="NO" id="8OM-NW-9Fw">
+                                        <rect key="frame" x="90" y="-806.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -713,8 +712,8 @@ USB PAD will pair with your phone for Bluetooth.(Please make sure the phone loca
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8C-9S-ybx">
                                 <rect key="frame" x="0.0" y="147.5" width="414" height="714.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step3_program.png" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-UZ-UrW">
-                                        <rect key="frame" x="90" y="-235" width="234" height="1184.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr3" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-UZ-UrW">
+                                        <rect key="frame" x="90" y="-827" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -767,8 +766,8 @@ USB PAD will pair with your phone for Bluetooth.(Please make sure the phone loca
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzG-NY-qx6">
                                 <rect key="frame" x="0.0" y="167.5" width="414" height="694.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step4_program.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ws8-kT-4wk">
-                                        <rect key="frame" x="90" y="339.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr4" translatesAutoresizingMaskIntoConstraints="NO" id="Ws8-kT-4wk">
+                                        <rect key="frame" x="90" y="-837" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -819,8 +818,8 @@ press the scan button, scan the QR code of the vehicle information you need in t
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQT-tz-NH3">
                                 <rect key="frame" x="0.0" y="147.5" width="414" height="714.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step5-1_program" translatesAutoresizingMaskIntoConstraints="NO" id="LvX-Cw-Rfh">
-                                        <rect key="frame" x="90" y="349.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr5" translatesAutoresizingMaskIntoConstraints="NO" id="LvX-Cw-Rfh">
+                                        <rect key="frame" x="90" y="-827" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -871,8 +870,8 @@ press the vehicle information button, select the make →   model → year </str
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gX4-C6-ta6">
                                 <rect key="frame" x="0.0" y="127" width="414" height="735"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step5-2_program" translatesAutoresizingMaskIntoConstraints="NO" id="VT4-4T-yAk">
-                                        <rect key="frame" x="90" y="359.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr6" translatesAutoresizingMaskIntoConstraints="NO" id="VT4-4T-yAk">
+                                        <rect key="frame" x="90" y="-816.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -923,8 +922,8 @@ After selecting the vehicle information, the sensor  in the PAD will be automati
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkK-XQ-HHw">
                                 <rect key="frame" x="0.0" y="167.5" width="414" height="694.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step6_program.png" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-aV-Cyu">
-                                        <rect key="frame" x="90" y="339.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr7" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-aV-Cyu">
+                                        <rect key="frame" x="90" y="-837" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -975,8 +974,8 @@ After the program is completed, if you need to    program the same data sensor, 
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjk-Cn-LWa">
                                 <rect key="frame" x="0.0" y="167.5" width="414" height="694.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step7_program.png" translatesAutoresizingMaskIntoConstraints="NO" id="osi-jC-CY3">
-                                        <rect key="frame" x="90" y="339.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr8" translatesAutoresizingMaskIntoConstraints="NO" id="osi-jC-CY3">
+                                        <rect key="frame" x="90" y="-837" width="234" height="2368.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -1027,8 +1026,8 @@ Program fail , please press RE-PROGRAM button to re-execute program. </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYA-At-X2p">
                                 <rect key="frame" x="0.0" y="149" width="414" height="713"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_step8_program.png" translatesAutoresizingMaskIntoConstraints="NO" id="zvV-5Q-ljE">
-                                        <rect key="frame" x="90" y="348.5" width="234" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pr9" translatesAutoresizingMaskIntoConstraints="NO" id="zvV-5Q-ljE">
+                                        <rect key="frame" x="90" y="-827.5" width="234" height="2368"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="backcolor"/>
@@ -1062,26 +1061,26 @@ Program fail , please press RE-PROGRAM button to re-execute program. </string>
         </scene>
     </scenes>
     <resources>
-        <image name="img_step10_ID COPY.png" width="666" height="1184"/>
+        <image name="id10" width="666" height="1184"/>
+        <image name="id11" width="666" height="1184"/>
+        <image name="id2" width="666" height="1184"/>
+        <image name="id3" width="666" height="1184"/>
+        <image name="id4" width="666" height="1184"/>
+        <image name="id5" width="666" height="1184"/>
+        <image name="id6" width="666" height="1184"/>
+        <image name="id7" width="666" height="1184"/>
+        <image name="id8" width="666" height="1184"/>
+        <image name="id9" width="666" height="1184"/>
         <image name="img_step1_ID copy" width="1080" height="1080"/>
         <image name="img_step1_program" width="1080" height="1080"/>
-        <image name="img_step2_ID COPY" width="666" height="1184"/>
-        <image name="img_step2_program" width="666" height="1184"/>
-        <image name="img_step3_ID COPY.png" width="666" height="1184"/>
-        <image name="img_step3_program.png" width="666" height="1184"/>
-        <image name="img_step4_ID COPY.png" width="666" height="1184"/>
-        <image name="img_step4_program.png" width="666" height="1184"/>
-        <image name="img_step5-1_ID COPY" width="666" height="1184"/>
-        <image name="img_step5-1_program" width="666" height="1184"/>
-        <image name="img_step5-2_ID COPY" width="666" height="1184"/>
-        <image name="img_step5-2_program" width="666" height="1184"/>
-        <image name="img_step6_ID COPY.png" width="666" height="1184"/>
-        <image name="img_step6_program.png" width="666" height="1184"/>
-        <image name="img_step7_ID COPY.png" width="666" height="1184"/>
-        <image name="img_step7_program.png" width="666" height="1184"/>
-        <image name="img_step8_ID COPY.png" width="666" height="1184"/>
-        <image name="img_step8_program.png" width="666" height="1184"/>
-        <image name="img_step9_ID COPY.png" width="666" height="1184"/>
+        <image name="pr2" width="666" height="1184"/>
+        <image name="pr3" width="666" height="1184"/>
+        <image name="pr4" width="666" height="1184"/>
+        <image name="pr5" width="666" height="1184"/>
+        <image name="pr6" width="666" height="1184"/>
+        <image name="pr7" width="666" height="1184"/>
+        <image name="pr8" width="666" height="1184"/>
+        <image name="pr9" width="666" height="1184"/>
         <namedColor name="backcolor">
             <color red="0.93725490196078431" green="0.90980392156862744" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

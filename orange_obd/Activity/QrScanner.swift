@@ -24,7 +24,11 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var Qrplace: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(VS_or_ID==1){
 scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
+        }else{
+            scantitle.text=SetLan.Setlan("Scan_Two")
+        }
         captureSession = AVCaptureSession()
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
@@ -102,7 +106,7 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
         var fullNameArr = code.components(separatedBy:"*")
         if(fullNameArr.count<3){fullNameArr=code.components(separatedBy:":")}
        print("\(code) \(fullNameArr)\t\(idcount) \(fullNameArr.count)")
-        if(fullNameArr.count==3){
+        if(fullNameArr.count>=3){
             if(VS_or_ID==1){
                 if(fullNameArr[1].count != idcount){
                     if (captureSession?.isRunning == false) {
@@ -118,7 +122,12 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
             }
            
         }else{
-            view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
+             if(VS_or_ID==1){
+           view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
+                    }else{
+                view.showToast(text:SetLan.Setlan("Scan_Two"))
+                        
+                    }
             captureSession.startRunning()
         }
 
@@ -140,12 +149,14 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
                  act.Selectmodel=String(cString: Model!)
                  act.Selectyear=String(cString: Year!)
                 if(PadSelect.Function==0){
-                    let a=peacedefine().Idcopy
-                    act.ChangePage(to: a)
+                    let a=peacedefine().Relarm
+                                a.position=1
+                              act.ChangePage(to: a)
                     return
                 }else{
-                    let a=peacedefine().Program
-                    act.ChangePage(to: a)
+                  let a=peacedefine().Relarm
+                                                   a.position=1
+                                                 act.ChangePage(to: a)
                     return
                 }
             }

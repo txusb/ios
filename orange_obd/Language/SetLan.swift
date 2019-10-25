@@ -18,7 +18,7 @@ class SetLan{
             return ChineseTr.dic[lan] ?? ""
         case "简体中文":
             return ChineseSi.dic[lan] ?? ""
-        case "Deutsche":
+        case "Deutsch":
             return De.dic[lan] ?? ""
         case "Italiano":
             return it.dic[lan] ?? ""

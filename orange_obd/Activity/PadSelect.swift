@@ -9,7 +9,7 @@
 import UIKit
 class PadSelect: UIViewController {
     var act:ViewController?=nil
-   static var Function=0
+    static var Function=0
     static var Scanner_OR_Select=0
     @IBOutlet var veselection: UILabel!
     @IBOutlet var scan: UILabel!
@@ -18,6 +18,7 @@ class PadSelect: UIViewController {
     @IBOutlet var ProgramView: UIButton!
     @IBOutlet var copyview: UIButton!
     override func viewWillAppear(_ animated: Bool) {
+        copyview.setTitle("ID COPY", for: .normal)
         if(act!.IsConnect){
             act!.padicon.isHidden=false
         }else{
@@ -45,7 +46,6 @@ class PadSelect: UIViewController {
     }
     @IBAction func mmy(_ sender: Any) {
 //        let a=peacedefine().SelectMake
-//        a.act=self.act
 //        self.act?.ChangePage(to: a)
         PadSelect.Scanner_OR_Select=1
         if(!act!.haveble){
@@ -67,8 +67,7 @@ class PadSelect: UIViewController {
                 }
             }
         }else{
-            let a=peacedefine().BleScanner
-            a.act=self.act
+         let a=peacedefine().SelectMake
             self.act?.GoScanner(a)
         }
     }

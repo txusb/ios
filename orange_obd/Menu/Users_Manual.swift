@@ -11,11 +11,13 @@ import UIKit
 class Users_Manual: UIViewController {
     
    
+    @IBOutlet var labletext: UILabel!
     @IBOutlet var label: UILabel!
     let act=(UIApplication.shared.delegate as! AppDelegate).act!
     override func viewDidLoad() {
         super.viewDidLoad()
         label.text = SetLan.Setlan("ProvideUsbTpmsApp")
+        labletext.text="USB PAD"
     }
     
     @IBAction func ProgramUsb(_ sender: Any) {

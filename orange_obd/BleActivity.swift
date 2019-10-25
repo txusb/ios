@@ -264,7 +264,6 @@ class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralDelega
         
     }
      func ChangePage(to newViewController: UIViewController) {
-        print(newViewController)
             Pagememory.append(newViewController)
             if selectedPageContainer != nil {
                 selectedPageContainer.willMove(toParent: nil)
@@ -276,7 +275,7 @@ class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralDelega
             newViewController.view.frame = rootView.bounds
             newViewController.didMove(toParent: self)
             self.selectedPageContainer = newViewController
-        PageChangeLinster()
+        PageChangeLinster(newViewController)
         }
 
         func GoBack() {
@@ -293,9 +292,9 @@ class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralDelega
             newViewController.didMove(toParent: self)
             self.selectedPageContainer = newViewController
             Pagememory.remove(at: Pagememory.count-1)
-            PageChangeLinster()
+            PageChangeLinster(newViewController)
         }
-    func PageChangeLinster(){
+    func PageChangeLinster(_ controler:UIViewController){
         
     }
     func RX(){}
@@ -326,5 +325,24 @@ class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralDelega
                       fal+=1
                   }
               }
+    }
+     static func getShare(_ name:String)->String{
+            let preferences = UserDefaults.standard
+            let currentLevelKey = name
+            if preferences.object(forKey: currentLevelKey) == nil {
+                return "nodata"
+            } else {
+                let currentLevel = preferences.string(forKey: currentLevelKey)!
+                return currentLevel
+            }
+        }
+      
+        static func writeshare(_ name:String,_ key:String){
+            let preferences = UserDefaults.standard
+            preferences.set(name,forKey: key)
+            let didSave = preferences.synchronize()
+            if !didSave {
+                print("saverror")
+            }
     }
 }

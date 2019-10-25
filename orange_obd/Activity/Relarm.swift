@@ -50,7 +50,7 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
             case "简体中文":
                  colume="Relearn Procedure (Jane)"
                 break
-            case "Deutsche":
+            case "Deutsch":
                  colume="Relearn Procedure (German)"
                 break
             case "Italiano":

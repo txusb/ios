@@ -16,7 +16,8 @@ let act=(UIApplication.shared.delegate as! AppDelegate).act!
 let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var Rrt: UITextField!
     @IBOutlet var Lrt: UITextField!
-    
+    @IBOutlet var OgSensorText: UILabel!
+    @IBOutlet var IDtext: UIButton!
     @IBOutlet var keyin: UILabel!
     @IBOutlet var Scancode: UILabel!
     @IBOutlet var Rfbt: UIButton!
@@ -37,8 +38,10 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        Scancode.text=SetLan.Setlan("Scan_Code")
-        keyin.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
+        IDtext.setTitle("ID COPY", for: .normal)
+        OgSensorText.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
+        Scancode.text=SetLan.Setlan("Scan_Code")+"\n(For Orange Sensor)"
+        keyin.text=SetLan.Setlan("keyin")
         first=true
         if(mmynum==nil){
     toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
@@ -48,10 +51,10 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
             queryid()
         }
          tit.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
-         lft.attributedPlaceholder = NSAttributedString(string: "LF ID Number",attributes: placeholserAttributes)
-         Rft.attributedPlaceholder = NSAttributedString(string: "RF ID Number",attributes: placeholserAttributes)
-         Lrt.attributedPlaceholder = NSAttributedString(string: "LR ID Number",attributes: placeholserAttributes)
-         Rrt.attributedPlaceholder = NSAttributedString(string: "RR ID Number",attributes: placeholserAttributes)
+         lft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
+         Rft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
+         Lrt.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
+         Rrt.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
          lft.delegate = self
          Rft.delegate = self
          Lrt.delegate = self
@@ -200,11 +203,11 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
                         if(i==0){
                            self.lft.isEnabled=true
                             if(self.Scan_or_Key==0){self.Lfbt.isHidden=false}
-                            self.lft.attributedPlaceholder = NSAttributedString(string: "LF ID Number",attributes: self.placeholserAttributes)
+                            self.lft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: self.placeholserAttributes)
                         }else{
                             self.Rft.isEnabled=true
                             if(self.Scan_or_Key==0){self.Rfbt.isHidden=false}
-                            self.Rft.attributedPlaceholder = NSAttributedString(string: "RF ID Number",attributes: self.placeholserAttributes)
+                            self.Rft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: self.placeholserAttributes)
                         }
                     }else{
                         if(i==0){
@@ -223,11 +226,11 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
                         if(i==0){
                             self.Lrt.isEnabled=true
                              if(self.Scan_or_Key==0){self.Lrbt.isHidden=false}
-                            self.Lrt.attributedPlaceholder = NSAttributedString(string: "LR ID Number",attributes: self.placeholserAttributes)
+                            self.Lrt.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: self.placeholserAttributes)
                         }else{
                             self.Rrt.isEnabled=true
                              if(self.Scan_or_Key==0){self.Rrbt.isHidden=false}
-                            self.Rrt.attributedPlaceholder = NSAttributedString(string: "RR ID Number",attributes: self.placeholserAttributes)
+                            self.Rrt.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: self.placeholserAttributes)
                         }
                     }else{
                         if(i==0){

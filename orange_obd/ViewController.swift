@@ -13,16 +13,16 @@ class ViewController: BleActivity{
     @IBOutlet var rightop: UIButton!
     @IBOutlet var padicon: UIImageView!
     @IBOutlet var tlkingBt: UIButton!
-    let deledate = UIApplication.shared.delegate as! AppDelegate
-    var timer: Timer?
-    var etalk=E_Command()
     @IBOutlet var tit: UILabel!
     @IBOutlet var LoadingView: UIView!
     @IBOutlet var Connectlabel: UILabel!
-    let animationView = AnimationView(name: "simple-loader2")
-    var command=Command()
     @IBOutlet var back: UIButton!
     @IBOutlet var Container: UIView!
+    let animationView = AnimationView(name: "simple-loader2")
+    var command=Command()
+    let delgate = UIApplication.shared.delegate as! AppDelegate
+    var timer: Timer?
+    var etalk=E_Command()
         var Selectmake=""
         var Selectmodel=""
         var Selectyear=""
@@ -48,7 +48,6 @@ class ViewController: BleActivity{
             let a=peacedefine().HomePage
             ChangePage(to:a)
         }
-       
         animationView.center = self.view.center
         animationView.frame = CGRect(x: animationView.frame.minX, y: animationView.frame.minY+20, width: 200, height: 200)
         animationView.contentMode = .scaleAspectFill
@@ -60,7 +59,7 @@ class ViewController: BleActivity{
     func dowload_mmy(){
         self.DataLoading()
         DispatchQueue.global().async {
-            let res=FtpManage().DowloadMmy(self.deledate)
+            let res=FtpManage().DowloadMmy(self.delgate)
             DispatchQueue.main.async {
                 if(res){
                     self.LoadingSuccess()
@@ -88,7 +87,12 @@ class ViewController: BleActivity{
 
     @IBAction func GoBack(_ sender: Any) {
         if(isloading){return}
-        GoBack()
+        if(back.image(for: .normal)==UIImage.init(named: "btn_Menu")){
+            back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
+            let a=peacedefine().HomePage
+            ChangePage(to: a)
+            return
+        }else{        GoBack()}
     }
     
     @IBAction func Signout(_ sender: Any) {
@@ -97,52 +101,28 @@ class ViewController: BleActivity{
         SwipePage(to: a)
     }
     func DataLoading(){
-       Connectlabel.text=SetLan.Setlan("Data_Loading")
-        LoadingSuccess()
+        LoadIng(SetLan.Setlan("Data_Loading"))
     }
     @ objc func CheckPlace(){
         if(IsConnect&&ISRUN){padicon.isHidden=false}else{
             padicon.isHidden=true
         }
     }
-   
-    static func getShare(_ name:String)->String{
-        let preferences = UserDefaults.standard
-        let currentLevelKey = name
-        if preferences.object(forKey: currentLevelKey) == nil {
-            return "nodata"
-        } else {
-            let currentLevel = preferences.string(forKey: currentLevelKey)!
-            return currentLevel
-        }
-    }
-  
-    static func writeshare(_ name:String,_ key:String){
-        let preferences = UserDefaults.standard
-        preferences.set(name,forKey: key)
-        let didSave = preferences.synchronize()
-        if !didSave {
-            print("saverror")
-        }
-}
     @IBAction func ToTalking(_ sender: Any) {
         let a=peacedefine().TalkingActivity
         ChangePage(to: a)
     }
-    override func PageChangeLinster(){
+    override func PageChangeLinster(_ controler:UIViewController){
+        let classname=NSStringFromClass(controler.classForCoder)
         back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
-                 tlkingBt.isHidden=true
+        print(classname)
+//        tlkingBt.isHidden=(classname=="txusb.HomePage") ? false:true
           if(Pagememory.count>=2){
                         self.back.isHidden=false
           }else{   self.back.isHidden=true
                            self.rightop.isHidden=false
                            self.ISRUN=false
                            self.padicon.isHidden=true}
-        if(back.image(for: .normal)==UIImage.init(named: "btn_Menu")){
-                      back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
-                      let a=peacedefine().HomePage
-                      ChangePage(to: a)
-                      return
-                  }
+     
       }
 }

@@ -45,6 +45,8 @@ class Program: UIViewController {
     @IBOutlet var LRl: UIButton!
     @IBOutlet var RFl: UIButton!
     @IBOutlet var LFl: UIButton!
+    @IBOutlet var CopyText: UIButton!
+    
     @IBOutlet var condition: UILabel!
     let animationView = AnimationView(name: "simple-loader2")
     @IBOutlet var loader: UIView!
@@ -63,7 +65,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
         }
         queryid()
         queryLf()
-       
+        CopyText.setTitle("ID COPY", for: .normal)
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode=LottieLoopMode.loop
         view.addSubview(animationView)

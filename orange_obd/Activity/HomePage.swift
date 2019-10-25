@@ -26,17 +26,18 @@ class HomePage: UIViewController {
         activity.back.isHidden=true
         activity.rightop.isHidden=false
         activity.ISRUN=false
-        t3.text=SetLan.Setlan("Cloud_information")
+    t3.text=SetLan.Setlan("Cloud_information")
         t4.text=SetLan.Setlan("Online_shopping")
         t5.text=SetLan.Setlan("Users_manual")
         t6.text=SetLan.Setlan("Setting")
-        activity.etalk.admin=ViewController.getShare("admin")
+activity.etalk.admin=ViewController.getShare("admin")
 if(ViewController.getShare("lan")=="Italiano"){
     ShoppingBt.setImage(UIImage.init(named: "btn_setting_normal"), for: .normal)
     t4.text=SetLan.Setlan("Setting")
     t6.isHidden=true
     settingbt.isHidden=true
         }
+        t2.text="ID COPY"
     }
 
     @IBAction func Shopping(_ sender: Any) {
@@ -53,7 +54,7 @@ if(ViewController.getShare("lan")=="Italiano"){
         case "简体中文":
                ur="http://simple-sensor.com"
            break
-        case "Deutsche":
+        case "Deutsch":
                ur="http://orange-rdks.de"
            break
         case "Italiano":
@@ -100,7 +101,7 @@ if(ViewController.getShare("lan")=="Italiano"){
     }
     override func viewWillAppear(_ animated: Bool) {
         activity.tit.text="Orange TPMS"
-        activity.tlkingBt.isHidden=false
+//        activity.tlkingBt.isHidden=false
     }
     @IBAction func ToSetting(_ sender: Any) {
         let a=peacedefine().Setting
