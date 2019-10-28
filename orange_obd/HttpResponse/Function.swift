@@ -294,6 +294,93 @@ class Function{
         }
         task.resume()
     }
+    static func Upload_ProgramRecord(_ make:String,_ model:String, _ year:String, _ startime:String, _ Endtime:String, _ SreialNum:String, _ Devicetype:String, _ Mode:String, _ SensorCount:Int, _ position:String
+        ,_ idrecord:[SersorRecord]){
+        let url = URL(string: link)!
+        var request = URLRequest(url: url)
+        request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        var data="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+            "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
+            "  <soap12:Body>\n" +
+            "    <Upload_VersionUpdateRecord xmlns=\"http://tempuri.org/\">\n" +
+            "      <SerialNum>\(SreialNum)</SerialNum>\n" +
+            "      <data>\n" +
+            "        <Device_BurnVersionUpdate>\n" +
+            "          <DeviceInfo>\n" +
+            "            <enum_DeviceType>\(Devicetype)</enum_DeviceType>\n" +
+            "            <SerialNum>\(SreialNum)</SerialNum>\n" +
+            "            <enum_SensorMode>\(Mode)</enum_SensorMode>\n" +
+            "            <DateTime_Start>\(startime)</DateTime_Start>\n" +
+            "            <DateTime_End>\(Endtime)</DateTime_End>\n" +
+            "            <SensorCount>\(SensorCount)</SensorCount>\n" +
+            "            <enum_BurnPosition>\(position)</enum_BurnPosition>\n" +
+            "          </DeviceInfo>\n" +
+            "          <CarInfo>\n" +
+            "            <Type>\(make)</Type>\n" +
+            "            <Model>\(model)</Model>\n" +
+            "            <Year>\(year)</Year>\n" +
+            "            <CarNum>nodata</CarNum>\n" +
+            "          </CarInfo>\n" +
+            "          <TireInfo>\n" +
+            "            <TireBrand>nodata</TireBrand>\n" +
+            "            <TireModel>nodata</TireModel>\n" +
+            "            <TireProcDate>nodata</TireProcDate>\n" +
+            "          </TireInfo>\n" +
+            "          <ConsumerInfo>\n" +
+            "            <Name>nodata</Name>\n" +
+            "            <Age>0</Age>\n" +
+            "            <Sex>男</Sex>\n" +
+            "            <Tel>nodata</Tel>\n" +
+            "            <Email>nodata</Email>\n" +
+            "            <Continent>nodata</Continent>\n" +
+            "            <Country>nodata</Country>\n" +
+            "            <State>nodata</State>\n" +
+            "            <City>nodata</City>\n" +
+            "            <Street>nodata</Street>\n" +
+            "          </ConsumerInfo>\n" +
+        "          <Record>\n"
+        for  record in idrecord{
+            data="\(data)<VersionUpdate_Record>\n" +
+                " <SensorID>\(record.SerSorId)</SensorID>\n" +
+                "<IsSuccess>\(record.Issucesss)</IsSuccess>\n" +
+                "<ModelNo>\(record.ModelNo)</ModelNo>\n" +
+                "<enum_BurnResult>\(record.enum_burnResult)</enum_BurnResult>\n" +
+                "<DB_Version>\(record.DB_Version)</DB_Version>\n" +
+                "<SensorCode_Version>\(record.SersorCode_Sersion)</SensorCode_Version>\n" +
+            "</VersionUpdate_Record>\n"
+        }
+        data="\(data)</Record>\n" +
+            "</Device_BurnVersionUpdate>\n" +
+            "      </data>\n" +
+            "    </Upload_VersionUpdateRecord>\n" +
+            "  </soap12:Body>\n" +
+        "</soap12:Envelope>"
+        print(data)
+        request.httpBody = data.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,
+                let response = response as? HTTPURLResponse,
+                error == nil else {
+                    print("error", error ?? "Unknown error")
+                    
+                    return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            print(responseString!.components(separatedBy: "ValidateUserResult").count)
+            
+        }
+        task.resume()
+    }
     static func Upload_IDCopyRecord(_ make:String,_ model:String, _ year:String, _ startime:String, _ Endtime:String, _ SreialNum:String, _ Devicetype:String, _ Mode:String, _ SensorCount:Int, _ position:String
         ,_ idrecord:[SersorRecord]){
         let url = URL(string: link)!
@@ -379,7 +466,70 @@ class Function{
         }
         task.resume()
     }
-}
+    static func AddIfNotValid(_ serial:String){
+            let url = URL(string: link)!
+            var request = URLRequest(url: url)
+            request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            var data="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+            "    <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
+            "      <soap12:Body>\n" +
+            "        <Register xmlns=\"http://tempuri.org/\">\n" +
+            "          <Reg_UserInfo>\n" +
+            "            <UserID>admin</UserID>\n" +
+            "            <UserPwd>0000</UserPwd>\n" +
+            "          </Reg_UserInfo>\n" +
+            "          <Reg_StoreInfo>\n" +
+            "            <StoreType>Distributor</StoreType>\n" +
+            "            <CompName>spare</CompName>\n" +
+            "            <FirstName>spare</FirstName>\n" +
+            "            <LastName>spare</LastName>\n" +
+            "            <Contact_Tel>spare</Contact_Tel>\n" +
+            "            <Continent>spare</Continent>\n" +
+            "            <Country>spare</Country>\n" +
+            "            <State>spare</State>\n" +
+            "            <City>spare</City>\n" +
+            "            <Street>spare</Street>\n" +
+            "            <CompTel>spare</CompTel>\n" +
+            "          </Reg_StoreInfo>\n" +
+            "          <Reg_DeviceInfo>\n" +
+            "            <SerialNum>\(serial)</SerialNum>\n" +
+            "            <DeviceType>USBPad</DeviceType>\n" +
+            "            <ModelNum>PA001</ModelNum>\n" +
+            "            <AreaNo></AreaNo>\n" +
+            "            <Firmware_1_Copy>EU-1.0</Firmware_1_Copy>\n" +
+            "            <Firmware_2_Copy>EU-1.0</Firmware_2_Copy>\n" +
+            "            <Firmware_3_Copy>EU-1.0</Firmware_3_Copy>\n" +
+            "            <DB_Copy>EU-1.0 </DB_Copy>\n" +
+            "            <MacAddress>00</MacAddress>\n" +
+            "            <IpAddress>00</IpAddress>\n" +
+            "          </Reg_DeviceInfo>\n" +
+            "        </Register>\n" +
+            "      </soap12:Body>\n" +
+            "    </soap12:Envelope>"
+            request.httpBody = data.data(using: .utf8)
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data,
+                    let response = response as? HTTPURLResponse,
+                    error == nil else {
+                        print("error", error ?? "Unknown error")
+                        
+                        return
+                }
+                
+                guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                    print("statusCode should be 2xx, but is \(response.statusCode)")
+                    print("response = \(response)")
+                    
+                    return
+                }
+                let responseString = String(data: data, encoding: .utf8)
+                print("responseString = \(responseString)")
+            }
+            task.resume()
+        }
+    }
+
 extension Dictionary {
     func percentEscaped() -> String {
         return map { (key, value) in

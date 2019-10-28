@@ -46,6 +46,7 @@ class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.tb.bounces=false
         tit.text=SetLan.Setlan("Select_CAR_Make")
 query()
+        
     }
 
     func query(){

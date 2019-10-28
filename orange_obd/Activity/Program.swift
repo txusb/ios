@@ -448,8 +448,73 @@ if(self.WriteLf.count==8&&self.WriteLr.count==8&&self.WriteRR.count==8&&self.Wri
     let starttime:String = dateFormat.string(from: Date())
 condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
       let endtime:String = dateFormat.string(from: Date())
+     var record=[SersorRecord]()
+    
 }else{
+     let dateFormat:DateFormatter = DateFormatter()
+    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let starttime:String = dateFormat.string(from: Date())
     condition=self.act.command.ProgramAll(self.mmynum!, self.Lf)
+     let endtime:String = dateFormat.string(from: Date())
+      var idrecord=[SersorRecord]()
+    for i in 0..<self.act.command.CHANNEL_BLE.count{
+        var a=self.act.command.CHANNEL_BLE[i]
+        if(a.sub(0..<2)=="04"){
+            let b = SersorRecord()
+            b.SerSorId = self.Getid(a)
+            b.Issucesss = "true"
+            idrecord.append(b)
+        }
+         if(a.sub(0..<2)=="03"){
+                       let b = SersorRecord()
+                                  b.SerSorId = self.Getid(a)
+                                  b.Issucesss = "true"
+                                  idrecord.append(b)
+        }
+         if(a.sub(0..<2)=="02"){
+                     let b = SersorRecord()
+                                b.SerSorId = self.Getid(a)
+                                b.Issucesss = "true"
+                                idrecord.append(b)
+        }
+         if(a.sub(0..<2)=="01"){
+            let b = SersorRecord()
+                       b.SerSorId = self.Getid(a)
+                       b.Issucesss = "true"
+                       idrecord.append(b)
+        }
+    }
+    for i in self.act.command.FALSE_CHANNEL{
+                               self.UpdateUiCondition(self.PROGRAM_FAULSE)
+                               switch(i){
+                               case "04":
+                                  let b = SersorRecord()
+                                   b.SerSorId = "error"
+                                   b.Issucesss = "false"
+                                   idrecord.append(b)
+                                   break
+                               case "03":
+                                  let b = SersorRecord()
+                                  b.SerSorId = "error"
+                                  b.Issucesss = "false"
+                                  idrecord.append(b)
+                                   break
+                               case "02":
+                                   let b = SersorRecord()
+                                   b.SerSorId = "error"
+                                   b.Issucesss = "false"
+                                   idrecord.append(b)
+                                   break
+                               case "01":
+                                  let b = SersorRecord()
+                                   b.SerSorId = "error"
+                                   b.Issucesss = "false"
+                                   idrecord.append(b)
+                                   break
+                               default:
+                                   break
+                               } }
+    Function.Upload_ProgramRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
                 }
                 DispatchQueue.main.async {
                     self.ISPROGRAMMING=false
@@ -545,7 +610,17 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
             }
         }
     }
-    
+    func Getid(_ a:String)->String
+    {
+        var id = a.sub(3..<a.count)
+        if (mmynum == "RN1628" || mmynum == "SI2048")
+        {
+            var Writetmp = id.sub(0..<2) + "XX" + id.sub(4..<6) + "YY"
+            id = Writetmp.replace("XX", id.sub(6..<8)).replace("YY", id.sub(2..<4))
+        }
+        id = String(id.suffix(self.idcount))
+        return id
+    }
     @IBAction func Toidcopy(_ sender: Any) {
         if(WriteRf.count<8){
             PadSelect.Function=0

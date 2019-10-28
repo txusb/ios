@@ -108,12 +108,17 @@ open class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralD
             charDictionary[uuidString] = characteristic
             if(uuidString=="8D81"){
                 self.IsConnect=true
-                print("yes")
+                print("連線成功")
                 connectPeripheral.setNotifyValue(true, for: characteristic)
+                Connect()
             }
             print(uuidString)
             peripheral.discoverDescriptors(for: characteristic)
         }
+    }
+    
+    open func Connect(){
+        
     }
     
     /* 將資料傳送到 peripheral */

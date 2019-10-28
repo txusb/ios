@@ -11,7 +11,7 @@ class SersorRecord{
     var SerSorId=""
     var Car_SersorId=""
     var Issucesss=""
-    var ModelNo=""
+    var ModelNo="5024"
     var enum_burnResult="最後檢查"
     var DB_Version="V00.01"
     var SersorCode_Sersion="V00.01"

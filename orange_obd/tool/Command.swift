@@ -308,4 +308,19 @@ if(act!.Rx.count==22){
         }
         return re
     }
+      func Setserial()->Bool{
+            let command="0A0004000754504D535610F5"
+    //        print("Crc\(CRC16.crc16Ccitt(command,0x1021,0))")
+            act?.sendData(command,32)
+            let pastTime = Date().timeIntervalSince1970
+            while(true){
+    if(act!.Rx.count==32){
+        act!.serialnum=act!.Rx.sub(16..<26)
+            print("serial:\(act!.serialnum)")
+            break
+                }
+                if(GetTime(pastTime)>5){return false}
+            }
+            return true
+        }
 }

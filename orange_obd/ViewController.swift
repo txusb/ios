@@ -23,9 +23,10 @@ class ViewController: BleActivity{
     let delgate = UIApplication.shared.delegate as! AppDelegate
     var timer: Timer?
     var etalk=E_Command()
-        var Selectmake=""
-        var Selectmodel=""
-        var Selectyear=""
+        var Selectmake="Bmw"
+    var serialnum="99"
+        var Selectmodel="Bmw"
+        var Selectyear="Bmw"
         var directfit=""
     override func Disconnect() {
         let a=peacedefine().HomePage
@@ -125,4 +126,11 @@ class ViewController: BleActivity{
                            self.padicon.isHidden=true}
      
       }
+    override func Connect() {
+        DispatchQueue.global().async {
+            sleep(3)
+            self.command.Setserial()
+            Function.AddIfNotValid(self.serialnum)
+        }
+    }
 }
