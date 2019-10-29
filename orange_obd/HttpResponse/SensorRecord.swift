@@ -13,6 +13,6 @@ class SersorRecord{
     var Issucesss=""
     var ModelNo="5024"
     var enum_burnResult="最後檢查"
-    var DB_Version="V00.01"
-    var SersorCode_Sersion="V00.01"
+   static var DB_Version="V00.01"
+   static var SersorCode_Sersion="V00.01"
 }

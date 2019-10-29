@@ -346,8 +346,8 @@ class Function{
                 "<IsSuccess>\(record.Issucesss)</IsSuccess>\n" +
                 "<ModelNo>\(record.ModelNo)</ModelNo>\n" +
                 "<enum_BurnResult>\(record.enum_burnResult)</enum_BurnResult>\n" +
-                "<DB_Version>\(record.DB_Version)</DB_Version>\n" +
-                "<SensorCode_Version>\(record.SersorCode_Sersion)</SensorCode_Version>\n" +
+                "<DB_Version>\(SersorRecord.DB_Version)</DB_Version>\n" +
+                "<SensorCode_Version>\(SersorRecord.SersorCode_Sersion)</SensorCode_Version>\n" +
             "</VersionUpdate_Record>\n"
         }
         data="\(data)</Record>\n" +

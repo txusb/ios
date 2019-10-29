@@ -11,7 +11,9 @@ import UIKit
 import SQLite3
 class FtpManage{
     func DowloadS19(_ s19:String)->String{
-        let url = URL(string: "http://bento2.orange-electronic.com/Orange%20Cloud/Database/SensorCode/SIII/\(s19)/\(GetS19name(s19))")
+        let s19name=GetS19name(s19)
+        SersorRecord.SersorCode_Sersion=s19name
+        let url = URL(string: "http://bento2.orange-electronic.com/Orange%20Cloud/Database/SensorCode/SIII/\(s19)/\(s19name)")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -43,6 +45,7 @@ class FtpManage{
     }
     func DowloadMmy(_ deledate:AppDelegate)->Bool{
         let mmyan=mmyname()
+        if(mmyan.count>19){SersorRecord.DB_Version=mmyan.sub(16..<mmyan.count)}else{SersorRecord.DB_Version=mmyan}
         if(mmyan==ViewController.getShare("mmy")){
              let dst=NSHomeDirectory()+"/Documents/mmytb.db"
             if sqlite3_open(dst, &deledate.db) == SQLITE_OK{

@@ -59,9 +59,9 @@ class Program: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if(mmynum==nil){ query()
-nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
+            nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
         }else{
-         nnyname.text=titmmy
+            nnyname.text=titmmy
         }
         queryid()
         queryLf()
@@ -106,12 +106,12 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 if(a=="false"){
                     self.dowloadmmy()
                 }else{
-                  self.act.LoadingSuccess()
-                  self.act.command.mmydata=a
-                  self.ISPROGRAMMING=false
+                    self.act.LoadingSuccess()
+                    self.act.command.mmydata=a
+                    self.ISPROGRAMMING=false
                 }
             }
-           
+            
         }
     }
     func play() {
@@ -137,9 +137,9 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                 var Id2=self.act.command.ID
                 DispatchQueue.main.async {
                     if(CH1){
-    if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
-        let Writetmp=Id1.sub(0..<2)+"XX"+Id1.sub(4..<6)+"YY"
-        Id1=Writetmp.replace("XX", Id1.sub(6..<8)).replace("YY", Id1.sub(2..<4))
+                        if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            let Writetmp=Id1.sub(0..<2)+"XX"+Id1.sub(4..<6)+"YY"
+                            Id1=Writetmp.replace("XX", Id1.sub(6..<8)).replace("YY", Id1.sub(2..<4))
                         }
                         Id1=String(Id1.suffix(self.idcount))
                         if(i==0){
@@ -163,8 +163,8 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                         }
                     }
                     if(CH2){
-                if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
-                let Writetmp=Id2.sub(0..<2)+"XX"+Id2.sub(4..<6)+"YY"
+                        if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            let Writetmp=Id2.sub(0..<2)+"XX"+Id2.sub(4..<6)+"YY"
                             Id2=Writetmp.replace("XX", Id2.sub(6..<8)).replace("YY", Id2.sub(2..<4))
                         }
                         Id2=String(Id2.suffix(self.idcount))
@@ -190,9 +190,9 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
                     }
                 }
             }
-           sleep(4)
-                                if(self.first){
-                                    self.UdCondition()}
+            sleep(4)
+            if(self.first){
+                self.UdCondition()}
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -217,21 +217,21 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
         case PROGRAM_SUCCESS:
             success.isHidden=false
             condition.text=SetLan.Setlan("Programming_completed")
-    condition.textColor=UIColor.init(named:"btncolor")
+            condition.textColor=UIColor.init(named:"btncolor")
             program.setTitle(SetLan.Setlan("RE_PROGRAM"), for: .normal)
             relearn.isHidden=false
             program.isHidden=false
             break
         case PROGRAM_WAIT:
-             program.isHidden=false
-             program.setTitle(SetLan.Setlan("Program_sensor"), for: .normal)
-             condition.text=SetLan.Setlan("Please_insert_the_sensor_into_the_USB_PAD")
-    condition.textColor=UIColor.init(named:"btncolor")
+            program.isHidden=false
+            program.setTitle(SetLan.Setlan("Program_sensor"), for: .normal)
+            condition.text=SetLan.Setlan("Please_insert_the_sensor_into_the_USB_PAD")
+            condition.textColor=UIColor.init(named:"btncolor")
             break
         case PROGRAM_FAULSE:
             program.isHidden=false
             program.setTitle(SetLan.Setlan("RE_PROGRAM")
-, for: .normal)
+                , for: .normal)
             condition.textColor=UIColor.init(named: "orange")
             condition.text=SetLan.Setlan("Programming_failed_where")
             break
@@ -428,7 +428,7 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
     }
     
     @IBAction func StartProgram(_ sender: Any) {
-       
+        
         if(program.titleLabel!.text=="RE-PROGRAM"&&self.WriteLf.count==8){
             act.GoBack(self)
         }else{Program()}
@@ -441,80 +441,107 @@ nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
             ISPROGRAMMING=true
             UpdateUiCondition(PROGRAMMING)
             DispatchQueue.global().async {
-            var condition=false
-if(self.WriteLf.count==8&&self.WriteLr.count==8&&self.WriteRR.count==8&&self.WriteRf.count==8){
-    let dateFormat:DateFormatter = DateFormatter()
-    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let starttime:String = dateFormat.string(from: Date())
-condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
-      let endtime:String = dateFormat.string(from: Date())
-     var record=[SersorRecord]()
-    
-}else{
-     let dateFormat:DateFormatter = DateFormatter()
-    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let starttime:String = dateFormat.string(from: Date())
-    condition=self.act.command.ProgramAll(self.mmynum!, self.Lf)
-     let endtime:String = dateFormat.string(from: Date())
-      var idrecord=[SersorRecord]()
-    for i in 0..<self.act.command.CHANNEL_BLE.count{
-        var a=self.act.command.CHANNEL_BLE[i]
-        if(a.sub(0..<2)=="04"){
-            let b = SersorRecord()
-            b.SerSorId = self.Getid(a)
-            b.Issucesss = "true"
-            idrecord.append(b)
-        }
-         if(a.sub(0..<2)=="03"){
-                       let b = SersorRecord()
-                                  b.SerSorId = self.Getid(a)
-                                  b.Issucesss = "true"
-                                  idrecord.append(b)
-        }
-         if(a.sub(0..<2)=="02"){
-                     let b = SersorRecord()
-                                b.SerSorId = self.Getid(a)
-                                b.Issucesss = "true"
-                                idrecord.append(b)
-        }
-         if(a.sub(0..<2)=="01"){
-            let b = SersorRecord()
-                       b.SerSorId = self.Getid(a)
-                       b.Issucesss = "true"
-                       idrecord.append(b)
-        }
-    }
-    for i in self.act.command.FALSE_CHANNEL{
-                               self.UpdateUiCondition(self.PROGRAM_FAULSE)
-                               switch(i){
-                               case "04":
-                                  let b = SersorRecord()
-                                   b.SerSorId = "error"
-                                   b.Issucesss = "false"
-                                   idrecord.append(b)
-                                   break
-                               case "03":
-                                  let b = SersorRecord()
-                                  b.SerSorId = "error"
-                                  b.Issucesss = "false"
-                                  idrecord.append(b)
-                                   break
-                               case "02":
-                                   let b = SersorRecord()
-                                   b.SerSorId = "error"
-                                   b.Issucesss = "false"
-                                   idrecord.append(b)
-                                   break
-                               case "01":
-                                  let b = SersorRecord()
-                                   b.SerSorId = "error"
-                                   b.Issucesss = "false"
-                                   idrecord.append(b)
-                                   break
-                               default:
-                                   break
-                               } }
-    Function.Upload_ProgramRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
+                var condition=false
+                if(self.WriteLf.count==8&&self.WriteLr.count==8&&self.WriteRR.count==8&&self.WriteRf.count==8){
+                    let dateFormat:DateFormatter = DateFormatter()
+                    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    let starttime:String = dateFormat.string(from: Date())
+                    condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
+                    let endtime:String = dateFormat.string(from: Date())
+                    var idrecord=[SersorRecord]()
+                    if(self.WriteLf != "00000000"){
+                        let b = SersorRecord()
+                        b.Car_SersorId = self.Lfid
+                        b.SerSorId = self.WriteLf
+                        if(self.act.command.FALSE_CHANNEL.contains("01")){b.Issucesss = "false"}else{b.Issucesss = "true"}
+                        idrecord.append(b)
+                    }
+                    if(self.WriteLr != "00000000"){
+                        let b = SersorRecord()
+                        b.Car_SersorId = self.Lrid
+                        b.SerSorId = self.WriteLr
+                        if(self.act.command.FALSE_CHANNEL.contains("02")){b.Issucesss = "false"}else{b.Issucesss = "true"}
+                        idrecord.append(b)
+                    }
+                    if(self.WriteRf != "00000000"){
+                                           let b = SersorRecord()
+                                           b.Car_SersorId = self.Rfid
+                                           b.SerSorId = self.WriteRf
+                                           if(self.act.command.FALSE_CHANNEL.contains("03")){b.Issucesss = "false"}else{b.Issucesss = "true"}
+                                           idrecord.append(b)
+                                       }
+                    if(self.WriteRR != "00000000"){
+                        let b = SersorRecord()
+                        b.Car_SersorId = self.Rrid
+                        b.SerSorId = self.WriteRR
+                        if(self.act.command.FALSE_CHANNEL.contains("01")){b.Issucesss = "false"}else{b.Issucesss = "true"}
+                        idrecord.append(b)
+                    }
+                   Function.Upload_IDCopyRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
+                }else{
+                    let dateFormat:DateFormatter = DateFormatter()
+                    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    let starttime:String = dateFormat.string(from: Date())
+                    condition=self.act.command.ProgramAll(self.mmynum!, self.Lf)
+                    let endtime:String = dateFormat.string(from: Date())
+                    var idrecord=[SersorRecord]()
+                    for i in 0..<self.act.command.CHANNEL_BLE.count{
+                        let a=self.act.command.CHANNEL_BLE[i]
+                        if(a.sub(0..<2)=="04"){
+                            let b = SersorRecord()
+                            b.SerSorId = self.Getid(a)
+                            b.Issucesss = "true"
+                            idrecord.append(b)
+                        }
+                        if(a.sub(0..<2)=="03"){
+                            let b = SersorRecord()
+                            b.SerSorId = self.Getid(a)
+                            b.Issucesss = "true"
+                            idrecord.append(b)
+                        }
+                        if(a.sub(0..<2)=="02"){
+                            let b = SersorRecord()
+                            b.SerSorId = self.Getid(a)
+                            b.Issucesss = "true"
+                            idrecord.append(b)
+                        }
+                        if(a.sub(0..<2)=="01"){
+                            let b = SersorRecord()
+                            b.SerSorId = self.Getid(a)
+                            b.Issucesss = "true"
+                            idrecord.append(b)
+                        }
+                    }
+                    for i in self.act.command.FALSE_CHANNEL{
+                        switch(i){
+                        case "04":
+                            let b = SersorRecord()
+                            b.SerSorId = "error"
+                            b.Issucesss = "false"
+                            idrecord.append(b)
+                            break
+                        case "03":
+                            let b = SersorRecord()
+                            b.SerSorId = "error"
+                            b.Issucesss = "false"
+                            idrecord.append(b)
+                            break
+                        case "02":
+                            let b = SersorRecord()
+                            b.SerSorId = "error"
+                            b.Issucesss = "false"
+                            idrecord.append(b)
+                            break
+                        case "01":
+                            let b = SersorRecord()
+                            b.SerSorId = "error"
+                            b.Issucesss = "false"
+                            idrecord.append(b)
+                            break
+                        default:
+                            break
+                        } }
+                    Function.Upload_ProgramRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
                 }
                 DispatchQueue.main.async {
                     self.ISPROGRAMMING=false
@@ -524,8 +551,8 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
                         if(a.sub(0..<2)=="04"){
                             self.Rrid=a.sub(3..<a.count)
                             if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
-                            let WriteTmp=self.Rrid.sub(0..<2)+"XX"+self.Rrid.sub(4..<6)+"YY"
-                            self.Rrid=WriteTmp.replace("XX", self.Rrid.sub(6..<8)).replace("YY", self.Rrid.sub(2..<4))
+                                let WriteTmp=self.Rrid.sub(0..<2)+"XX"+self.Rrid.sub(4..<6)+"YY"
+                                self.Rrid=WriteTmp.replace("XX", self.Rrid.sub(6..<8)).replace("YY", self.Rrid.sub(2..<4))
                             }
                             self.Rrid=String(self.Rrid.suffix(self.idcount))
                             self.UpdateUI(self.RR, self.PROGRAM_SUCCESS)
@@ -563,7 +590,7 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
                             switch(i){
                             case "04":
                                 self.Rrid=SetLan.Setlan("error")
-                                 self.UpdateUI(self.RR, self.PROGRAM_FAULSE)
+                                self.UpdateUI(self.RR, self.PROGRAM_FAULSE)
                                 break
                             case "03":
                                 self.Rfid=SetLan.Setlan("error")
@@ -597,7 +624,7 @@ condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,sel
                             self.UpdateUI(self.RF, self.UN_LINK)
                             break
                         case "02":
-                             self.UpdateUI(self.LR, self.UN_LINK)
+                            self.UpdateUI(self.LR, self.UN_LINK)
                             break
                         case "01":
                             self.UpdateUI(self.LF, self.UN_LINK)
