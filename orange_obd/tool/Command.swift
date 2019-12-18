@@ -315,7 +315,7 @@ if(act!.Rx.count==22){
             let pastTime = Date().timeIntervalSince1970
             while(true){
     if(act!.Rx.count==32){
-        act!.serialnum=act!.Rx.sub(16..<26)
+        act!.serialnum=act!.Rx.sub(14..<26)
             print("serial:\(act!.serialnum)")
             break
                 }

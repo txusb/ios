@@ -22,6 +22,8 @@ class SetLan{
             return De.dic[lan] ?? ""
         case "Italiano":
             return it.dic[lan] ?? ""
+        case "Dansk":
+            return Da.dic[lan] ?? ""
         default:
             return ""
         }

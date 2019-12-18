@@ -466,7 +466,7 @@ class Function{
         }
         task.resume()
     }
-    static func AddIfNotValid(_ serial:String){
+    static func AddIfNotValid(_ serial:String,_ admin:String,_ pass:String){
             let url = URL(string: link)!
             var request = URLRequest(url: url)
             request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -476,8 +476,8 @@ class Function{
             "      <soap12:Body>\n" +
             "        <Register xmlns=\"http://tempuri.org/\">\n" +
             "          <Reg_UserInfo>\n" +
-            "            <UserID>admin</UserID>\n" +
-            "            <UserPwd>0000</UserPwd>\n" +
+            "            <UserID>\(admin)</UserID>\n" +
+            "            <UserPwd>\(pass)</UserPwd>\n" +
             "          </Reg_UserInfo>\n" +
             "          <Reg_StoreInfo>\n" +
             "            <StoreType>Distributor</StoreType>\n" +

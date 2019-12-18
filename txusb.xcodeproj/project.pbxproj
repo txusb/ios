@@ -10,6 +10,7 @@
 		10008D3F2347225F00922A3F /* DataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D3E2347225E00922A3F /* DataStream.swift */; };
 		10008D422347229500922A3F /* E_Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D412347229500922A3F /* E_Command.swift */; };
 		10008D472347255200922A3F /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10008D462347255200922A3F /* MessageItem.swift */; };
+		10094D5423A8C12200556B3C /* Da.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10094D5323A8C12200556B3C /* Da.swift */; };
 		102E8F242349ACBC00328DE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */; };
 		102E8F2B2349B99500328DE1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E8F2A2349B99500328DE1 /* ImagePicker.swift */; };
 		107D14D322F80D2C00CDA789 /* I1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D14D222F80D2C00CDA789 /* I1.swift */; };
@@ -106,6 +107,7 @@
 		10008D3E2347225E00922A3F /* DataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStream.swift; sourceTree = "<group>"; };
 		10008D412347229500922A3F /* E_Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_Command.swift; sourceTree = "<group>"; };
 		10008D462347255200922A3F /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		10094D5323A8C12200556B3C /* Da.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Da.swift; sourceTree = "<group>"; };
 		102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		102E8F2A2349B99500328DE1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		107D14D222F80D2C00CDA789 /* I1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I1.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				10E573D42361E82700FD5C3B /* English.swift */,
 				10E573D52361E82700FD5C3B /* ChineseTr.swift */,
 				10E573D62361E82700FD5C3B /* De.swift */,
+				10094D5323A8C12200556B3C /* Da.swift */,
 			);
 			path = Language;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				10E573E22361E82700FD5C3B /* English.swift in Sources */,
 				10AC61E522F7FB5900F49C08 /* P3.swift in Sources */,
 				10E573E72361E82700FD5C3B /* BleScanner.swift in Sources */,
+				10094D5423A8C12200556B3C /* Da.swift in Sources */,
 				107D14D922F80D4D00CDA789 /* I4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,7 +821,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -829,7 +833,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -848,7 +852,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,7 +864,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -54,7 +54,7 @@ return item[row]
 
     @IBAction func SelectLan(_ sender: Any) {
          place=1
-    item=["繁體中文","简体中文","Deutsch","English","Italiano"]
+    item=["繁體中文","简体中文","Deutsch","English","Italiano","Dansk"]
         picker.reloadAllComponents()
         picker.isHidden=false
         closebt.isHidden=false
