@@ -130,7 +130,7 @@ class ViewController: BleActivity{
         DispatchQueue.global().async {
             sleep(3)
             self.command.Setserial()
-           Function.AddIfNotValid(self.serialnum,ViewController.getShare("admin"),ViewController.getShare("Password"))
+Function.AddIfNotValid(self.serialnum,ViewController.getShare("admin"),ViewController.getShare("password"))
         }
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 class Function{
-    static let link="http://bento2.orange-electronic.com/App_Asmx/ToolApp.asmx"
+    static let link="https://bento2.orange-electronic.com/App_Asmx/ToolApp.asmx"
     static func GetVersion(){
         let act=(UIApplication.shared.delegate as! AppDelegate).act!
         let url = URL(string: "https://itunes.apple.com/lookup?bundleId=com.orange.txusb")!
