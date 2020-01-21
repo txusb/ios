@@ -9,7 +9,7 @@
 import UIKit
 
 class HomePage: UIViewController {
-   let activity=(UIApplication.shared.delegate as! AppDelegate).act!
+    let activity=(UIApplication.shared.delegate as! AppDelegate).act!
     @IBOutlet var t6: UILabel!
     @IBOutlet var t5: UILabel!
     @IBOutlet var t4: UILabel!
@@ -26,20 +26,20 @@ class HomePage: UIViewController {
         activity.back.isHidden=true
         activity.rightop.isHidden=false
         activity.ISRUN=false
-    t3.text=SetLan.Setlan("Cloud_information")
+        t3.text=SetLan.Setlan("Cloud_information")
         t4.text=SetLan.Setlan("Online_shopping")
         t5.text=SetLan.Setlan("Users_manual")
         t6.text=SetLan.Setlan("Setting")
-activity.etalk.admin=ViewController.getShare("admin")
-if(ViewController.getShare("lan")=="Italiano"){
-    ShoppingBt.setImage(UIImage.init(named: "btn_setting_normal"), for: .normal)
-    t4.text=SetLan.Setlan("Setting")
-    t6.isHidden=true
-    settingbt.isHidden=true
+        activity.etalk.admin=ViewController.getShare("admin")
+        if(ViewController.getShare("lan")=="Italiano"){
+            ShoppingBt.setImage(UIImage.init(named: "btn_setting_normal"), for: .normal)
+            t4.text=SetLan.Setlan("Setting")
+            t6.isHidden=true
+            settingbt.isHidden=true
         }
         t2.text="ID COPY"
     }
-
+    
     @IBAction func Shopping(_ sender: Any) {
         var ur=""
         var a=ViewController.getShare("lan")
@@ -49,20 +49,20 @@ if(ViewController.getShare("lan")=="Italiano"){
             ur="http://simple-sensor.com"
             break
         case "繁體中文":
-               ur="http://simple-sensor.com"
-           break
+            ur="http://simple-sensor.com"
+            break
         case "简体中文":
-               ur="http://simple-sensor.com"
-           break
+            ur="http://simple-sensor.com"
+            break
         case "Deutsch":
-               ur="http://orange-rdks.de"
-           break
+            ur="http://orange-rdks.de"
+            break
         case "Italiano":
-               ur="http://orange-like.it"
-               ToSetting(self)
-               return
+            ur="http://orange-like.it"
+            ToSetting(self)
+            return
         default:
-           break
+            break
         }
         if let url = URL(string: ur)
         {
@@ -78,13 +78,13 @@ if(ViewController.getShare("lan")=="Italiano"){
     }
     @IBAction func tomake(_ sender: Any) {
         PadSelect.Function=1
-                    let a=peacedefine().PadSelect
-                    a.act=activity
+        let a=peacedefine().PadSelect
+        a.act=activity
         activity.ChangePage(to: a)
-//        let a=peacedefine().PadSelect
-//        a.act=activity
-//        activity?.ChangePage(to: a)
-
+        //        let a=peacedefine().PadSelect
+        //        a.act=activity
+        //        activity?.ChangePage(to: a)
+        
     }
     
     @IBAction func tocopy(_ sender: Any) {
@@ -94,14 +94,14 @@ if(ViewController.getShare("lan")=="Italiano"){
         activity.ChangePage(to: a)
     }
     
- 
+    
     @IBAction func ToManual(_ sender: Any) {
         let a=peacedefine().Users_Manual
         activity.ChangePage(to: a)
     }
     override func viewWillAppear(_ animated: Bool) {
         activity.tit.text="Orange TPMS"
-//        activity.tlkingBt.isHidden=false
+        //        activity.tlkingBt.isHidden=false
     }
     @IBAction func ToSetting(_ sender: Any) {
         let a=peacedefine().Setting

@@ -12,7 +12,6 @@ class Function{
     static func GetVersion(){
         let act=(UIApplication.shared.delegate as! AppDelegate).act!
         let url = URL(string: "https://itunes.apple.com/lookup?bundleId=com.orange.txusb")!
-        
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             let DaS=String(data: data, encoding: .utf8)!
@@ -33,7 +32,7 @@ class Function{
         var request = URLRequest(url: url)
         request.setValue("application/soap+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        var data="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+        let data="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
             "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
             "  <soap12:Body>\n" +
             "    <SysResetPwd xmlns=\"http://tempuri.org/\">\n" +
@@ -493,7 +492,7 @@ class Function{
             "            <CompTel>spare</CompTel>\n" +
             "          </Reg_StoreInfo>\n" +
             "          <Reg_DeviceInfo>\n" +
-            "            <SerialNum>\(serial)</SerialNum>\n" +
+            "            <SerialNum>SP:\(serial)</SerialNum>\n" +
             "            <DeviceType>USBPad</DeviceType>\n" +
             "            <ModelNum>PA001</ModelNum>\n" +
             "            <AreaNo></AreaNo>\n" +
@@ -516,8 +515,7 @@ class Function{
                         
                         return
                 }
-                
-                guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                guard (200 ... 299) ~= response.statusCode else {
                     print("statusCode should be 2xx, but is \(response.statusCode)")
                     print("response = \(response)")
                     

@@ -63,21 +63,34 @@ class Command {
             }
         }
     }
-    func Command11(_ ic:Int,_ channel:Int)->Bool{
-       let check=30
-let command="0ASS110004CCXXXXF5".replace("SS",bytesToHex([UInt8]([UInt8(ic)]))).replace("CC",bytesToHex([UInt8]([UInt8(channel)])))
-        act?.sendData(CRC16().crc16(command), check)
+    func Command11(_ ic:Int,_ channel:Int,_ version:String)->SensorBean{
+        let sensorBean=SensorBean()
+        var CC=""
+        if(version==SensorBean._315){
+            CC="1\(channel)"
+        }else if(version==SensorBean._433){
+            CC="0\(channel)"
+        }
+let command="0ASS110004CCXXXXF5".replace("SS",bytesToHex([UInt8]([UInt8(ic)]))).replace("CC",CC)
+        act?.sendData(CRC16().crc16(command), 0)
         let pastTime = Date().timeIntervalSince1970
         ID=""
         while(true){
             if(GetTime(pastTime)>2){
-                return false
+                return sensorBean
             }
-            if(act?.Rx.count==check){
-                print("check"+act!.Rx.sub(10..<12))
-                let g = CheckCommand(act!.Rx.sub(10..<12))
-                if(g){ID=(act?.Rx.sub(14..<22))!}
-                return g
+            if((act!.Rx.count) >= 30){
+                sensorBean.id=act!.Rx.sub(14..<22)
+                if(act!.Rx.sub(24..<25)=="0"){
+                    sensorBean.boot_var=SensorBean._433
+                }else if(act!.Rx.sub(24..<25)=="1"){
+                    sensorBean.boot_var=SensorBean._315
+                }else if(act!.Rx.sub(24..<25)=="A"){
+                    sensorBean.boot_var=SensorBean._雙頻
+                }
+                sensorBean.canPr=(version==sensorBean.boot_var)||(sensorBean.boot_var==SensorBean._雙頻)
+                sensorBean.result=sensorBean.id != "00018001"
+                return sensorBean
             }
         }
     }

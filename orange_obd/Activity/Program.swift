@@ -46,7 +46,6 @@ class Program: UIViewController {
     @IBOutlet var RFl: UIButton!
     @IBOutlet var LFl: UIButton!
     @IBOutlet var CopyText: UIButton!
-    
     @IBOutlet var condition: UILabel!
     let animationView = AnimationView(name: "simple-loader2")
     @IBOutlet var loader: UIView!
@@ -56,6 +55,8 @@ class Program: UIViewController {
     @IBOutlet var nnyname: UILabel!
     var mmynum:String!=nil
     var titmmy=""
+    var SensorMode=""
+    var spversion=""
     override func viewDidLoad() {
         super.viewDidLoad()
         if(mmynum==nil){ query()
@@ -72,6 +73,14 @@ class Program: UIViewController {
         if(WriteLf.count != 8){dowloadmmy()}
         success.text=SetLan.Setlan("Please_remove_the_sensor")
         relearn.setTitle(SetLan.Setlan("Relearn_Procedure"), for: .normal)
+        spversion=SensorModel(mmynum)
+        if(spversion=="SP201"){
+            SensorMode=SensorBean._433
+        }
+        if(spversion=="SP202"){
+            SensorMode=SensorBean._315
+        }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
@@ -128,15 +137,23 @@ class Program: UIViewController {
         animationView.isHidden=true
     }
     var first=true
+    var beans=[SensorBean(),SensorBean(),SensorBean(),SensorBean()]
     func UdCondition(){
         DispatchQueue.global().async {
             for i in 0...1{
-                let CH1=self.act.command.Command11(i, 1)
-                var Id1=self.act.command.ID
-                let CH2=self.act.command.Command11(i, 2)
-                var Id2=self.act.command.ID
+                let CH1=self.act.command.Command11(i, 1,self.SensorMode)
+                var Id1=CH1.id
+                let CH2=self.act.command.Command11(i, 2,self.SensorMode)
+                var Id2=CH2.id
+                if(i==0){
+                    self.beans[0]=CH1
+                    self.beans[1]=CH2
+                }else{
+                    self.beans[2]=CH1
+                    self.beans[3]=CH2
+                }
                 DispatchQueue.main.async {
-                    if(CH1){
+                    if(CH1.result){
                         if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
                             let Writetmp=Id1.sub(0..<2)+"XX"+Id1.sub(4..<6)+"YY"
                             Id1=Writetmp.replace("XX", Id1.sub(6..<8)).replace("YY", Id1.sub(2..<4))
@@ -144,25 +161,25 @@ class Program: UIViewController {
                         Id1=String(Id1.suffix(self.idcount))
                         if(i==0){
                             self.Lfid=Id1
-                            if(self.first){self.UpdateUI(self.LF, self.PROGRAM_WAIT)}
+                            if(self.first){self.UpdateUI(self.LF, self.PROGRAM_WAIT,CH1.canPr)}
                             self.LFl.setTitle(self.Lfid, for: .normal)
                         }else{
                             self.Rfid=Id1
-                            if(self.first){self.UpdateUI(self.RF, self.PROGRAM_WAIT)}
+                            if(self.first){self.UpdateUI(self.RF, self.PROGRAM_WAIT,CH1.canPr)}
                             self.RFl.setTitle(self.Rfid, for: .normal)
                         }
                     }else{
                         if(i==0){
                             self.Lfid=SetLan.Setlan("Unlinked")
-                            if(self.first){self.UpdateUI(self.LF, self.UN_LINK)}
+                            if(self.first){self.UpdateUI(self.LF, self.UN_LINK,CH1.canPr)}
                             self.LFl.setTitle(self.Lfid, for: .normal)
                         }else{
                             self.Rfid=SetLan.Setlan("Unlinked")
-                            if(self.first){self.UpdateUI(self.RF, self.UN_LINK)}
+                            if(self.first){self.UpdateUI(self.RF, self.UN_LINK,CH1.canPr)}
                             self.RFl.setTitle(self.Rfid, for: .normal)
                         }
                     }
-                    if(CH2){
+                    if(CH2.result){
                         if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
                             let Writetmp=Id2.sub(0..<2)+"XX"+Id2.sub(4..<6)+"YY"
                             Id2=Writetmp.replace("XX", Id2.sub(6..<8)).replace("YY", Id2.sub(2..<4))
@@ -170,21 +187,21 @@ class Program: UIViewController {
                         Id2=String(Id2.suffix(self.idcount))
                         if(i==0){
                             self.Lrid=Id2
-                            if(self.first){self.UpdateUI(self.LR, self.PROGRAM_WAIT)}
+                            if(self.first){self.UpdateUI(self.LR, self.PROGRAM_WAIT,CH2.canPr)}
                             self.LRl.setTitle(self.Lrid, for: .normal)
                         }else{
                             self.Rrid=Id2
-                            if(self.first){self.UpdateUI(self.RR, self.PROGRAM_WAIT)}
+                            if(self.first){self.UpdateUI(self.RR, self.PROGRAM_WAIT,CH2.canPr)}
                             self.RRl.setTitle(self.Rrid, for: .normal)
                         }
                     }else{
                         if(i==0){
                             self.Lrid=SetLan.Setlan("Unlinked")
-                            if(self.first){self.UpdateUI(self.LR, self.UN_LINK)}
+                            if(self.first){self.UpdateUI(self.LR, self.UN_LINK,CH2.canPr)}
                             self.LRl.setTitle(self.Lrid, for: .normal)
                         }else{
                             self.Rrid=SetLan.Setlan("Unlinked")
-                            if(self.first){self.UpdateUI(self.RR, self.UN_LINK)}
+                            if(self.first){self.UpdateUI(self.RR, self.UN_LINK,CH2.canPr)}
                             self.RRl.setTitle(self.Rrid, for: .normal)
                         }
                     }
@@ -198,10 +215,10 @@ class Program: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.first=true
         UpdateUiCondition(PROGRAM_WAIT)
-        UpdateUI(LF,UN_LINK)
-        UpdateUI(RF,UN_LINK)
-        UpdateUI(LR,UN_LINK)
-        UpdateUI(RR,UN_LINK)
+        UpdateUI(LF,UN_LINK,true)
+        UpdateUI(RF,UN_LINK,true)
+        UpdateUI(LR,UN_LINK,true)
+        UpdateUI(RR,UN_LINK,true)
         UdCondition()
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -292,7 +309,7 @@ class Program: UIViewController {
                     idcount=Int(iids)!
                     print("Id:\(iids)")
                 } }  } }
-    func UpdateUI(_ position:Int,_ situation:Int){
+    func UpdateUI(_ position:Int,_ situation:Int,_ canPr:Bool){
         switch position {
         case LF:
             switch(situation){
@@ -318,9 +335,9 @@ class Program: UIViewController {
                 break
             case PROGRAM_WAIT:
                 LFl.setTitle(Lfid, for: .normal)
-                LFl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)
                 Lfi.isHidden=true
                 LFtire.setBackgroundImage(UIImage.init(named: "icon_tire_normal"), for: .normal)
+                if(canPr){LFl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)}else{LFl.setBackgroundImage(UIImage.init(named: "icon_input_box_fail"), for: .normal)}
                 break
             default:
                 break
@@ -350,9 +367,9 @@ class Program: UIViewController {
                 break
             case PROGRAM_WAIT:
                 RFl.setTitle(Rfid, for: .normal)
-                RFl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)
                 Rfi.isHidden=true
                 RFtire.setBackgroundImage(UIImage.init(named: "icon_tire_normal"), for: .normal)
+                if(canPr){RFl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)}else{RFl.setBackgroundImage(UIImage.init(named: "icon_input_box_fail"), for: .normal)}
                 break
             default:
                 break
@@ -382,9 +399,9 @@ class Program: UIViewController {
                 break
             case PROGRAM_WAIT:
                 LRl.setTitle(Lrid, for: .normal)
-                LRl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)
                 Lri.isHidden=true
                 LRtire.setBackgroundImage(UIImage.init(named: "icon_tire_normal"), for: .normal)
+                if(canPr){LRl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)}else{LRl.setBackgroundImage(UIImage.init(named: "icon_input_box_fail"), for: .normal)}
                 break
             default:
                 break
@@ -414,9 +431,9 @@ class Program: UIViewController {
                 break
             case PROGRAM_WAIT:
                 RRl.setTitle(Rrid, for: .normal)
-                RRl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)
                 Rri.isHidden=true
                 RRtire.setBackgroundImage(UIImage.init(named: "icon_tire_normal"), for: .normal)
+                if(canPr){RRl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)}else{RRl.setBackgroundImage(UIImage.init(named: "icon_input_box_fail"), for: .normal)}
                 break
             default:
                 break
@@ -431,7 +448,16 @@ class Program: UIViewController {
         
         if(program.titleLabel!.text=="RE-PROGRAM"&&self.WriteLf.count==8){
             act.GoBack(self)
-        }else{Program()}
+        }else{
+            for i in beans{
+                if(!i.canPr){
+                    view.showToast(text: SetLan.Setlan("onlyfor").replace("SP201", spversion))
+                    return
+                }
+            }
+            Program()
+            
+        }
         
     }
     func Program(){
@@ -464,12 +490,12 @@ class Program: UIViewController {
                         idrecord.append(b)
                     }
                     if(self.WriteRf != "00000000"){
-                                           let b = SersorRecord()
-                                           b.Car_SersorId = self.Rfid
-                                           b.SerSorId = self.WriteRf
-                                           if(self.act.command.FALSE_CHANNEL.contains("03")){b.Issucesss = "false"}else{b.Issucesss = "true"}
-                                           idrecord.append(b)
-                                       }
+                        let b = SersorRecord()
+                        b.Car_SersorId = self.Rfid
+                        b.SerSorId = self.WriteRf
+                        if(self.act.command.FALSE_CHANNEL.contains("03")){b.Issucesss = "false"}else{b.Issucesss = "true"}
+                        idrecord.append(b)
+                    }
                     if(self.WriteRR != "00000000"){
                         let b = SersorRecord()
                         b.Car_SersorId = self.Rrid
@@ -477,7 +503,7 @@ class Program: UIViewController {
                         if(self.act.command.FALSE_CHANNEL.contains("01")){b.Issucesss = "false"}else{b.Issucesss = "true"}
                         idrecord.append(b)
                     }
-                   Function.Upload_IDCopyRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
+                    Function.Upload_IDCopyRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
                 }else{
                     let dateFormat:DateFormatter = DateFormatter()
                     dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -555,7 +581,7 @@ class Program: UIViewController {
                                 self.Rrid=WriteTmp.replace("XX", self.Rrid.sub(6..<8)).replace("YY", self.Rrid.sub(2..<4))
                             }
                             self.Rrid=String(self.Rrid.suffix(self.idcount))
-                            self.UpdateUI(self.RR, self.PROGRAM_SUCCESS)
+                            self.UpdateUI(self.RR, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="03"){
                             self.Rfid=a.sub(3..<a.count)
@@ -564,7 +590,7 @@ class Program: UIViewController {
                                 self.Rfid=WriteTmp.replace("XX", self.Rfid.sub(6..<8)).replace("YY", self.Rfid.sub(2..<4))
                             }
                             self.Rfid=String(self.Rfid.suffix(self.idcount))
-                            self.UpdateUI(self.RF, self.PROGRAM_SUCCESS)
+                            self.UpdateUI(self.RF, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="02"){
                             self.Lrid=a.sub(3..<a.count)
@@ -573,7 +599,7 @@ class Program: UIViewController {
                                 self.Lrid=WriteTmp.replace("XX", self.Lrid.sub(6..<8)).replace("YY", self.Lrid.sub(2..<4))
                             }
                             self.Lrid=String(self.Lrid.suffix(self.idcount))
-                            self.UpdateUI(self.LR, self.PROGRAM_SUCCESS)
+                            self.UpdateUI(self.LR, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="01"){
                             self.Lfid=a.sub(3..<a.count)
@@ -582,7 +608,7 @@ class Program: UIViewController {
                                 self.Lfid=WriteTmp.replace("XX", self.Lfid.sub(6..<8)).replace("YY", self.Lfid.sub(2..<4))
                             }
                             self.Lfid=String(self.Lfid.suffix(self.idcount))
-                            self.UpdateUI(self.LF, self.PROGRAM_SUCCESS)}}
+                            self.UpdateUI(self.LF, self.PROGRAM_SUCCESS,true)}}
                     self.UpdateUiCondition(self.PROGRAM_SUCCESS)
                     if(!condition){
                         for i in self.act.command.FALSE_CHANNEL{
@@ -590,44 +616,44 @@ class Program: UIViewController {
                             switch(i){
                             case "04":
                                 self.Rrid=SetLan.Setlan("error")
-                                self.UpdateUI(self.RR, self.PROGRAM_FAULSE)
+                                self.UpdateUI(self.RR, self.PROGRAM_FAULSE,true)
                                 break
                             case "03":
                                 self.Rfid=SetLan.Setlan("error")
-                                self.UpdateUI(self.RF, self.PROGRAM_FAULSE)
+                                self.UpdateUI(self.RF, self.PROGRAM_FAULSE,true)
                                 break
                             case "02":
                                 self.Lrid=SetLan.Setlan("error")
-                                self.UpdateUI(self.LR, self.PROGRAM_FAULSE)
+                                self.UpdateUI(self.LR, self.PROGRAM_FAULSE,true)
                                 break
                             case "01":
                                 self.Lfid=SetLan.Setlan("error")
-                                self.UpdateUI(self.LF, self.PROGRAM_FAULSE)
+                                self.UpdateUI(self.LF, self.PROGRAM_FAULSE,true)
                                 break
                             default:
                                 break
                             } }
                         if(self.act.command.FALSE_CHANNEL.count==0&&self.act.command.BLANK_CHANNEL.count==0){
                             self.UpdateUiCondition(self.PROGRAM_FAULSE)
-                            self.UpdateUI(self.LF, self.PROGRAM_FAULSE)
-                            self.UpdateUI(self.LR, self.PROGRAM_FAULSE)
-                            self.UpdateUI(self.RF, self.PROGRAM_FAULSE)
-                            self.UpdateUI(self.RR, self.PROGRAM_FAULSE)
+                            self.UpdateUI(self.LF, self.PROGRAM_FAULSE,true)
+                            self.UpdateUI(self.LR, self.PROGRAM_FAULSE,true)
+                            self.UpdateUI(self.RF, self.PROGRAM_FAULSE,true)
+                            self.UpdateUI(self.RR, self.PROGRAM_FAULSE,true)
                         }
                     }
                     for a in self.act.command.BLANK_CHANNEL{
                         switch(a){
                         case "04":
-                            self.UpdateUI(self.RR, self.UN_LINK)
+                            self.UpdateUI(self.RR, self.UN_LINK,true)
                             break
                         case "03":
-                            self.UpdateUI(self.RF, self.UN_LINK)
+                            self.UpdateUI(self.RF, self.UN_LINK,true)
                             break
                         case "02":
-                            self.UpdateUI(self.LR, self.UN_LINK)
+                            self.UpdateUI(self.LR, self.UN_LINK,true)
                             break
                         case "01":
-                            self.UpdateUI(self.LF, self.UN_LINK)
+                            self.UpdateUI(self.LF, self.UN_LINK,true)
                             break
                         default:
                             break
@@ -642,7 +668,7 @@ class Program: UIViewController {
         var id = a.sub(3..<a.count)
         if (mmynum == "RN1628" || mmynum == "SI2048")
         {
-            var Writetmp = id.sub(0..<2) + "XX" + id.sub(4..<6) + "YY"
+            let Writetmp = id.sub(0..<2) + "XX" + id.sub(4..<6) + "YY"
             id = Writetmp.replace("XX", id.sub(6..<8)).replace("YY", id.sub(2..<4))
         }
         id = String(id.suffix(self.idcount))
@@ -668,5 +694,22 @@ class Program: UIViewController {
     @IBAction func Gorelarm(_ sender: Any) {
         let a=peacedefine().Relarm
         act.ChangePage(to: a)
+    }
+    func SensorModel(_ s19:String)->String{
+        if deledate.db != nil {
+            let sql="select `Sensor` from `Summary table` where `Direct Fit`='\(s19)'"
+            var statement:OpaquePointer? = nil
+            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                print(errmsg)
+            }
+            while sqlite3_step(statement)==SQLITE_ROW{
+                let iid = sqlite3_column_text(statement,0)
+                if iid != nil{
+                    let iids = String(cString: iid!)
+                    print("sensor:\(iids)")
+                    return iids
+                } }  }
+        return ""
     }
 }

@@ -23,11 +23,11 @@ class ViewController: BleActivity{
     let delgate = UIApplication.shared.delegate as! AppDelegate
     var timer: Timer?
     var etalk=E_Command()
-        var Selectmake="Bmw"
+    var Selectmake="Bmw"
     var serialnum="99"
-        var Selectmodel="Bmw"
-        var Selectyear="Bmw"
-        var directfit=""
+    var Selectmodel="Bmw"
+    var Selectyear="Bmw"
+    var directfit=""
     override func Disconnect() {
         let a=peacedefine().HomePage
         ChangePage(to: a)
@@ -40,8 +40,8 @@ class ViewController: BleActivity{
         delgate.act=self
         let queue = DispatchQueue.main
         centralManager = CBCentralManager(delegate: self, queue: queue)
-       dowload_mmy()
-    if(ViewController.getShare("admin")=="nodata"){
+        dowload_mmy()
+        if(ViewController.getShare("admin")=="nodata"){
             let a=peacedefine().LanguageSetting
             a.page=1
             ChangePage(to:a)
@@ -54,7 +54,7 @@ class ViewController: BleActivity{
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode=LottieLoopMode.loop
         view.addSubview(animationView)
-    self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(CheckPlace), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(CheckPlace), userInfo: nil, repeats: true)
         Function.GetVersion()
     }
     func dowload_mmy(){
@@ -80,12 +80,12 @@ class ViewController: BleActivity{
         animationView.play()
     }
     override func LoadingSuccess() {
-         isloading=false
+        isloading=false
         animationView.pause()
         LoadingView.isHidden=true
         animationView.isHidden=true
     }
-
+    
     @IBAction func GoBack(_ sender: Any) {
         if(isloading){return}
         if(back.image(for: .normal)==UIImage.init(named: "btn_Menu")){
@@ -117,20 +117,20 @@ class ViewController: BleActivity{
         let classname=NSStringFromClass(controler.classForCoder)
         back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
         print(classname)
-//        tlkingBt.isHidden=(classname=="txusb.HomePage") ? false:true
-          if(Pagememory.count>=2){
-                        self.back.isHidden=false
-          }else{   self.back.isHidden=true
-                           self.rightop.isHidden=false
-                           self.ISRUN=false
-                           self.padicon.isHidden=true}
-     
-      }
+        //        tlkingBt.isHidden=(classname=="txusb.HomePage") ? false:true
+        if(Pagememory.count>=2){
+            self.back.isHidden=false
+        }else{   self.back.isHidden=true
+            self.rightop.isHidden=false
+            self.ISRUN=false
+            self.padicon.isHidden=true}
+        
+    }
     override func Connect() {
         DispatchQueue.global().async {
             sleep(3)
             self.command.Setserial()
-Function.AddIfNotValid(self.serialnum,ViewController.getShare("admin"),ViewController.getShare("password"))
+            Function.AddIfNotValid(self.serialnum,ViewController.getShare("admin"),ViewController.getShare("password"))
         }
     }
 }

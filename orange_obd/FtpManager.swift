@@ -44,7 +44,13 @@ class FtpManage{
               return "false"
     }
     func DowloadMmy(_ deledate:AppDelegate)->Bool{
-        let mmyan=mmyname()
+        var Area=ViewController.getShare("Area")
+        if(Area=="North America"){
+            Area="US"
+        }else{
+            Area="EU"
+        }
+        let mmyan=mmyname(Area)
         if(mmyan.count>19){SersorRecord.DB_Version=mmyan.sub(16..<mmyan.count)}else{SersorRecord.DB_Version=mmyan}
         if(mmyan==ViewController.getShare("mmy")){
              let dst=NSHomeDirectory()+"/Documents/mmytb.db"
@@ -59,7 +65,7 @@ class FtpManage{
             }
             }
         print("donload")
-        let url = URL(string: "http://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/EU/\(mmyan)")
+        let url = URL(string: "https://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/\(Area)/\(mmyan)")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -83,8 +89,8 @@ class FtpManage{
         }
         return false
     }
-    func mmyname()->String {
-        let url = URL(string: "http://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/EU/")
+    func mmyname(_ area:String)->String{
+        let url = URL(string: "https://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/\(area)/")
         var data: Data? = nil
         if let anUrl = url {
             do{

@@ -9,8 +9,8 @@
 import UIKit
 import SQLite3
 class Relarm: UIViewController {
-let deledate = UIApplication.shared.delegate as! AppDelegate
-       let activity=(UIApplication.shared.delegate as! AppDelegate).act!
+    let deledate = UIApplication.shared.delegate as! AppDelegate
+    let activity=(UIApplication.shared.delegate as! AppDelegate).act!
     var position=0
     @IBOutlet var relarlmtext: UITextView!
     @IBOutlet var menu: UIButton!
@@ -36,25 +36,26 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
             }
         }
     }
+    
     func query(){
         if deledate.db != nil {
-             let a=ViewController.getShare("lan")
+            let a=ViewController.getShare("lan")
             var colume="Relearn Procedure (English)"
             switch(a){
             case "English":
                 colume="Relearn Procedure (English)"
                 break
             case "繁體中文":
-                 colume="Relearn Procedure (Traditional Chinese)"
+                colume="Relearn Procedure (Traditional Chinese)"
                 break
             case "简体中文":
-                 colume="Relearn Procedure (Jane)"
+                colume="Relearn Procedure (Jane)"
                 break
             case "Deutsch":
-                 colume="Relearn Procedure (German)"
+                colume="Relearn Procedure (German)"
                 break
             case "Italiano":
-                 colume="Relearn Procedure (Italian)"
+                colume="Relearn Procedure (Italian)"
                 break
             default:
                 break;
@@ -69,12 +70,67 @@ let deledate = UIApplication.shared.delegate as! AppDelegate
                 let iid = sqlite3_column_text(statement,0)
                 if iid != nil{
                     var iids = String(cString: iid!)
-            if(iids.count==0){iids=SetLan.Setlan("norelarm")}
+                    if(iids.count==0){iids=SetLan.Setlan("norelarm")}
                     let paraph = NSMutableParagraphStyle()
                     paraph.lineSpacing = 10
                     let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
                                       NSAttributedString.Key.paragraphStyle: paraph]
-                    relarlmtext.attributedText = NSAttributedString(string: iids, attributes: attributes)
+                    relarlmtext.attributedText = NSAttributedString(string: "OE Part# :\n\(queryOE())\n\nFor OrangeSensor:\n\(SensorModel())\n\nRelearn:\n\(iids)", attributes: attributes)
+                    relarlmtext.isEditable=false
                     print("s19:\(iids)")
-                } }  } }
+                } }
+        }
+        
+    }
+    
+    func queryOE()->String{
+        if deledate.db != nil {
+            let sql="select `OE Part Num` from `Summary table` where `Direct Fit`='\(s19())' limit 0,1"
+            var statement:OpaquePointer? = nil
+            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                print(errmsg)
+            }
+            while sqlite3_step(statement)==SQLITE_ROW{
+                let iid = sqlite3_column_text(statement,0)
+                if iid != nil{
+                    let iids = String(cString: iid!)
+                    return iids
+                } }  }
+        return ""
+    }
+    func SensorModel()->String{
+        if deledate.db != nil {
+            let sql="select `Sensor` from `Summary table` where `Direct Fit`='\(s19())'"
+            var statement:OpaquePointer? = nil
+            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                print(errmsg)
+            }
+            while sqlite3_step(statement)==SQLITE_ROW{
+                let iid = sqlite3_column_text(statement,0)
+                if iid != nil{
+                    let iids = String(cString: iid!)
+                    print("sensor:\(iids)")
+                    return iids
+                } }  }
+        return ""
+    }
+    func s19()->String{
+           if deledate.db != nil {
+               let sql="select `Direct Fit` from `Summary table` where Make='\(activity.Selectmake)' and Model='\(activity.Selectmodel)' and year='\(activity.Selectyear)' and `Direct Fit` not in('NA') limit 0,1"
+               var statement:OpaquePointer? = nil
+               if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
+                   let errmsg=String(cString:sqlite3_errmsg(deledate.db))
+                   print(errmsg)
+               }
+               while sqlite3_step(statement)==SQLITE_ROW{
+                   let iid = sqlite3_column_text(statement,0)
+                   if iid != nil{
+                       let iids = String(cString: iid!)
+                       return iids
+                       print("s19:\(iids)")
+                   } }  }
+        return ""
+    }
 }

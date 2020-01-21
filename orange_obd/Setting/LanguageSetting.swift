@@ -16,10 +16,10 @@ class LanguageSetting: UIViewController,UIPickerViewDelegate,UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return item.count
+        return item.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-return item[row]
+        return item[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(pickerView.selectedRow(inComponent: 0))
@@ -30,7 +30,7 @@ return item[row]
         picker.isHidden=true
         closebt.isHidden=true
     }
- 
+    
     @IBOutlet var SelectLa: UIButton!
     @IBOutlet var SelectAr: UIButton!
     @IBOutlet var closebt: UIButton!
@@ -40,7 +40,7 @@ return item[row]
     @IBOutlet var lan: UILabel!
     @IBOutlet var area: UILabel!
     @IBOutlet var togive: UILabel!
-    
+
     @IBOutlet var setup: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +51,10 @@ return item[row]
         setup.setTitle(SetLan.Setlan("Set_up"), for: .normal)
         closebt.setTitle(SetLan.Setlan("cancel"), for: .normal)
     }
-
+    
     @IBAction func SelectLan(_ sender: Any) {
-         place=1
-    item=["繁體中文","简体中文","Deutsch","English","Italiano","Dansk"]
+        place=1
+        item=["繁體中文","简体中文","Deutsch","English","Italiano","Dansk"]
         picker.reloadAllComponents()
         picker.isHidden=false
         closebt.isHidden=false
@@ -67,27 +67,29 @@ return item[row]
         closebt.isHidden=false
     }
     @IBAction func close(_ sender: Any) {
-         picker.isHidden=true
+        picker.isHidden=true
         closebt.isHidden=true
     }
     var page=0
     @IBAction func Set(_ sender: Any) {
         if(SelectLa.titleLabel?.text=="Select"){
-           return
+            return
         }
-         if(SelectAr.titleLabel?.text=="Select"){
+        if(SelectAr.titleLabel?.text=="Select"){
             return
         }
         ViewController.writeshare(SelectAr.titleLabel!.text!, "Area")
         ViewController.writeshare(SelectLa.titleLabel!.text!, "lan")
+        act.dowload_mmy()
         if(page==0){
             let a=peacedefine().HomePage
             act.ChangePage(to: a)
+            
         }else{
             let a=peacedefine().Policy
             a.position=1
             act.ChangePage(to: a)
         }
-      
+        
     }
 }

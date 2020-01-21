@@ -87,6 +87,7 @@
 		10FBEAF72348374C00A1B8C5 /* TalkingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAF62348374C00A1B8C5 /* TalkingActivity.swift */; };
 		10FBEAFD23483C4500A1B8C5 /* TalkingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFC23483C4500A1B8C5 /* TalkingAdapter.swift */; };
 		10FBEAFF2348464500A1B8C5 /* TalkingAdapterYou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFE2348464500A1B8C5 /* TalkingAdapterYou.swift */; };
+		CAEBAEB523CD68D8004B7F40 /* SensorBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBAEB423CD68D8004B7F40 /* SensorBean.swift */; };
 		E843A1897532756B7DF26204 /* Pods_txusb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B844DF50EAE00CC6CDF6E786 /* Pods_txusb.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		762F8FCEE067C2388EE523EB /* Pods-orange_obd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orange_obd.debug.xcconfig"; path = "Target Support Files/Pods-orange_obd/Pods-orange_obd.debug.xcconfig"; sourceTree = "<group>"; };
 		B844DF50EAE00CC6CDF6E786 /* Pods_txusb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_txusb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7CC5DEF9D33E81FA376BA8F /* Pods-orange_obd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orange_obd.release.xcconfig"; path = "Target Support Files/Pods-orange_obd/Pods-orange_obd.release.xcconfig"; sourceTree = "<group>"; };
+		CAEBAEB423CD68D8004B7F40 /* SensorBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorBean.swift; sourceTree = "<group>"; };
 		F644363AF4F798AEAB723950 /* Pods-txusb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-txusb.debug.xcconfig"; path = "Target Support Files/Pods-txusb/Pods-txusb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +283,7 @@
 		1095681E22CDEAEC00C58666 /* orange_obd */ = {
 			isa = PBXGroup;
 			children = (
+				CAEBAEB323CD685D004B7F40 /* models */,
 				10E573CD2361E82700FD5C3B /* BleOpenLibrary_Swift */,
 				102E8F232349ACBB00328DE1 /* GoogleService-Info.plist */,
 				10008D402347228000922A3F /* E_Talking */,
@@ -441,6 +444,14 @@
 				B844DF50EAE00CC6CDF6E786 /* Pods_txusb.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAEBAEB323CD685D004B7F40 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CAEBAEB423CD68D8004B7F40 /* SensorBean.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,6 +667,7 @@
 				10B6D0C522DD7E2200A084F1 /* CRC16.swift in Sources */,
 				10FBEAFD23483C4500A1B8C5 /* TalkingAdapter.swift in Sources */,
 				10B2390723190BF40063072F /* SensorRecord.swift in Sources */,
+				CAEBAEB523CD68D8004B7F40 /* SensorBean.swift in Sources */,
 				10E573E22361E82700FD5C3B /* English.swift in Sources */,
 				10AC61E522F7FB5900F49C08 /* P3.swift in Sources */,
 				10E573E72361E82700FD5C3B /* BleScanner.swift in Sources */,
@@ -821,7 +833,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -833,7 +845,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5;
+				MARKETING_VERSION = 3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -852,7 +864,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -864,7 +876,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5;
+				MARKETING_VERSION = 3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

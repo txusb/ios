@@ -198,7 +198,7 @@ open class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralD
         for i in 0...data!.count-1{
             TmpData=TmpData+String(format:"%02X",data![i])
         }
-        if(TmpData.count==CheckLen){Rx=TmpData
+        if(TmpData.count==CheckLen||CheckLen==0){Rx=TmpData
             print("---------收到數據ㄦ---------")
             print(Rx)
             RX()
