@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import JzIos_Framework
 class VersionUpdate: UIViewController {
 
     @IBOutlet var versionupdate: UIButton!
@@ -20,6 +20,7 @@ class VersionUpdate: UIViewController {
     }
     
     @IBAction func checkVersion(_ sender: Any) {
-        Function.GetVersion()
+        JzActivity.getControlInstance.setPro("dataloading", "false")
+        DonloadFile.dataloading()
     }
 }

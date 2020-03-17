@@ -12,7 +12,7 @@ open class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralD
     enum SendDataError: Error {
         case CharacteristicNotFound
     }
-   open  var ScannerChange:UIViewController!
+    open  var ScannerChange:UIViewController!
     open var Pagememory=[UIViewController]()
     open var rootView: UIView!
     open var selectedPageContainer: UIViewController!
@@ -296,6 +296,23 @@ open class BleActivity: UIViewController,CBCentralManagerDelegate, CBPeripheralD
             newViewController.didMove(toParent: self)
             self.selectedPageContainer = newViewController
             Pagememory.remove(at: Pagememory.count-1)
+            PageChangeLinster(newViewController)
+        }
+    open func GoMenu() {
+            if(Pagememory.count<2){return}
+            if selectedPageContainer != nil {
+                selectedPageContainer.willMove(toParent: nil)
+                selectedPageContainer.view.removeFromSuperview()
+                selectedPageContainer.removeFromParent()
+            }
+            let newViewController=Pagememory[0];
+            addChild(newViewController)
+            self.rootView.addSubview(newViewController.view)
+            newViewController.view.frame = rootView.bounds
+            newViewController.didMove(toParent: self)
+            self.selectedPageContainer = newViewController
+            Pagememory.removeAll()
+        Pagememory.append(newViewController)
             PageChangeLinster(newViewController)
         }
     open func PageChangeLinster(_ controler:UIViewController){

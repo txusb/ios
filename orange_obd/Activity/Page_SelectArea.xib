@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Page_SelectArea" customModule="txusb" customModuleProvider="target">
+            <connections>
+                <outlet property="area" destination="xYL-v9-Mn6" id="800-hv-DuM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYL-v9-Mn6">
+                    <rect key="frame" x="31" y="54" width="352" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="cEL-d7-GBR"/>
+                    </constraints>
+                    <string key="text">The application might use your area to give 
+you local content.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lpn-Ze-UKo">
+                    <rect key="frame" x="0.0" y="154" width="414" height="658"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yY6-bp-eh7">
+                            <rect key="frame" x="54" y="0.0" width="306" height="306"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="yY6-bp-eh7" secondAttribute="height" multiplier="1:1" id="8kI-v8-SLH"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" backgroundImage="icon_EU"/>
+                            <connections>
+                                <action selector="eu:" destination="-1" eventType="touchUpInside" id="E0B-i3-j2C"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Europe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDa-45-Lqw">
+                            <rect key="frame" x="180" y="306" width="54.5" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="23" id="Vvo-RX-4ku"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W3-tb-Txi">
+                            <rect key="frame" x="54" y="329" width="306" height="306"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="1W3-tb-Txi" secondAttribute="height" multiplier="1:1" id="ZdF-qk-Z8C"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" backgroundImage="icon_NA"/>
+                            <connections>
+                                <action selector="us:" destination="-1" eventType="touchUpInside" id="qjG-ts-wXu"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="North America" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-od-aPu">
+                            <rect key="frame" x="151.5" y="635" width="111.5" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="23" id="x1h-Iy-tvR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="1W3-tb-Txi" firstAttribute="height" secondItem="yY6-bp-eh7" secondAttribute="height" id="pNv-x9-pOj"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" name="backcolor"/>
+            <constraints>
+                <constraint firstItem="Lpn-Ze-UKo" firstAttribute="top" secondItem="xYL-v9-Mn6" secondAttribute="bottom" id="92y-Xe-VID"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lpn-Ze-UKo" secondAttribute="trailing" id="CWX-82-uLm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Lpn-Ze-UKo" secondAttribute="bottom" constant="50" id="S4Z-3m-R9U"/>
+                <constraint firstItem="Lpn-Ze-UKo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nYp-zl-Ttk"/>
+                <constraint firstItem="xYL-v9-Mn6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="p5k-A0-po1"/>
+                <constraint firstItem="xYL-v9-Mn6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="31" id="wYc-uN-b06"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xYL-v9-Mn6" secondAttribute="trailing" constant="31" id="xk3-L8-NPo"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="147"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_EU" width="300" height="300"/>
+        <image name="icon_NA" width="300" height="300"/>
+        <namedColor name="backcolor">
+            <color red="0.93725490196078431" green="0.90980392156862744" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

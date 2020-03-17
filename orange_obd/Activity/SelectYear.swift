@@ -9,7 +9,7 @@
 import UIKit
 import SQLite3
 class SelectYear: UIViewController,UITableViewDataSource,UITableViewDelegate {
-        var it=[model]()
+    var it=PublicBeans.getYear()
     let deledate = UIApplication.shared.delegate as! AppDelegate
     var act:ViewController?=nil
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,32 +42,12 @@ class SelectYear: UIViewController,UITableViewDataSource,UITableViewDelegate {
         super.viewDidLoad()
         self.tb.separatorStyle = .none
         self.tb.bounces=false
-        print(act!.Selectmodel)
-        print(act!.Selectmake)
         query()
         tit.text=SetLan.Setlan("Select_Year")
          print(it.count)
     }
     func query(){
-        if deledate.db != nil {
-            let sql="select distinct Year from `Summary table` where model='\(act!.Selectmodel)' and make='\(act!.Selectmake)' and `Direct Fit` not in('INDIRECT') order by Year asc"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let item=model()
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    item.year=iids
-                    print("name\(iids)")
-                }
-                self.it.append(item)
-            }
-            self.tb.reloadData()
-        }
+         self.tb.reloadData()
     }
 
 }

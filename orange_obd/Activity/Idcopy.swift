@@ -8,6 +8,7 @@
 
 import UIKit
 import SQLite3
+import JzIos_Framework
 class Idcopy: UIViewController,UITextFieldDelegate {
     var Scan_or_Key=0
     let act=(UIApplication.shared.delegate as! AppDelegate).act!
@@ -45,13 +46,9 @@ class Idcopy: UIViewController,UITextFieldDelegate {
         Scancode.text=SetLan.Setlan("Scan_Code")+"\n(For Orange Sensor)"
         keyin.text=SetLan.Setlan("keyin")
         first=true
-        if(mmynum==nil){
-            toptitle.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
-            query()
-        }else{
-            toptitle.text=tt
-            queryid()
-        }
+        mmynum=PublicBeans.gets19()
+        idcount=PublicBeans.getidcount()
+      toptitle.text="\(PublicBeans.Make)/\(PublicBeans.Model)/\(PublicBeans.Year)"
         tit.text=SetLan.Setlan("Key_in_the_original_sensor_ID_number")
         lft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
         Rft.attributedPlaceholder = NSAttributedString(string: "Original sensor ID",attributes: placeholserAttributes)
@@ -63,7 +60,7 @@ class Idcopy: UIViewController,UITextFieldDelegate {
         Rrt.delegate = self
         dowloadmmy()
         Next.setTitle(SetLan.Setlan("Next"), for: .normal)
-        spversion=SensorModel(mmynum)
+        spversion=PublicBeans.getSensorMode()
         if(spversion=="SP201"){
             SensorMode=SensorBean._433
         }
@@ -77,19 +74,8 @@ class Idcopy: UIViewController,UITextFieldDelegate {
         UdCondition()
     }
     func dowloadmmy(){
-        act.DataLoading()
-        DispatchQueue.global().async {
-            let a=FtpManage().DowloadS19(self.mmynum!)
-            DispatchQueue.main.async {
-                if(a=="false"){
-                    self.dowloadmmy()
-                }else{
-                    self.act.LoadingSuccess()
-                    self.act.command.mmydata=a
-                }
-            }
-            
-        }
+        SersorRecord.SersorCode_Sersion=JzActivity.getControlInstance.getPro(PublicBeans.gets19(), "nodata")
+        self.act.command.mmydata=PublicBeans.getS19File()
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(string.count)
@@ -139,64 +125,14 @@ class Idcopy: UIViewController,UITextFieldDelegate {
             return
         }
         let a=peacedefine().Program
-        if(tt != nil){
-            a.mmynum=mmynum
-            a.titmmy=tt
-        }
         a.WriteRR=insert(Rrt.text!)
         a.WriteLf=insert(lft.text!)
         a.WriteLr=insert(Lrt.text!)
         a.WriteRf=insert(Rft.text!)
         act.ChangePage(to: a)
     }
-    func queryid(){
-        if deledate.db != nil {
-            let sql="select `ID_Count` from `Summary table` where `Direct Fit`='\(mmynum!)' and `make` not in('NA') limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    idcount=Int(iids)!
-                    print("Id:\(iids)")
-                } }  } }
-    func query(){
-        if deledate.db != nil {
-            let sql="select `Direct Fit` from `Summary table` where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)' and `Direct Fit` not in('NA') limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    mmynum=iids
-                    print("s19:\(iids)")
-                    queryid()
-                } }  } }
-    func SensorModel(_ s19:String)->String{
-       if deledate.db != nil {
-        let sql="select `Sensor` from `Summary table` where `Direct Fit`='\(s19)'"
-        var statement:OpaquePointer? = nil
-        if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-            let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-            print(errmsg)
-        }
-        while sqlite3_step(statement)==SQLITE_ROW{
-            let iid = sqlite3_column_text(statement,0)
-            if iid != nil{
-                let iids = String(cString: iid!)
-                print("sensor:\(iids)")
-                return iids
-            } }  }
-        return ""
-    }
+   
+ 
     
     func insert(_ a:String)->String{
         var tmp=a

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import JzIos_Framework
 class Signout: UIViewController {
     var act:ViewController!
     
@@ -33,7 +33,7 @@ logout.text=SetLan.Setlan("Log_out")
     
 
     @IBAction func yes(_ sender: Any) {
-        ViewController.writeshare("nodata", "admin")
+        JzActivity.getControlInstance.removePro()
        exit(0)
     }
 }

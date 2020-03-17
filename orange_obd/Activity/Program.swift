@@ -8,11 +8,13 @@
 import SQLite3
 import UIKit
 import Lottie
+import JzIos_Framework
 class Program: UIViewController {
     let act=(UIApplication.shared.delegate as! AppDelegate).act!
     let PROGRAM_SUCCESS=0
     let PROGRAM_WAIT=1
     let UN_LINK=4
+    
     @IBOutlet var success: UILabel!
     let PROGRAM_FAULSE=2
     let PROGRAMMING=3
@@ -31,8 +33,6 @@ class Program: UIViewController {
     var WriteLr=""
     var WriteRR=""
     var WriteRf=""
-    var Lf="0"
-    var idcount=8
     @IBOutlet var Lfi: UIImageView!
     @IBOutlet var Rfi: UIImageView!
     @IBOutlet var Rri: UIImageView!
@@ -53,19 +53,18 @@ class Program: UIViewController {
     @IBOutlet var relearn: UIButton!
     let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var nnyname: UILabel!
-    var mmynum:String!=nil
     var titmmy=""
     var SensorMode=""
     var spversion=""
+    var idcount=8
+    var s19=""
+    var Lf=""
     override func viewDidLoad() {
-        super.viewDidLoad()
-        if(mmynum==nil){ query()
-            nnyname.text="\(act.Selectmake)/\(act.Selectmodel)/\(act.Selectyear)"
-        }else{
-            nnyname.text=titmmy
-        }
-        queryid()
-        queryLf()
+     super.viewDidLoad()
+        idcount=PublicBeans.getidcount()
+        s19=PublicBeans.gets19()
+        Lf=PublicBeans.getLf()
+        nnyname.text="\(PublicBeans.Make)/\(PublicBeans.Model)/\(PublicBeans.Year)"
         CopyText.setTitle("ID COPY", for: .normal)
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode=LottieLoopMode.loop
@@ -73,7 +72,7 @@ class Program: UIViewController {
         if(WriteLf.count != 8){dowloadmmy()}
         success.text=SetLan.Setlan("Please_remove_the_sensor")
         relearn.setTitle(SetLan.Setlan("Relearn_Procedure"), for: .normal)
-        spversion=SensorModel(mmynum)
+        spversion=PublicBeans.getSensorMode()
         if(spversion=="SP201"){
             SensorMode=SensorBean._433
         }
@@ -106,23 +105,11 @@ class Program: UIViewController {
             break
         }
     }
-    func dowloadmmy(){
-        act.DataLoading()
-        ISPROGRAMMING=true
-        DispatchQueue.global().async {
-            let a=FtpManage().DowloadS19(self.mmynum!)
-            DispatchQueue.main.async {
-                if(a=="false"){
-                    self.dowloadmmy()
-                }else{
-                    self.act.LoadingSuccess()
-                    self.act.command.mmydata=a
-                    self.ISPROGRAMMING=false
-                }
-            }
-            
-        }
-    }
+     func dowloadmmy(){
+          SersorRecord.SersorCode_Sersion=JzActivity.getControlInstance.getPro(PublicBeans.gets19(), "nodata")
+          self.act.command.mmydata=PublicBeans.getS19File()
+        print("mmydata"+self.act.command.mmydata)
+      }
     func play() {
         animationView.center = self.view.center
         animationView.frame = CGRect(x: animationView.frame.minX, y: animationView.frame.minY, width: 200, height: 200)
@@ -154,11 +141,11 @@ class Program: UIViewController {
                 }
                 DispatchQueue.main.async {
                     if(CH1.result){
-                        if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                        if(self.s19=="RN1628"||self.s19=="SI2048"){
                             let Writetmp=Id1.sub(0..<2)+"XX"+Id1.sub(4..<6)+"YY"
                             Id1=Writetmp.replace("XX", Id1.sub(6..<8)).replace("YY", Id1.sub(2..<4))
                         }
-                        Id1=String(Id1.suffix(self.idcount))
+                        Id1=String(Id1.suffix(PublicBeans.getidcount()))
                         if(i==0){
                             self.Lfid=Id1
                             if(self.first){self.UpdateUI(self.LF, self.PROGRAM_WAIT,CH1.canPr)}
@@ -180,11 +167,11 @@ class Program: UIViewController {
                         }
                     }
                     if(CH2.result){
-                        if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                        if(self.s19=="RN1628"||self.s19=="SI2048"){
                             let Writetmp=Id2.sub(0..<2)+"XX"+Id2.sub(4..<6)+"YY"
                             Id2=Writetmp.replace("XX", Id2.sub(6..<8)).replace("YY", Id2.sub(2..<4))
                         }
-                        Id2=String(Id2.suffix(self.idcount))
+                        Id2=String(Id2.suffix(PublicBeans.getidcount()))
                         if(i==0){
                             self.Lrid=Id2
                             if(self.first){self.UpdateUI(self.LR, self.PROGRAM_WAIT,CH2.canPr)}
@@ -264,51 +251,6 @@ class Program: UIViewController {
             break
         }
     }
-    func query(){
-        if deledate.db != nil {
-            let sql="select `Direct Fit` from `Summary table` where Make='\(act.Selectmake)' and Model='\(act.Selectmodel)' and year='\(act.Selectyear)' and `Direct Fit` not in('NA') limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    mmynum=iids
-                    print("s19:\(iids)")
-                } }  } }
-    func queryLf(){
-        if deledate.db != nil {
-            let sql="select `Lf` from `Summary table` where `Direct Fit`='\(mmynum!)' limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    Lf=iids
-                    print("Lf:\(iids)")
-                } }  } }
-    func queryid(){
-        if deledate.db != nil {
-            let sql="select `ID_Count` from `Summary table` where `Direct Fit`='\(mmynum!)' and `make` not in('NA') limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    idcount=Int(iids)!
-                    print("Id:\(iids)")
-                } }  } }
     func UpdateUI(_ position:Int,_ situation:Int,_ canPr:Bool){
         switch position {
         case LF:
@@ -404,6 +346,7 @@ class Program: UIViewController {
                 if(canPr){LRl.setBackgroundImage(UIImage.init(named: "icon_input_box_write"), for: .normal)}else{LRl.setBackgroundImage(UIImage.init(named: "icon_input_box_fail"), for: .normal)}
                 break
             default:
+                
                 break
             }
             break
@@ -472,7 +415,7 @@ class Program: UIViewController {
                     let dateFormat:DateFormatter = DateFormatter()
                     dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     let starttime:String = dateFormat.string(from: Date())
-                    condition=self.act.command.ProgramAll(self.mmynum!,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
+                    condition=self.act.command.ProgramAll(self.s19,self.WriteLf,self.WriteLr,self.WriteRf,self.WriteRR,self.Lf)
                     let endtime:String = dateFormat.string(from: Date())
                     var idrecord=[SersorRecord]()
                     if(self.WriteLf != "00000000"){
@@ -503,12 +446,12 @@ class Program: UIViewController {
                         if(self.act.command.FALSE_CHANNEL.contains("01")){b.Issucesss = "false"}else{b.Issucesss = "true"}
                         idrecord.append(b)
                     }
-                    Function.Upload_IDCopyRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
+                    Function.Upload_IDCopyRecord(PublicBeans.Make,PublicBeans.Model,PublicBeans.Year,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
                 }else{
                     let dateFormat:DateFormatter = DateFormatter()
                     dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     let starttime:String = dateFormat.string(from: Date())
-                    condition=self.act.command.ProgramAll(self.mmynum!, self.Lf)
+                    condition=self.act.command.ProgramAll(self.s19, self.Lf)
                     let endtime:String = dateFormat.string(from: Date())
                     var idrecord=[SersorRecord]()
                     for i in 0..<self.act.command.CHANNEL_BLE.count{
@@ -567,7 +510,7 @@ class Program: UIViewController {
                         default:
                             break
                         } }
-                    Function.Upload_ProgramRecord(self.act.Selectmake,self.act.Selectmodel,self.act.Selectyear,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
+                    Function.Upload_ProgramRecord(PublicBeans.Make,PublicBeans.Model,PublicBeans.Year,starttime,endtime,self.act.serialnum,"USBPad","Program", idrecord.count, "ALL", idrecord)
                 }
                 DispatchQueue.main.async {
                     self.ISPROGRAMMING=false
@@ -576,38 +519,38 @@ class Program: UIViewController {
                         let a=self.act.command.CHANNEL_BLE[i]
                         if(a.sub(0..<2)=="04"){
                             self.Rrid=a.sub(3..<a.count)
-                            if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            if(self.s19=="RN1628"||self.s19=="SI2048"){
                                 let WriteTmp=self.Rrid.sub(0..<2)+"XX"+self.Rrid.sub(4..<6)+"YY"
                                 self.Rrid=WriteTmp.replace("XX", self.Rrid.sub(6..<8)).replace("YY", self.Rrid.sub(2..<4))
                             }
-                            self.Rrid=String(self.Rrid.suffix(self.idcount))
+                            self.Rrid=String(self.Rrid.suffix(PublicBeans.getidcount()))
                             self.UpdateUI(self.RR, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="03"){
                             self.Rfid=a.sub(3..<a.count)
-                            if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            if(self.s19=="RN1628"||self.s19=="SI2048"){
                                 let WriteTmp=self.Rfid.sub(0..<2)+"XX"+self.Rfid.sub(4..<6)+"YY"
                                 self.Rfid=WriteTmp.replace("XX", self.Rfid.sub(6..<8)).replace("YY", self.Rfid.sub(2..<4))
                             }
-                            self.Rfid=String(self.Rfid.suffix(self.idcount))
+                            self.Rfid=String(self.Rfid.suffix(PublicBeans.getidcount()))
                             self.UpdateUI(self.RF, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="02"){
                             self.Lrid=a.sub(3..<a.count)
-                            if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            if(self.s19=="RN1628"||self.s19=="SI2048"){
                                 let WriteTmp=self.Lrid.sub(0..<2)+"XX"+self.Lrid.sub(4..<6)+"YY"
                                 self.Lrid=WriteTmp.replace("XX", self.Lrid.sub(6..<8)).replace("YY", self.Lrid.sub(2..<4))
                             }
-                            self.Lrid=String(self.Lrid.suffix(self.idcount))
+                            self.Lrid=String(self.Lrid.suffix(PublicBeans.getidcount()))
                             self.UpdateUI(self.LR, self.PROGRAM_SUCCESS,true)
                         }
                         if(a.sub(0..<2)=="01"){
                             self.Lfid=a.sub(3..<a.count)
-                            if(self.mmynum=="RN1628"||self.mmynum=="SI2048"){
+                            if(self.s19=="RN1628"||self.s19=="SI2048"){
                                 let WriteTmp=self.Lfid.sub(0..<2)+"XX"+self.Lfid.sub(4..<6)+"YY"
                                 self.Lfid=WriteTmp.replace("XX", self.Lfid.sub(6..<8)).replace("YY", self.Lfid.sub(2..<4))
                             }
-                            self.Lfid=String(self.Lfid.suffix(self.idcount))
+                            self.Lfid=String(self.Lfid.suffix(PublicBeans.getidcount()))
                             self.UpdateUI(self.LF, self.PROGRAM_SUCCESS,true)}}
                     self.UpdateUiCondition(self.PROGRAM_SUCCESS)
                     if(!condition){
@@ -666,12 +609,12 @@ class Program: UIViewController {
     func Getid(_ a:String)->String
     {
         var id = a.sub(3..<a.count)
-        if (mmynum == "RN1628" || mmynum == "SI2048")
+        if (s19 == "RN1628" || s19 == "SI2048")
         {
             let Writetmp = id.sub(0..<2) + "XX" + id.sub(4..<6) + "YY"
             id = Writetmp.replace("XX", id.sub(6..<8)).replace("YY", id.sub(2..<4))
         }
-        id = String(id.suffix(self.idcount))
+        id = String(id.suffix(PublicBeans.getidcount()))
         return id
     }
     @IBAction func Toidcopy(_ sender: Any) {
@@ -679,6 +622,7 @@ class Program: UIViewController {
             PadSelect.Function=0
             let a=peacedefine().PadSelect
             a.act=self.act
+            
             self.act.ChangePage(to: a)
         }
     }
@@ -695,21 +639,5 @@ class Program: UIViewController {
         let a=peacedefine().Relarm
         act.ChangePage(to: a)
     }
-    func SensorModel(_ s19:String)->String{
-        if deledate.db != nil {
-            let sql="select `Sensor` from `Summary table` where `Direct Fit`='\(s19)'"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    print("sensor:\(iids)")
-                    return iids
-                } }  }
-        return ""
-    }
+   
 }

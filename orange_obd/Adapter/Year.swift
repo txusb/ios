@@ -28,13 +28,13 @@ class Year: UITableViewCell {
     }
 
     @IBAction func B2(_ sender: Any) {
-        act?.Selectyear=name2
+        PublicBeans.Year=name2
         let a=peacedefine().Relarm
         a.position=1
       act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
-         act?.Selectyear=name1
+         PublicBeans.Year=name1
           let a=peacedefine().Relarm
                a.position=1
              act?.ChangePage(to: a)

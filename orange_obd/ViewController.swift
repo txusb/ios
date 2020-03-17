@@ -9,10 +9,15 @@
 import UIKit
 import Lottie
 import CoreBluetooth
-class ViewController: BleActivity{
+import JzBleHelper_os
+import JzIos_Framework
+import Firebase
+class ViewController: JzActivity,BleCallBack{
     @IBOutlet var rightop: UIButton!
     @IBOutlet var padicon: UIImageView!
     @IBOutlet var tlkingBt: UIButton!
+    lazy var helper=BleHelper(self)
+    @IBOutlet var areaimage: UIButton!
     @IBOutlet var tit: UILabel!
     @IBOutlet var LoadingView: UIView!
     @IBOutlet var Connectlabel: UILabel!
@@ -23,114 +28,139 @@ class ViewController: BleActivity{
     let delgate = UIApplication.shared.delegate as! AppDelegate
     var timer: Timer?
     var etalk=E_Command()
-    var Selectmake="Bmw"
     var serialnum="99"
-    var Selectmodel="Bmw"
-    var Selectyear="Bmw"
-    var directfit=""
-    override func Disconnect() {
-        let a=peacedefine().HomePage
-        ChangePage(to: a)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var scanback:(()->Void?)? = nil
+    var connectBack:(()->Void?)? = nil
+     override func viewInit()  {
+        Messaging.messaging().subscribe(toTopic: "txusbupdate") { error in
+                print("Subscribed to txusbupdate topic")
+              }
+        print("id:\(Bundle.main.bundleIdentifier!)")
+         PublicBeans.OBD資料庫.autoCreat()
         rootView=Container
         command.act=self
-        print(ViewController.getShare("lan"))
         delgate.act=self
-        let queue = DispatchQueue.main
-        centralManager = CBCentralManager(delegate: self, queue: queue)
-        dowload_mmy()
-        if(ViewController.getShare("admin")=="nodata"){
-            let a=peacedefine().LanguageSetting
-            a.page=1
-            ChangePage(to:a)
+        if(JzActivity.getControlInstance.getPro("admin","nodata")=="nodata"){
+              JzActivity.getControlInstance.setHome(Page_SelectArea(), "area")
         }else{
-            let a=peacedefine().HomePage
-            ChangePage(to:a)
+              JzActivity.getControlInstance.setHome(peacedefine().HomePage, "Page_SelectArea")
         }
-        animationView.center = self.view.center
-        animationView.frame = CGRect(x: animationView.frame.minX, y: animationView.frame.minY+20, width: 200, height: 200)
-        animationView.contentMode = .scaleAspectFill
-        animationView.loopMode=LottieLoopMode.loop
-        view.addSubview(animationView)
-        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(CheckPlace), userInfo: nil, repeats: true)
+       
         Function.GetVersion()
     }
     func dowload_mmy(){
-        self.DataLoading()
-        DispatchQueue.global().async {
-            let res=FtpManage().DowloadMmy(self.delgate)
-            DispatchQueue.main.async {
-                if(res){
-                    self.LoadingSuccess()
-                }else{self.dowload_mmy()}
-            }
-        }
+        DonloadFile.dataloading()
     }
     var isloading=false
-    override func LoadIng(_ a:String) {
-        Connectlabel.text=a
-        animationView.center = self.view.center
-        animationView.frame = CGRect(x: animationView.frame.minX, y: animationView.frame.minY+20, width: 200, height: 200)
-        LoadingView.center = self.view.center
-        isloading=true
-        LoadingView.isHidden=false
-        animationView.isHidden=false
-        animationView.play()
-    }
-    override func LoadingSuccess() {
-        isloading=false
-        animationView.pause()
-        LoadingView.isHidden=true
-        animationView.isHidden=true
+    
+    func ChangePage(to:UIViewController){
+        JzActivity.getControlInstance.changePage(to,  String(describing: type(of: to)), true)
     }
     
     @IBAction func GoBack(_ sender: Any) {
         if(isloading){return}
         if(back.image(for: .normal)==UIImage.init(named: "btn_Menu")){
             back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
-            let a=peacedefine().HomePage
-            ChangePage(to: a)
+            JzActivity.getControlInstance.goMenu()
             return
-        }else{        GoBack()}
+        }else{
+            JzActivity.getControlInstance.goBack()
+        }
     }
     
     @IBAction func Signout(_ sender: Any) {
         let a=peacedefine().Signout
         a.act=self
-        SwipePage(to: a)
+        JzActivity.getControlInstance.openDiaLog(a, false, "Signout")
     }
     func DataLoading(){
-        LoadIng(SetLan.Setlan("Data_Loading"))
+        let a=Progress()
+        a.label=SetLan.Setlan("Data_Loading")
+        JzActivity.getControlInstance.openDiaLog(a,true,"Progress")
     }
-    @ objc func CheckPlace(){
-        if(IsConnect&&ISRUN){padicon.isHidden=false}else{
-            padicon.isHidden=true
-        }
+    
+    func LoadingSuccess(){
+        JzActivity.getControlInstance.closeDialLog()
     }
+    override func changePageListener(_ controler: pagemenory) {
+           if(Pagememory.count<2){
+               back.isHidden=true
+           }else{
+               back.isHidden=false
+           }
+           PublicBeans.refrsh()
+           print("Switch\(controler.tag)")
+        if(controler.page is Page_SelectArea){
+                    areaimage.isHidden=true
+                }else{
+                if(JzActivity.getControlInstance.getPro("Area", "EU")=="EU"){
+                        areaimage.setImage(UIImage(named: "icon_EU"), for: .normal)
+                    }else{
+                        areaimage.setImage(UIImage(named: "icon_NA"), for: .normal)
+                    }
+                    areaimage.isHidden=false
+                }
+                if(Pagememory.count>=2){
+                    self.back.isHidden=false
+                }else{   self.back.isHidden=true
+                    self.rightop.isHidden=false
+                    self.padicon.isHidden=true}
+       }
     @IBAction func ToTalking(_ sender: Any) {
-        let a=peacedefine().TalkingActivity
-        ChangePage(to: a)
+    
     }
-    override func PageChangeLinster(_ controler:UIViewController){
-        let classname=NSStringFromClass(controler.classForCoder)
-        back.setImage(UIImage.init(named: "btn_back_normal"), for: .normal)
-        print(classname)
-        //        tlkingBt.isHidden=(classname=="txusb.HomePage") ? false:true
-        if(Pagememory.count>=2){
-            self.back.isHidden=false
-        }else{   self.back.isHidden=true
-            self.rightop.isHidden=false
-            self.ISRUN=false
-            self.padicon.isHidden=true}
-        
-    }
-    override func Connect() {
-        DispatchQueue.global().async {
-            sleep(3)
-            self.command.Setserial()
-            Function.AddIfNotValid(self.serialnum,ViewController.getShare("admin"),ViewController.getShare("password"))
+ 
+    var bles:[CBPeripheral]=[CBPeripheral]()
+     
+     //連線中的回調
+     func onConnecting() {
+         print("onConnecting")
+     }
+     //連線失敗時回調
+     func onConnectFalse() {
+         print("onConnectFalse")
+         JzActivity.getControlInstance.closeDialLog()
+         helper.startScan()
+        self.padicon.isHidden=true
+     }
+     //連線成功時回調
+     func onConnectSuccess() {
+         print("onConnectSuccess")
+         JzActivity.getControlInstance.closeDialLog()
+         DispatchQueue.global().async {
+                    sleep(3)
+                    self.command.Setserial()
+        Function.AddIfNotValid(self.serialnum,JzActivity.getControlInstance.getPro("admin", "nodata"),JzActivity.getControlInstance.getPro("password", "nodata"))
+                }
+        self.padicon.isHidden=false
+        if(connectBack != nil){
+            connectBack!()
         }
-    }
+     }
+     
+     //三種方式返回接收到的藍芽訊息
+     func rx(_ a: BleBinary) {
+         Command.rx=Command.rx+a.readHEX()
+         print("rx:\(a.readHEX())")
+     }
+     
+     //三種方式返回傳送的藍芽訊息
+     func tx(_ b: BleBinary) {
+         print("tx:\(b.readHEX())")
+     }
+     
+     //返回搜尋到的藍芽,可將搜尋到的藍芽儲存於陣列中，可用於之後的連線
+     func scanBack(_ device: CBPeripheral) {
+         if(!bles.contains(device)){
+             bles.append(device)
+         }
+         print(device.name)
+         if(scanback != nil){scanback!()}
+         
+     }
+     
+     //藍芽未打開，經聽到此function可提醒使用者打開藍芽
+     func needOpen() {
+         print("noble")
+     }
 }

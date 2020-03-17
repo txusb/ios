@@ -24,13 +24,13 @@ var n2=""
     }
 
     @IBAction func B2(_ sender: Any) {
-        act?.Selectmodel=n2
+        PublicBeans.Model=n2
         let a=peacedefine().SelectYear
         a.act=act
         act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
-        act?.Selectmodel=n1
+        PublicBeans.Model=n1
         let a=peacedefine().SelectYear
         a.act=act
         act?.ChangePage(to: a)

@@ -8,7 +8,7 @@
 
 import Foundation
 import Foundation
-class model{
+public class model{
     var make=""
     var modele=""
     var year=""

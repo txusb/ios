@@ -9,8 +9,7 @@
 import UIKit
 import SQLite3
 class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
-    var it=[model]()
-    
+    var it=PublicBeans.getMake()
     @IBOutlet var tit: UILabel!
     var act:ViewController = (UIApplication.shared.delegate as! AppDelegate).act!
     let deledate = UIApplication.shared.delegate as! AppDelegate
@@ -23,6 +22,7 @@ class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
         let cell=tableView.dequeueReusableCell(withIdentifier: "Make", for: indexPath) as! Make
         var place=indexPath.row*3
 //        print("image==\(it[place].image)")
+        
         cell.act=act
         cell.b1.setBackgroundImage(UIImage(named: it[place].image), for: .normal)
         cell.name1=it[place].make
@@ -37,6 +37,7 @@ class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
         }else{
             cell.b3.isHidden=true
         }
+        cell.stack.heightAnchor.constraint(equalToConstant: 77).isActive = true
         return cell
     }
     
@@ -45,33 +46,7 @@ class SelectMake: UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.tb.separatorStyle  = .none
         self.tb.bounces=false
         tit.text=SetLan.Setlan("Select_CAR_Make")
-query()
         
     }
 
-    func query(){
-        if deledate.db != nil {
-            let sql="select distinct `Make`,`Make_img` from `Summary table` where `Direct Fit` not in('NA') and `Make` IS NOT NULL and `Make_img` not in('NA')  order by `Make` asc"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let item=model()
-                let iid = sqlite3_column_text(statement,0)
-                let cname = sqlite3_column_text(statement,1)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    item.make=iids
-                }
-                if cname != nil{
-                    let cnames = String(cString: cname!)
-                    item.image=cnames
-                }
-                self.it.append(item)
-            }
-            self.tb.reloadData()
-          }
-    }
 }

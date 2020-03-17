@@ -21,7 +21,8 @@ let act=(UIApplication.shared.delegate as! AppDelegate).act!
     }
     
     @IBAction func ToLan(_ sender: Any) {
-        let a=peacedefine().LanguageSetting
+        let a=Page_SelectArea()
+        a.page=1
         act.ChangePage(to: a)
     }
     

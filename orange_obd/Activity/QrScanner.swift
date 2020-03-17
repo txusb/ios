@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import JzIos_Framework
 import AVFoundation
 import UIKit
 import SQLite3
@@ -19,13 +19,13 @@ class QrScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var VS_or_ID=0
     var idcount=0
     var editext:UITextField!=nil
-     let act=(UIApplication.shared.delegate as! AppDelegate).act!
+    let act=(UIApplication.shared.delegate as! AppDelegate).act!
     @IBOutlet var scantitle: UILabel!
     @IBOutlet var Qrplace: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if(VS_or_ID==1){
-scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
+            scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
         }else{
             scantitle.text=SetLan.Setlan("Scan_Two")
         }
@@ -99,70 +99,55 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
             found(code: stringValue)
         }
         
-//        dismiss(animated: true)
+        //        dismiss(animated: true)
     }
     
     func found(code: String) {
         var fullNameArr = code.components(separatedBy:"*")
         if(fullNameArr.count<3){fullNameArr=code.components(separatedBy:":")}
-       print("\(code) \(fullNameArr)\t\(idcount) \(fullNameArr.count)")
+        print("\(code) \(fullNameArr)\t\(idcount) \(fullNameArr.count)")
         if(fullNameArr.count>=3){
             if(VS_or_ID==1){
                 if(fullNameArr[1].count != idcount){
                     if (captureSession?.isRunning == false) {
                         captureSession.startRunning()
                     }
-            act.view.showToast(text:SetLan.Setlan("ID_code_should_be_8_characters").replace("8", "\(idcount)") )
+                    act.view.showToast(text:SetLan.Setlan("ID_code_should_be_8_characters").replace("8", "\(idcount)") )
                     captureSession.startRunning()
                     return }
                 editext.text=fullNameArr[1]
                 act.GoBack(self)
             }else{
-                GoOk(fullNameArr[0])
+                GoOk(code)
             }
-           
+            
         }else{
-             if(VS_or_ID==1){
-           view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
-                    }else{
+            if(VS_or_ID==1){
+                view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
+            }else{
                 view.showToast(text:SetLan.Setlan("Scan_Two"))
-                        
-                    }
+                
+            }
             captureSession.startRunning()
         }
-
+        
     }
     func GoOk(_ code:String){
-        print("GOOK")
-        if deledate.db != nil {
-            let sql="select  `Make`,`Model`,`Year`,`Make_Img`  from `Summary table` where `Direct Fit` not in('NA') and `Make_Img` not in('NA') and `MMY number`='\(code)' limit 0,1"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let Make = sqlite3_column_text(statement,0)
-                 let Model = sqlite3_column_text(statement,1)
-                 let Year = sqlite3_column_text(statement,2)
-              act.Selectmake=String(cString: Make!)
-                 act.Selectmodel=String(cString: Model!)
-                 act.Selectyear=String(cString: Year!)
-                if(PadSelect.Function==0){
-                    let a=peacedefine().Relarm
-                                a.position=1
-                              act.ChangePage(to: a)
-                    return
-                }else{
-                  let a=peacedefine().Relarm
-                                                   a.position=1
-                                                 act.ChangePage(to: a)
-                    return
-                }
-            }
-            view.showToast(text:SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster"))
-                           captureSession.startRunning()
-        }
+         if(code.components(separatedBy: "*").count>1){
+                        print("init*\(code.components(separatedBy: "*")[0])")
+                        PublicBeans.資料庫.query("select `Make`,`Model`,`Year`  from `Summary table` where `Direct Fit` not in('NA')  and `MMY number`='\(code.components(separatedBy: "*")[0])' limit 0,1", {
+                            data in
+                            PublicBeans.Make=data.getString(0)
+                            PublicBeans.Model=data.getString(1)
+                            PublicBeans.Year=data.getString(2)
+                        print("init\(code.components(separatedBy: "*")[0])")
+                            let a=peacedefine().Relarm
+                                          a.position=1
+        JzActivity.getControlInstance.changePage(a, "Page_Relearn", true)
+                        }, {
+                            print("resultsuccess")
+                        })
+                    }
     }
     override var prefersStatusBarHidden: Bool {
         return true
@@ -170,5 +155,5 @@ scantitle.text=SetLan.Setlan("Please_scan_the_QR_Code_on_the_catalog_or_poster")
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-
+    
 }

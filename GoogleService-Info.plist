@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:951056911376:ios:7b976ef3ef9e7d128f4e95</string>
+	<string>1:951056911376:ios:16c1090c6acfd6bf8f4e95</string>
 	<key>DATABASE_URL</key>
 	<string>https://orange-testserver.firebaseio.com</string>
 </dict>

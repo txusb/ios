@@ -7,6 +7,8 @@ target 'txusb' do
 
   # Pods for orange_obd
 pod 'Firebase/Storage'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 pod 'Firebase/Analytics'
 pod 'ViewPager-Swift'
 pod 'CryptoSwift'

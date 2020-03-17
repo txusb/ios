@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import JzIos_Framework
 class LanguageSetting: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     var place=0
     let act=(UIApplication.shared.delegate as! AppDelegate).act!
@@ -75,13 +75,8 @@ class LanguageSetting: UIViewController,UIPickerViewDelegate,UIPickerViewDataSou
         if(SelectLa.titleLabel?.text=="Select"){
             return
         }
-        if(SelectAr.titleLabel?.text=="Select"){
-            return
-        }
-        ViewController.writeshare(SelectAr.titleLabel!.text!, "Area")
-        ViewController.writeshare(SelectLa.titleLabel!.text!, "lan")
-        act.dowload_mmy()
-        if(page==0){
+        JzActivity.getControlInstance.setPro("lan", SelectLa.titleLabel!.text!)
+         if(page==0){
             let a=peacedefine().HomePage
             act.ChangePage(to: a)
             

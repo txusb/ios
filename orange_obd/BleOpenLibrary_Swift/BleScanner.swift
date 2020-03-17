@@ -17,7 +17,7 @@ class BleScanner: UIViewController,UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell=tableView.dequeueReusableCell(withIdentifier: "BleAdapter", for: indexPath) as! BleAdapter
+        let cell=tableView.dequeueReusableCell(withIdentifier: "BleAdapter", for: indexPath) as! BleAdapter
         cell.blename.text=act!.bles[indexPath.row]
         return cell
     }
@@ -25,17 +25,17 @@ class BleScanner: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet var tb: UITableView!
     
-   
+    
     @IBOutlet var cancel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-     selectdevice.text=SetLan.Setlan("Select Device")
-cancel.setTitle(SetLan.Setlan("cancel"), for: .normal)
+        selectdevice.text=SetLan.Setlan("Select Device")
+        cancel.setTitle(SetLan.Setlan("cancel"), for: .normal)
         self.tb.separatorStyle = .none
         self.tb.bounces=false
         self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updatemessage), userInfo: nil, repeats: true)
     }
-
+    
     @IBAction func close(_ sender: Any) {
         self.timer!.invalidate()
         self.willMove(toParent: nil)
@@ -49,8 +49,8 @@ cancel.setTitle(SetLan.Setlan("cancel"), for: .normal)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         act?.connectblename=act!.bles[indexPath.row]
         act?.Connecting()
-    act!.centralManager.scanForPeripherals(withServices: nil, options: nil)
+        act!.centralManager.scanForPeripherals(withServices: nil, options: nil)
         close(self)
     }
-  
+    
 }

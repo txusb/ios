@@ -12,13 +12,19 @@ class Make: UITableViewCell {
     @IBOutlet var b2: UIButton!
     @IBOutlet var b3: UIButton!
     @IBOutlet var b1: UIButton!
+    
+    @IBOutlet weak var stack: UIStackView!
     var name1=""
     var name2=""
     var name3=""
     var act:ViewController? = nil
     override func awakeFromNib() {
-        super.awakeFromNib()
+        
+       
         // Initialization code
+       
+         super.awakeFromNib()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,19 +32,19 @@ class Make: UITableViewCell {
     }
 
     @IBAction func B3(_ sender: Any) {
-        act?.Selectmake=name3
+        PublicBeans.Make=name3
       let a=peacedefine().SelectModel
         a.act=act
         act?.ChangePage(to: a)
     }
     @IBAction func B2(_ sender: Any) {
-        act?.Selectmake=name2
+        PublicBeans.Make=name2
         let a=peacedefine().SelectModel
         a.act=act
         act?.ChangePage(to: a)
     }
     @IBAction func B1(_ sender: Any) {
-        act?.Selectmake=name1
+        PublicBeans.Make=name1
         let a=peacedefine().SelectModel
         a.act=act
         act?.ChangePage(to: a)

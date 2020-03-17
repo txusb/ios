@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
+import JzIos_Framework
 class HomePage: UIViewController {
+    
     let activity=(UIApplication.shared.delegate as! AppDelegate).act!
     @IBOutlet var t6: UILabel!
     @IBOutlet var t5: UILabel!
@@ -16,33 +17,28 @@ class HomePage: UIViewController {
     @IBOutlet var t3: UILabel!
     @IBOutlet var t2: UILabel!
     @IBOutlet var t1: UILabel!
-    
     @IBOutlet var settingbt: UIButton!
     @IBOutlet var ShoppingBt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity.Pagememory.removeAll()
-        activity.Pagememory.append(self)
         activity.back.isHidden=true
-        activity.rightop.isHidden=false
-        activity.ISRUN=false
         t3.text=SetLan.Setlan("Cloud_information")
         t4.text=SetLan.Setlan("Online_shopping")
         t5.text=SetLan.Setlan("Users_manual")
         t6.text=SetLan.Setlan("Setting")
-        activity.etalk.admin=ViewController.getShare("admin")
-        if(ViewController.getShare("lan")=="Italiano"){
+        if(JzActivity.getControlInstance.getPro("lan", "nodata")=="Italiano"){
             ShoppingBt.setImage(UIImage.init(named: "btn_setting_normal"), for: .normal)
             t4.text=SetLan.Setlan("Setting")
             t6.isHidden=true
             settingbt.isHidden=true
         }
         t2.text="ID COPY"
+      
     }
-    
     @IBAction func Shopping(_ sender: Any) {
         var ur=""
-        var a=ViewController.getShare("lan")
+        
+        var a=JzActivity.getControlInstance.getPro("lan", "nodata")
         if(a=="nodata"){a="English"}
         switch a {
         case "English":
@@ -102,6 +98,10 @@ class HomePage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         activity.tit.text="Orange TPMS"
         //        activity.tlkingBt.isHidden=false
+          activity.dowload_mmy()
+        if(JzActivity.getControlInstance.getPro("update", "nodata") != "nodata"){
+                  JzActivity.getControlInstance.openDiaLog(Dia_Update(), false, "Dia_Update")
+             }
     }
     @IBAction func ToSetting(_ sender: Any) {
         let a=peacedefine().Setting

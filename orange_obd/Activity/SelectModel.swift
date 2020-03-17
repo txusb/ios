@@ -30,7 +30,7 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         return cell
     }
     
-  var it=[model]()
+    var it=PublicBeans.getModel()
   let deledate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var tb: UITableView!
     
@@ -39,32 +39,13 @@ class SelectModel: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         super.viewDidLoad()
         tb.bounces=false
         tb.separatorStyle = .none
-        print("select make\(act!.Selectmake)")
         query()
         tit.text=SetLan.Setlan("Select_CAR_Model")
         print(it.count)
     }
     
     func query(){
-        if deledate.db != nil {
-            let sql="select distinct model from `Summary table` where make='\(act!.Selectmake)' and `Direct Fit` not in('NA') order by model asc"
-            var statement:OpaquePointer? = nil
-            if sqlite3_prepare(deledate.db,sql,-1,&statement,nil) != SQLITE_OK{
-                let errmsg=String(cString:sqlite3_errmsg(deledate.db))
-                print(errmsg)
-            }
-            while sqlite3_step(statement)==SQLITE_ROW{
-                let item=model()
-                let iid = sqlite3_column_text(statement,0)
-                if iid != nil{
-                    let iids = String(cString: iid!)
-                    item.modele=iids
-                    print("name\(iids)")
-                }
-                self.it.append(item)
-            }
-            self.tb.reloadData()
-        }
+        self.tb.reloadData()
     }
 
 }

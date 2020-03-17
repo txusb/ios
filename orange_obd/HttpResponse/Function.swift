@@ -7,26 +7,35 @@
 //
 import UIKit
 import Foundation
+import JzIos_Framework
 class Function{
     static let link="https://bento2.orange-electronic.com/App_Asmx/ToolApp.asmx"
     static func GetVersion(){
         let act=(UIApplication.shared.delegate as! AppDelegate).act!
-        let url = URL(string: "https://itunes.apple.com/lookup?bundleId=com.orange.txusb")!
+        let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(Bundle.main.bundleIdentifier!)")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             let DaS=String(data: data, encoding: .utf8)!
+            if(DaS.components(separatedBy: "\"version\"").count<2){return}
        let NewVersion=DaS.components(separatedBy: "\"version\"")[1].components(separatedBy:"\"")[1]
             if let currentUserInstallVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 if(currentUserInstallVersion != NewVersion){
     print("current\(currentUserInstallVersion) new:\(NewVersion)")
                     DispatchQueue.main.async {
                         act.view.showToast(text: SetLan.Setlan("newversion"))
+                          goAppStore(appid: "1475728273")
                     }
                 }
             }
         }
         task.resume()
     }
+    static func goAppStore(appid:String) {
+                    let  urlString =  "itms-apps://itunes.apple.com/app/id\(appid)"
+                    let  url =  URL (string: urlString)
+            UIApplication.shared.openURL(url!)
+                
+        }
     static func ResetPass(_ admin:String,_ act:ResetPassword){
         let url = URL(string:link)!
         var request = URLRequest(url: url)
@@ -190,8 +199,8 @@ class Function{
                 act.act.LoadingSuccess()
                 switch (res){
                 case 0:
-                    ViewController.writeshare("admin", admin)
-                     ViewController.writeshare("password", password)
+                    JzActivity.getControlInstance.setPro("admin", admin)
+                    JzActivity.getControlInstance.setPro("password", password)
                     let a=peacedefine().HomePage
                     act.act.ChangePage(to: a)
                     break;
@@ -274,10 +283,12 @@ class Function{
                 act.act.LoadingSuccess()
                 switch (res){
                 case 0:
-                    ViewController.writeshare(admin, "admin")
-                    ViewController.writeshare( password,"password")
+                    JzActivity.getControlInstance.setPro("admin", admin)
+                    JzActivity.getControlInstance.setPro("password", password)
                     let a=peacedefine().HomePage
                     act.act.ChangePage(to: a)
+                    JzActivity.getControlInstance.setHome(a, "Home")
+                    
                     break;
                 case 1:
                     act.act.view.showToast(text: SetLan.Setlan("errorpass"))

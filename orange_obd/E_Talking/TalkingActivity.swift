@@ -117,7 +117,7 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
     
     func SendMail(){
         let a=sender.text
-        self.act.LoadIng("Data Loading")
+        self.act.DataLoading()
         DispatchQueue.global().async {
             let response=self.act.etalk.Sendmail(self.talkingwho,self.ImageUrl, a!)
             DispatchQueue.main.async {
@@ -164,10 +164,9 @@ class TalkingActivity: ImagePicker, UITableViewDataSource,UITableViewDelegate{
         }
     }
     func SendMailWithPicture(){
-        self.act.LoadIng("Data Loading")
+        self.act.DataLoading()
         let currentTime = Date().timeIntervalSince1970
              let storageRef = Storage.storage().reference().child(act.etalk.admin).child("\(currentTime).jpg")
-                act.LoadIng("Data Loading")
         if let uploadData = selInmage!.jpegData(compressionQuality: 1) {
                  // 這行就是 FirebaseStorage 關鍵的存取方法。
 
