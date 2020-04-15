@@ -88,8 +88,6 @@
 		CA1BCA6E24052AB400A7D01F /* Page_SelectArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BCA6C24052AB400A7D01F /* Page_SelectArea.swift */; };
 		CA1BCA6F24052AB400A7D01F /* Page_SelectArea.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1BCA6D24052AB400A7D01F /* Page_SelectArea.xib */; };
 		CA2EBF27241FA1F400860941 /* PublicBeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2EBF26241FA1F400860941 /* PublicBeans.swift */; };
-		CA2EBF2A241FA23C00860941 /* JzOsSqlHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2EBF28241FA23800860941 /* JzOsSqlHelper.framework */; };
-		CA2EBF2B241FA23C00860941 /* JzOsSqlHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA2EBF28241FA23800860941 /* JzOsSqlHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA2EBF2F241FAE6A00860941 /* DonloadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2EBF2E241FAE6A00860941 /* DonloadFile.swift */; };
 		CA2EBF32241FAEDD00860941 /* JzOsTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2EBF30241FAEB200860941 /* JzOsTool.framework */; };
 		CA2EBF33241FAEDD00860941 /* JzOsTool.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA2EBF30241FAEB200860941 /* JzOsTool.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -108,6 +106,8 @@
 		CA2EBF512420E60900860941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA2EBF502420E60900860941 /* GoogleService-Info.plist */; };
 		CA2EBF552420ED4600860941 /* Dia_Update.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2EBF532420ED4600860941 /* Dia_Update.xib */; };
 		CA2EBF562420ED4600860941 /* Dia_Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2EBF542420ED4600860941 /* Dia_Update.swift */; };
+		CA49575A2447100500CED6BE /* JzOsSqlHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA49575824470FF900CED6BE /* JzOsSqlHelper.framework */; };
+		CA49575B2447100500CED6BE /* JzOsSqlHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA49575824470FF900CED6BE /* JzOsSqlHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEBAEB523CD68D8004B7F40 /* SensorBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBAEB423CD68D8004B7F40 /* SensorBean.swift */; };
 		E843A1897532756B7DF26204 /* Pods_txusb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B844DF50EAE00CC6CDF6E786 /* Pods_txusb.framework */; };
 /* End PBXBuildFile section */
@@ -122,7 +122,7 @@
 				CA2EBF3E2420986600860941 /* JzBleHelper_os.framework in Embed Frameworks */,
 				CA2EBF4B2420AD5600860941 /* JzAdapter.framework in Embed Frameworks */,
 				CA2EBF33241FAEDD00860941 /* JzOsTool.framework in Embed Frameworks */,
-				CA2EBF2B241FA23C00860941 /* JzOsSqlHelper.framework in Embed Frameworks */,
+				CA49575B2447100500CED6BE /* JzOsSqlHelper.framework in Embed Frameworks */,
 				CA2EBF4F2420D48000860941 /* JzIos_Framework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -223,7 +223,6 @@
 		CA1BCA6C24052AB400A7D01F /* Page_SelectArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page_SelectArea.swift; sourceTree = "<group>"; };
 		CA1BCA6D24052AB400A7D01F /* Page_SelectArea.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Page_SelectArea.xib; sourceTree = "<group>"; };
 		CA2EBF26241FA1F400860941 /* PublicBeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicBeans.swift; sourceTree = "<group>"; };
-		CA2EBF28241FA23800860941 /* JzOsSqlHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JzOsSqlHelper.framework; sourceTree = "<group>"; };
 		CA2EBF2E241FAE6A00860941 /* DonloadFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonloadFile.swift; sourceTree = "<group>"; };
 		CA2EBF30241FAEB200860941 /* JzOsTool.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JzOsTool.framework; sourceTree = "<group>"; };
 		CA2EBF37241FAF3C00860941 /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
@@ -239,6 +238,7 @@
 		CA2EBF522420E8A900860941 /* txusbRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = txusbRelease.entitlements; sourceTree = "<group>"; };
 		CA2EBF532420ED4600860941 /* Dia_Update.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dia_Update.xib; sourceTree = "<group>"; };
 		CA2EBF542420ED4600860941 /* Dia_Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dia_Update.swift; sourceTree = "<group>"; };
+		CA49575824470FF900CED6BE /* JzOsSqlHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JzOsSqlHelper.framework; sourceTree = "<group>"; };
 		CAEBAEB423CD68D8004B7F40 /* SensorBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorBean.swift; sourceTree = "<group>"; };
 		F644363AF4F798AEAB723950 /* Pods-txusb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-txusb.debug.xcconfig"; path = "Target Support Files/Pods-txusb/Pods-txusb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,7 +253,7 @@
 				CA2EBF32241FAEDD00860941 /* JzOsTool.framework in Frameworks */,
 				CA2EBF4E2420D48000860941 /* JzIos_Framework.framework in Frameworks */,
 				CA2EBF3D2420986500860941 /* JzBleHelper_os.framework in Frameworks */,
-				CA2EBF2A241FA23C00860941 /* JzOsSqlHelper.framework in Frameworks */,
+				CA49575A2447100500CED6BE /* JzOsSqlHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +309,7 @@
 		1095681322CDEAEC00C58666 = {
 			isa = PBXGroup;
 			children = (
+				CA49575824470FF900CED6BE /* JzOsSqlHelper.framework */,
 				CA2EBF522420E8A900860941 /* txusbRelease.entitlements */,
 				CA2EBF502420E60900860941 /* GoogleService-Info.plist */,
 				CA2EBF4C2420D47D00860941 /* JzIos_Framework.framework */,
@@ -317,7 +318,6 @@
 				CA2EBF3B2420985D00860941 /* JzBleHelper_os.framework */,
 				CA2EBF36241FAF2600860941 /* Dialog */,
 				CA2EBF30241FAEB200860941 /* JzOsTool.framework */,
-				CA2EBF28241FA23800860941 /* JzOsSqlHelper.framework */,
 				10B239032318B4720063072F /* txusb.entitlements */,
 				1095687E22D33F7C00C58666 /* try.srec */,
 				1095687322D3105700C58666 /* simple-loader2.json */,
@@ -816,6 +816,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -878,6 +879,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -906,7 +908,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -919,7 +921,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -939,7 +941,7 @@
 				CODE_SIGN_ENTITLEMENTS = txusbRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = HEQGGF6N89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -952,7 +954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.txusb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

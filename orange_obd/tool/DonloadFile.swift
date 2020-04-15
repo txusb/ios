@@ -12,7 +12,16 @@ import JzOsSqlHelper
 import Foundation
 import JzOsTool
 public class DonloadFile{
+    
+    public static  var url="https://bento2.orange-electronic.com/Orange%20Cloud/Beta"
     public static func dataloading(){
+        if(JzActivity.getControlInstance.getPro("Beta","false")=="true"){
+            print("為beta")
+            DonloadFile.url="https://bento2.orange-electronic.com/Orange%20Cloud/Beta"
+        }else{
+            print("佈為beta")
+            DonloadFile.url="https://bento2.orange-electronic.com/Orange%20Cloud"
+        }
         let a=Progress()
         a.label=a.資料載入
         JzActivity.getControlInstance.openDiaLog(a,true,"Progress")
@@ -25,10 +34,14 @@ public class DonloadFile{
         }
         DispatchQueue.global().async {
 //            if(!downAllobd()){dataloading()}
-            if(!downAllS19()){dataloading()}
+            if(!downAllS19()){DispatchQueue.main.async {dataloading()
+                return
+                }}
             let mmy=mmyname()
             if(mmy==nil){
-                DispatchQueue.main.async {dataloading()  }
+                DispatchQueue.main.async {dataloading()
+                    return
+                }
             }else{
                 sql.initByUrl(mmy!,{
                     result in
@@ -40,20 +53,17 @@ public class DonloadFile{
                             JzActivity.getControlInstance.setPro("update", "nodata")
                         }
                     }else{
-                        DispatchQueue.main.async {dataloading()  }
+                        DispatchQueue.main.async {dataloading()
+                            return
+                        }
                     }
                 })
             }
         }
     }
     public static func mmyname()->String?{
-        var Area=PublicBeans.地區
-        if(Area=="North America"){
-            Area="US"
-        }else{
-            Area="EU"
-        }
-        let url = URL(string: "https://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/\(Area)/")
+        let Area=JzActivity.getControlInstance.getPro("Area", "EU")
+        let url = URL(string: "\(DonloadFile.url)/Database/MMY/\(Area)/")
         var data: Data? = nil
         if let anUrl = url {
             do{
@@ -61,7 +71,7 @@ public class DonloadFile{
                 let ds=String(decoding: data!, as: UTF8.self).components(separatedBy: "HREF=")
                 let filename=ds[2].components(separatedBy: ">")[1].components(separatedBy: "<")[0]
                 print(filename)
-                return "https://bento2.orange-electronic.com/Orange%20Cloud/Database/MMY/\(Area)/\(filename)"
+                return "\(DonloadFile.url)/Database/MMY/\(Area)/\(filename)"
                 
             }catch{print(error)
                 return nil
@@ -79,7 +89,7 @@ public class DonloadFile{
     }
     public static func downAllS19()->Bool{
         PublicBeans.OBD資料庫.exSql("CREATE TABLE if not exists `s19` ( name VARCHAR, data TEXT);")
-        let a = JzOSTool.http().listHttpFile("https://bento2.orange-electronic.com", "/Orange%20Cloud/Database/SensorCode/SIII/")
+        let a = JzOSTool.http().listHttpFile("https://bento2.orange-electronic.com", "/Orange%20Cloud\(url.replace("https://bento2.orange-electronic.com/Orange%20Cloud", ""))/Database/SensorCode/SIII/")
         if a != nil{
             for i in 0..<a!.count{
                 if(!self.downs19(a![i])){return false}
@@ -89,13 +99,13 @@ public class DonloadFile{
             print("失敗")
             return false
         }
-        return true
+        return false
     }
-    public static func downs19(_ name:String)->Bool{ let a=JzOSTool.http().listHttpFile("https://bento2.orange-electronic.com", "/Orange%20Cloud/Database/SensorCode/SIII/\(name)/")
+    public static func downs19(_ name:String)->Bool{ let a=JzOSTool.http().listHttpFile("https://bento2.orange-electronic.com", "/Orange%20Cloud\(url.replace("https://bento2.orange-electronic.com/Orange%20Cloud", ""))/Database/SensorCode/SIII/\(name)/")
         if let dir=a{
             if(dir.count>0){
                 if(JzActivity.getControlInstance.getPro(name, "nodata")==dir[0]){return true}
-                let file=JzOSTool.http().getFileText("https://bento2.orange-electronic.com/Orange%20Cloud/Database/SensorCode/SIII/\(name)/\(dir[0])")
+                let file=JzOSTool.http().getFileText("\(DonloadFile.url)/Database/SensorCode/SIII/\(name)/\(dir[0])")
                 if file != nil{
                     PublicBeans.OBD資料庫.exSql("delete from `s19` where name='\(name)'")
                     PublicBeans.OBD資料庫.exSql("insert into `s19` (name,data) values ('\(name)','\(file!.replace("\r\n", ""))')")
@@ -127,7 +137,7 @@ public class DonloadFile{
         if let dir=a{
             if(dir.count>0){
                 if(JzActivity.getControlInstance.getPro(name, "nodata")==dir[0]){return true}
-                let file=JzOSTool.http().getFileText("https://bento2.orange-electronic.com/Orange%20Cloud/Drive/OBD%20DONGLE/\(name)/\(dir[0])")
+                let file=JzOSTool.http().getFileText("\(DonloadFile.url)/Drive/OBD%20DONGLE/\(name)/\(dir[0])")
                 if file != nil{
                     PublicBeans.OBD資料庫.exSql("delete from `obd` where name='\(name)'")
                     PublicBeans.OBD資料庫.exSql("insert into `obd` (name,data) values ('\(name)','\(file!.replace("\r\n", ""))')")

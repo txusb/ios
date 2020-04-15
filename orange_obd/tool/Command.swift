@@ -288,6 +288,7 @@ class Command {
         return CRC16().crc16(TmpCommand)
     }
     func CheckS19(_ filename:String)->Bool{
+        print("mmydata:\(mmydata)")
         if(SensorModel==mmydata.sub(4..<8)&&AppVersion==mmydata.sub(8..<10)&&Lib==mmydata.sub(20..<22)){return true}else{return false}
     }
     func A0X10(_ data:String){

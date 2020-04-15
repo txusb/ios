@@ -23,6 +23,8 @@ class ViewController: JzActivity,BleCallBack{
     @IBOutlet var Connectlabel: UILabel!
     @IBOutlet var back: UIButton!
     @IBOutlet var Container: UIView!
+    @IBOutlet var topv: UIView!
+    
     let animationView = AnimationView(name: "simple-loader2")
     var command=Command()
     let delgate = UIApplication.shared.delegate as! AppDelegate
@@ -32,6 +34,9 @@ class ViewController: JzActivity,BleCallBack{
     var scanback:(()->Void?)? = nil
     var connectBack:(()->Void?)? = nil
      override func viewInit()  {
+        if(JzActivity.getControlInstance.getPro("Beta", "false")=="true"){
+                  topv.backgroundColor=UIColor.green
+              }
         Messaging.messaging().subscribe(toTopic: "txusbupdate") { error in
                 print("Subscribed to txusbupdate topic")
               }
@@ -83,6 +88,7 @@ class ViewController: JzActivity,BleCallBack{
         JzActivity.getControlInstance.closeDialLog()
     }
     override func changePageListener(_ controler: pagemenory) {
+      
            if(Pagememory.count<2){
                back.isHidden=true
            }else{
@@ -109,7 +115,22 @@ class ViewController: JzActivity,BleCallBack{
     @IBAction func ToTalking(_ sender: Any) {
     
     }
- 
+    
+    var count=0
+    @IBAction func selectArea(_ sender: Any) {
+        count+=1
+        if(count==10){
+            if(JzActivity.getControlInstance.getPro("Beta", "false")=="true"){
+                JzActivity.getControlInstance.setPro("Beta", "false")
+            }else{
+        JzActivity.getControlInstance.setPro("Beta", "true")
+            }
+        JzActivity.getControlInstance.setPro("dataloading", "false")
+            DonloadFile.dataloading()
+        }
+        if(count>10){count=0}
+    }
+    
     var bles:[CBPeripheral]=[CBPeripheral]()
      
      //連線中的回調
