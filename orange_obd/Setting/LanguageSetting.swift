@@ -78,7 +78,7 @@ class LanguageSetting: UIViewController,UIPickerViewDelegate,UIPickerViewDataSou
         JzActivity.getControlInstance.setPro("lan", SelectLa.titleLabel!.text!)
          if(page==0){
             let a=peacedefine().HomePage
-            act.ChangePage(to: a)
+            act.setHome(a, "HomePage")
             
         }else{
             let a=peacedefine().Policy

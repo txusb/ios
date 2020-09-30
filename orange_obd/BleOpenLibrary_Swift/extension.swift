@@ -152,6 +152,16 @@ extension String {
         let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
         let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
         return String(self[idx1..<idx2])
+//        if self.count > range.upperBound {
+//                  let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
+//                  let endIndex = self.index(self.startIndex, offsetBy: range.upperBound)
+//                  let subString = self[startIndex..<endIndex]
+//                  print("返回字串:\(String(subString))")
+//                  return String(subString)
+//              } else {
+//                  print("返回字串:\(self)")
+//                  return self
+//              }
     }
     
     func replace(_ target: String, _ withString: String) -> String

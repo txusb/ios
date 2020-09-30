@@ -73,6 +73,19 @@ class Idcopy: UIViewController,UITextFieldDelegate {
         first=true
         UdCondition()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        var string=lft.text
+        let aSet = NSCharacterSet(charactersIn:"0123456789abcdef").inverted
+        let compSepByCharInSet = string!.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        for i in [lft,Rft,Lrt,Rrt]{
+            if(i?.text?.count ?? "".count>0){
+                i!.background=UIImage.init(named: "icon_input_box_write")
+            }else{
+                i!.background=UIImage.init(named: "icon_input_box_locked")
+            }
+        }
+    }
     func dowloadmmy(){
         SersorRecord.SersorCode_Sersion=JzActivity.getControlInstance.getPro(PublicBeans.gets19(), "nodata")
         self.act.command.mmydata=PublicBeans.getS19File()
@@ -149,9 +162,7 @@ class Idcopy: UIViewController,UITextFieldDelegate {
     
     @IBAction func toprogram(_ sender: Any) {
         PadSelect.Function=1
-        let a=peacedefine().PadSelect
-        a.act=self.act
-        self.act.ChangePage(to: a)
+        JzActivity.getControlInstance.goBack("PadSelect")
     }
     var run=false
     func UdCondition(){

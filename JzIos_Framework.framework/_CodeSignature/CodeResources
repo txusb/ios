@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/JzIos_Framework-Swift.h</key>
 		<data>
-		af4++/jMTybvT2XJpgzFVFrSKJk=
+		DLVq7JmEWsH6E8wnaEVPzk1o5es=
 		</data>
 		<key>Headers/JzIos_Framework.h</key>
 		<data>
@@ -14,27 +14,43 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JBZ9Q2XftQm8iDwLcqeSBCjx6Iw=
+		3rQU3dki0JWWWoPzN+gHHHQbfVI=
 		</data>
 		<key>JzActivity.storyboardc/Info.plist</key>
 		<data>
 		GnMdGFfDuvwAuWJN7FS9ELLozY4=
 		</data>
+		<key>Modules/JzIos_Framework.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<data>
+		6ySNh+upUzy3ocgcKgAJu6z0B5A=
+		</data>
+		<key>Modules/JzIos_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<data>
+		6ySNh+upUzy3ocgcKgAJu6z0B5A=
+		</data>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		0kH2pY/FUsW4x9Q1Zvai+TCwclc=
+		2lEPivfrjuXv2SgiLgvUFJFCIW0=
+		</data>
+		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<data>
+		pNanktw5GAD1gvvY/6QhWOI0mqw=
 		</data>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		AziAWkfuQeVqzq9u44RRu6FrJu0=
+		1FI6fMz9XUfJ9rQ91OFnALvOxQw=
 		</data>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		0kH2pY/FUsW4x9Q1Zvai+TCwclc=
+		2lEPivfrjuXv2SgiLgvUFJFCIW0=
+		</data>
+		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		pNanktw5GAD1gvvY/6QhWOI0mqw=
 		</data>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		AziAWkfuQeVqzq9u44RRu6FrJu0=
+		1FI6fMz9XUfJ9rQ91OFnALvOxQw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,7 +63,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3OfIORuzdcdEPaVkTPZm5W8LXtPAmREqyk1j1L+Xhsk=
+			IZQooZZviOhk64UMqV15/GRcVJRwXw+f6goo5FpNhH4=
 			</data>
 		</dict>
 		<key>Headers/JzIos_Framework.h</key>
@@ -64,32 +80,60 @@
 			9gq+m2SfIqZdO4RnP+Q5bwx0h1nftPpvwkJZZ8jBiZE=
 			</data>
 		</dict>
+		<key>Modules/JzIos_Framework.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mM276p6RrCNhmk2903hqbFBv1CN2lgoWpKZJWWXc8CM=
+			</data>
+		</dict>
+		<key>Modules/JzIos_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mM276p6RrCNhmk2903hqbFBv1CN2lgoWpKZJWWXc8CM=
+			</data>
+		</dict>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z362C0qLdnCmA72lH6WmNzeoWPIfENuFJ9TATaMe30o=
+			gZBHZM8xPwjpZGofkYHzb+KKVyF4AL2dVBBJ1uwf/DM=
+			</data>
+		</dict>
+		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GiqNOk1DAbZoxPhWCSXGUBhwDasq0WPJFJAzxsMVEME=
 			</data>
 		</dict>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4/QAJB8k2rGvyJEd4YIMGgArBxyr0w2d2VeKRNcOtic=
+			vVl/bfqDIB4BtXC3CZINixi9WX3QzaTpqUt3/W90moI=
 			</data>
 		</dict>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z362C0qLdnCmA72lH6WmNzeoWPIfENuFJ9TATaMe30o=
+			gZBHZM8xPwjpZGofkYHzb+KKVyF4AL2dVBBJ1uwf/DM=
+			</data>
+		</dict>
+		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GiqNOk1DAbZoxPhWCSXGUBhwDasq0WPJFJAzxsMVEME=
 			</data>
 		</dict>
 		<key>Modules/JzIos_Framework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4/QAJB8k2rGvyJEd4YIMGgArBxyr0w2d2VeKRNcOtic=
+			vVl/bfqDIB4BtXC3CZINixi9WX3QzaTpqUt3/W90moI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -212,6 +212,7 @@ class Command {
         }
         
     }
+
     func Command17()->Bool{
         var check=(8+10*(Ic-1))*2
         sendData("0AFE1700094F52414E4745A7C4F5")

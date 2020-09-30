@@ -31,6 +31,7 @@ class PadSelect: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        updateui(0)
+      
         tit.text=SetLan.Setlan("Methods_of_vehicle_data_selection")
         act!.rightop.isHidden=true
         scan.text=SetLan.Setlan("Scan_Code")

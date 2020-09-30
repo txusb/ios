@@ -21,6 +21,7 @@ class HomePage: UIViewController {
     @IBOutlet var ShoppingBt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        activity.dowload_mmy()
         activity.back.isHidden=true
         t3.text=SetLan.Setlan("Cloud_information")
         t4.text=SetLan.Setlan("Online_shopping")
@@ -98,7 +99,6 @@ class HomePage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         activity.tit.text="Orange TPMS"
         //        activity.tlkingBt.isHidden=false
-          activity.dowload_mmy()
         if(JzActivity.getControlInstance.getPro("update", "nodata") != "nodata"){
                   JzActivity.getControlInstance.openDiaLog(Dia_Update(), false, "Dia_Update")
              }

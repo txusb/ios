@@ -83,9 +83,10 @@ public class PublicBeans{
     public static func getObdVersion()->String{
         return JzActivity.getControlInstance.getPro(getObd1(),"nodata").replace(".srec", "")
     }
+    
     public static func getMake()->[model]{
         var sql=""
-        sql="select distinct `Make`,`Make_img` from `Summary table` where `Direct Fit` not in('NA') and `Make` IS NOT NULL and `Make_img` not in('NA')  order by `Make` asc"
+        sql="select distinct `Make`,`Make_img` from `Summary table` where `Direct Fit` not in('NA') and `Make` IS NOT NULL and `Make_img` not in('NA')  and SIII != 'X' order by `Make` asc"
         var res=[model]()
         PublicBeans.資料庫.query(sql, {
             result in
@@ -100,7 +101,7 @@ public class PublicBeans{
     }
     public static func getModel()->[model]{
         var sql=""
-        sql="select distinct model from `Summary table` where make='\(PublicBeans.Make)' and `Direct Fit` not in('NA') order by model asc"
+        sql="select distinct model from `Summary table` where make='\(PublicBeans.Make)' and `Direct Fit` not in('NA') and SIII != 'X' order by model asc"
         var res=[model]()
         PublicBeans.資料庫.query(sql, {
             result in
@@ -115,7 +116,7 @@ public class PublicBeans{
     public static func getYear()->[model]{
         var res=[model]()
         var sql=""
-        sql="select distinct Year from `Summary table` where model='\(PublicBeans.Model)' and make='\(PublicBeans.Make)' and `Direct Fit` not in('INDIRECT')  order by Year asc"
+        sql="select distinct Year from `Summary table` where model='\(PublicBeans.Model)' and make='\(PublicBeans.Make)' and `Direct Fit` not in('INDIRECT')  and SIII != 'X' order by Year asc"
         PublicBeans.資料庫.query(sql, {
             result in
             var mod=model()
@@ -141,51 +142,51 @@ public class PublicBeans{
     }
     public static func getSensorMode() -> String{
         var res=""
-              var sql=""
-              sql="select `Sensor` from `Summary table` where `Direct Fit`='\(gets19())'"
-              PublicBeans.資料庫.query(sql, {
-                  result in
-                  res=result.getString(0)
-              },{
-                  
-              })
-              return res
+        var sql=""
+        sql="select `Sensor` from `Summary table` where `Direct Fit`='\(gets19())'"
+        PublicBeans.資料庫.query(sql, {
+            result in
+            res=result.getString(0)
+        },{
+            
+        })
+        return res
     }
     public static func queryOE() -> String{
-          var res=""
-                var sql=""
-                sql="select `OE Part Num` from `Summary table` where `Direct Fit`='\(gets19())' limit 0,1"
-                PublicBeans.資料庫.query(sql, {
-                    result in
-                    res=result.getString(0)
-                },{
-                    
-                })
-                return res
-      }
+        var res=""
+        var sql=""
+        sql="select `OE Part Num` from `Summary table` where `Direct Fit`='\(gets19())' limit 0,1"
+        PublicBeans.資料庫.query(sql, {
+            result in
+            res=result.getString(0)
+        },{
+            
+        })
+        return res
+    }
     public static func getRelearm()->String{
         var result=""
         let a=JzActivity.getControlInstance.getPro("lan", "English")
-                   var colume="Relearn Procedure (English)"
-                   switch(a){
-                   case "English":
-                       colume="Relearn Procedure (English)"
-                       break
-                   case "繁體中文":
-                       colume="Relearn Procedure (Traditional Chinese)"
-                       break
-                   case "简体中文":
-                       colume="Relearn Procedure (Jane)"
-                       break
-                   case "Deutsch":
-                       colume="Relearn Procedure (German)"
-                       break
-                   case "Italiano":
-                       colume="Relearn Procedure (Italian)"
-                       break
-                   default:
-                       break;
-                   }
+        var colume="Relearn Procedure (English)"
+        switch(a){
+        case "English":
+            colume="Relearn Procedure (English)"
+            break
+        case "繁體中文":
+            colume="Relearn Procedure (Traditional Chinese)"
+            break
+        case "简体中文":
+            colume="Relearn Procedure (Jane)"
+            break
+        case "Deutsch":
+            colume="Relearn Procedure (German)"
+            break
+        case "Italiano":
+            colume="Relearn Procedure (Italian)"
+            break
+        default:
+            break;
+        }
         let sql="select `\(colume)` from `Summary table` where make='\(PublicBeans.Make)' and model='\(PublicBeans.Model)' and year='\(PublicBeans.Year)' limit 0,1"
         PublicBeans.資料庫.query(sql,{
             a in

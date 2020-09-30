@@ -4,17 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>CoverCell.nib/objects-13.0+.nib</key>
+		<key>CoverCell.nib</key>
 		<data>
-		MyPwbGmH2DRO9w3WoElzjpn2bTw=
-		</data>
-		<key>CoverCell.nib/runtime.nib</key>
-		<data>
-		Yqe0PGZH997pMR0oqk5LBXGPTPc=
+		L25cWcSyDl28CdLFOC/T0cJswXo=
 		</data>
 		<key>Headers/JzAdapter-Swift.h</key>
 		<data>
-		ffy08xyySXtBAMliXsJWwLgkGBk=
+		pHddwFC2l48GsT1dyAdHnlIJcEo=
 		</data>
 		<key>Headers/JzAdapter.h</key>
 		<data>
@@ -22,23 +18,39 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8PyIu7yP4xGsLWCMak3zH3hsK58=
+		uBd2Wqm6tdv6c1Dw8exJoAPLOLA=
+		</data>
+		<key>Modules/JzAdapter.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<data>
+		FUrsYP5wVHXtffWiqokJrwvUmnE=
+		</data>
+		<key>Modules/JzAdapter.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<data>
+		FUrsYP5wVHXtffWiqokJrwvUmnE=
 		</data>
 		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		nTgwksXVo20sc+oYReItKHEQLjw=
+		00hnoS2CpLXSS/t0W9XyAm27Kz8=
+		</data>
+		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<data>
+		dBuFBPRPX2OeRBFdVdg+1zL2ZiQ=
 		</data>
 		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		mYbS4R+lDBdh/abAMf4NjKExjjA=
+		IDLL6WMXrZx4cwswYcBkgzjrCAM=
 		</data>
 		<key>Modules/JzAdapter.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		nTgwksXVo20sc+oYReItKHEQLjw=
+		00hnoS2CpLXSS/t0W9XyAm27Kz8=
+		</data>
+		<key>Modules/JzAdapter.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		dBuFBPRPX2OeRBFdVdg+1zL2ZiQ=
 		</data>
 		<key>Modules/JzAdapter.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		mYbS4R+lDBdh/abAMf4NjKExjjA=
+		IDLL6WMXrZx4cwswYcBkgzjrCAM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,37 +59,26 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>CoverCell.nib/objects-13.0+.nib</key>
+		<key>CoverCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MyPwbGmH2DRO9w3WoElzjpn2bTw=
+			L25cWcSyDl28CdLFOC/T0cJswXo=
 			</data>
 			<key>hash2</key>
 			<data>
-			LzGs/yWo2dI66O6AdH/DJXzxO8LK8hylfWL1wOyq0aE=
-			</data>
-		</dict>
-		<key>CoverCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Yqe0PGZH997pMR0oqk5LBXGPTPc=
-			</data>
-			<key>hash2</key>
-			<data>
-			VqRu1ffTCuUtQNh3Xf4pduyvbQxrhvILZ/5MRuHDLG4=
+			OrjtMr+KrEpoxv4i6vbHj9/b88m2S5dCm+UhdchZ2Bs=
 			</data>
 		</dict>
 		<key>Headers/JzAdapter-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ffy08xyySXtBAMliXsJWwLgkGBk=
+			pHddwFC2l48GsT1dyAdHnlIJcEo=
 			</data>
 			<key>hash2</key>
 			<data>
-			qdcJ3wgIq/E2NbQX7tGdgj5mdwMVR4CGM62H4b8cHn0=
+			dfE/6uFTkSu8ahT2pk6WincNdOloirpYszQCzjqSkH0=
 			</data>
 		</dict>
 		<key>Headers/JzAdapter.h</key>
@@ -91,48 +92,92 @@
 			yEfg3hbMkgvzNm8YraD5AxVzrBAL0GbVdfvXe0dm178=
 			</data>
 		</dict>
+		<key>Modules/JzAdapter.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FUrsYP5wVHXtffWiqokJrwvUmnE=
+			</data>
+			<key>hash2</key>
+			<data>
+			eGMQwXnyMwMYJtF+7ckOV194pf8NqyH9y7DXd9zwRgM=
+			</data>
+		</dict>
+		<key>Modules/JzAdapter.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FUrsYP5wVHXtffWiqokJrwvUmnE=
+			</data>
+			<key>hash2</key>
+			<data>
+			eGMQwXnyMwMYJtF+7ckOV194pf8NqyH9y7DXd9zwRgM=
+			</data>
+		</dict>
 		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nTgwksXVo20sc+oYReItKHEQLjw=
+			00hnoS2CpLXSS/t0W9XyAm27Kz8=
 			</data>
 			<key>hash2</key>
 			<data>
-			5YCVTOvg2VAU/dt/YXFFY4QPaJjxZUQfnXwmXKKpcv4=
+			Wd3/w2GN7WpB8ziq4u3j56JaJmn1loh+hhfs+GCN3b8=
+			</data>
+		</dict>
+		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dBuFBPRPX2OeRBFdVdg+1zL2ZiQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			PsUaAQgCqgINGVXP3pwbNIsOVRyP3HTcy7iRtMYerOA=
 			</data>
 		</dict>
 		<key>Modules/JzAdapter.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mYbS4R+lDBdh/abAMf4NjKExjjA=
+			IDLL6WMXrZx4cwswYcBkgzjrCAM=
 			</data>
 			<key>hash2</key>
 			<data>
-			9eF1dHSZFe+JR3zQidkPMGKpQZ0xHESqOiEcLwOmay0=
+			Ou+HxaZiw0rdIe7ElP8aw7yNN1Apt4JXXwfzY/IkPmo=
 			</data>
 		</dict>
 		<key>Modules/JzAdapter.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nTgwksXVo20sc+oYReItKHEQLjw=
+			00hnoS2CpLXSS/t0W9XyAm27Kz8=
 			</data>
 			<key>hash2</key>
 			<data>
-			5YCVTOvg2VAU/dt/YXFFY4QPaJjxZUQfnXwmXKKpcv4=
+			Wd3/w2GN7WpB8ziq4u3j56JaJmn1loh+hhfs+GCN3b8=
+			</data>
+		</dict>
+		<key>Modules/JzAdapter.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dBuFBPRPX2OeRBFdVdg+1zL2ZiQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			PsUaAQgCqgINGVXP3pwbNIsOVRyP3HTcy7iRtMYerOA=
 			</data>
 		</dict>
 		<key>Modules/JzAdapter.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mYbS4R+lDBdh/abAMf4NjKExjjA=
+			IDLL6WMXrZx4cwswYcBkgzjrCAM=
 			</data>
 			<key>hash2</key>
 			<data>
-			9eF1dHSZFe+JR3zQidkPMGKpQZ0xHESqOiEcLwOmay0=
+			Ou+HxaZiw0rdIe7ElP8aw7yNN1Apt4JXXwfzY/IkPmo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

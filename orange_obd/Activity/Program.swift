@@ -620,18 +620,13 @@ class Program: UIViewController {
     @IBAction func Toidcopy(_ sender: Any) {
         if(WriteRf.count<8){
             PadSelect.Function=0
-            let a=peacedefine().PadSelect
-            a.act=self.act
-            
-            self.act.ChangePage(to: a)
+            JzActivity.getControlInstance.goBack("PadSelect")
         }
     }
     @IBAction func ToProgram(_ sender: Any) {
         if(WriteRf.count==8){
             PadSelect.Function=1
-            let a=peacedefine().PadSelect
-            a.act=self.act
-            self.act.ChangePage(to: a)
+            JzActivity.getControlInstance.goBack("PadSelect")
         }
     }
     

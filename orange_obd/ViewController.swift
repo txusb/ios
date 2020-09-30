@@ -12,6 +12,7 @@ import CoreBluetooth
 import JzBleHelper_os
 import JzIos_Framework
 import Firebase
+import Alamofire
 class ViewController: JzActivity,BleCallBack{
     @IBOutlet var rightop: UIButton!
     @IBOutlet var padicon: UIImageView!
@@ -33,24 +34,23 @@ class ViewController: JzActivity,BleCallBack{
     var serialnum="99"
     var scanback:(()->Void?)? = nil
     var connectBack:(()->Void?)? = nil
-     override func viewInit()  {
+    override func viewInit()  {
         if(JzActivity.getControlInstance.getPro("Beta", "false")=="true"){
-                  topv.backgroundColor=UIColor.green
-              }
+            topv.backgroundColor=UIColor.green
+        }
         Messaging.messaging().subscribe(toTopic: "txusbupdate") { error in
-                print("Subscribed to txusbupdate topic")
-              }
+            print("Subscribed to txusbupdate topic")
+        }
         print("id:\(Bundle.main.bundleIdentifier!)")
-         PublicBeans.OBD資料庫.autoCreat()
+        PublicBeans.OBD資料庫.autoCreat()
         rootView=Container
         command.act=self
         delgate.act=self
         if(JzActivity.getControlInstance.getPro("admin","nodata")=="nodata"){
-              JzActivity.getControlInstance.setHome(Page_SelectArea(), "area")
+            JzActivity.getControlInstance.setHome(Page_SelectArea(), "area")
         }else{
-              JzActivity.getControlInstance.setHome(peacedefine().HomePage, "Page_SelectArea")
+            JzActivity.getControlInstance.setHome(peacedefine().HomePage, "Page_SelectArea")
         }
-       
         Function.GetVersion()
     }
     func dowload_mmy(){
@@ -88,32 +88,34 @@ class ViewController: JzActivity,BleCallBack{
         JzActivity.getControlInstance.closeDialLog()
     }
     override func changePageListener(_ controler: pagemenory) {
-      
-           if(Pagememory.count<2){
-               back.isHidden=true
-           }else{
-               back.isHidden=false
-           }
-           PublicBeans.refrsh()
-           print("Switch\(controler.tag)")
+        
+        if(Pagememory.count<2){
+            back.isHidden=true
+        }else{
+            back.isHidden=false
+        }
+        PublicBeans.refrsh()
+        print("Switch\(controler.tag)")
         if(controler.page is Page_SelectArea){
-                    areaimage.isHidden=true
-                }else{
-                if(JzActivity.getControlInstance.getPro("Area", "EU")=="EU"){
-                        areaimage.setImage(UIImage(named: "icon_EU"), for: .normal)
-                    }else{
-                        areaimage.setImage(UIImage(named: "icon_NA"), for: .normal)
-                    }
-                    areaimage.isHidden=false
-                }
-                if(Pagememory.count>=2){
-                    self.back.isHidden=false
-                }else{   self.back.isHidden=true
-                    self.rightop.isHidden=false
-                    self.padicon.isHidden=true}
-       }
+            areaimage.isHidden=true
+        }else{
+            if(JzActivity.getControlInstance.getPro("Area", "EU")=="EU"){
+                areaimage.setImage(UIImage(named: "icon_EU"), for: .normal)
+            }else if(JzActivity.getControlInstance.getPro("Area", "TW")=="TW"){
+                areaimage.setImage(UIImage(named: "icon_tw"), for: .normal)
+            }else{
+                areaimage.setImage(UIImage(named: "icon_NA"), for: .normal)
+            }
+            areaimage.isHidden=false
+        }
+        if(Pagememory.count>=2){
+            self.back.isHidden=false
+        }else{   self.back.isHidden=true
+            self.rightop.isHidden=false
+            self.padicon.isHidden=true}
+    }
     @IBAction func ToTalking(_ sender: Any) {
-    
+        
     }
     
     var count=0
@@ -123,65 +125,65 @@ class ViewController: JzActivity,BleCallBack{
             if(JzActivity.getControlInstance.getPro("Beta", "false")=="true"){
                 JzActivity.getControlInstance.setPro("Beta", "false")
             }else{
-        JzActivity.getControlInstance.setPro("Beta", "true")
+                JzActivity.getControlInstance.setPro("Beta", "true")
             }
-        JzActivity.getControlInstance.setPro("dataloading", "false")
+            JzActivity.getControlInstance.setPro("dataloading", "false")
             DonloadFile.dataloading()
         }
         if(count>10){count=0}
     }
     
     var bles:[CBPeripheral]=[CBPeripheral]()
-     
-     //連線中的回調
-     func onConnecting() {
-         print("onConnecting")
-     }
-     //連線失敗時回調
-     func onConnectFalse() {
-         print("onConnectFalse")
-         JzActivity.getControlInstance.closeDialLog()
-         helper.startScan()
+    
+    //連線中的回調
+    func onConnecting() {
+        print("onConnecting")
+    }
+    //連線失敗時回調
+    func onConnectFalse() {
+        print("onConnectFalse")
+        JzActivity.getControlInstance.closeDialLog()
+        helper.startScan()
         self.padicon.isHidden=true
-     }
-     //連線成功時回調
-     func onConnectSuccess() {
-         print("onConnectSuccess")
-         JzActivity.getControlInstance.closeDialLog()
-         DispatchQueue.global().async {
-                    sleep(3)
-                    self.command.Setserial()
-        Function.AddIfNotValid(self.serialnum,JzActivity.getControlInstance.getPro("admin", "nodata"),JzActivity.getControlInstance.getPro("password", "nodata"))
-                }
+    }
+    //連線成功時回調
+    func onConnectSuccess() {
+        print("onConnectSuccess")
+        JzActivity.getControlInstance.closeDialLog()
+        DispatchQueue.global().async {
+            sleep(3)
+            self.command.Setserial()
+            Function.AddIfNotValid(self.serialnum,JzActivity.getControlInstance.getPro("admin", "nodata"),JzActivity.getControlInstance.getPro("password", "nodata"))
+        }
         self.padicon.isHidden=false
         if(connectBack != nil){
             connectBack!()
         }
-     }
-     
-     //三種方式返回接收到的藍芽訊息
-     func rx(_ a: BleBinary) {
-         Command.rx=Command.rx+a.readHEX()
-         print("rx:\(a.readHEX())")
-     }
-     
-     //三種方式返回傳送的藍芽訊息
-     func tx(_ b: BleBinary) {
-         print("tx:\(b.readHEX())")
-     }
-     
-     //返回搜尋到的藍芽,可將搜尋到的藍芽儲存於陣列中，可用於之後的連線
-     func scanBack(_ device: CBPeripheral) {
-         if(!bles.contains(device)){
-             bles.append(device)
-         }
-         print(device.name)
-         if(scanback != nil){scanback!()}
-         
-     }
-     
-     //藍芽未打開，經聽到此function可提醒使用者打開藍芽
-     func needOpen() {
-         print("noble")
-     }
+    }
+    
+    //三種方式返回接收到的藍芽訊息
+    func rx(_ a: BleBinary) {
+        Command.rx=Command.rx+a.readHEX()
+        print("rx:\(a.readHEX())")
+    }
+    
+    //三種方式返回傳送的藍芽訊息
+    func tx(_ b: BleBinary) {
+        print("tx:\(b.readHEX())")
+    }
+    
+    //返回搜尋到的藍芽,可將搜尋到的藍芽儲存於陣列中，可用於之後的連線
+    func scanBack(_ device: CBPeripheral) {
+        if(!bles.contains(device)){
+            bles.append(device)
+        }
+        print(device.name)
+        if(scanback != nil){scanback!()}
+        
+    }
+    
+    //藍芽未打開，經聽到此function可提醒使用者打開藍芽
+    func needOpen() {
+        print("noble")
+    }
 }

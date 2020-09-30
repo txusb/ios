@@ -17,7 +17,7 @@ class Signout: UIViewController {
     @IBOutlet var logout: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-logout.text=SetLan.Setlan("Log_out")
+        logout.text=SetLan.Setlan("Log_out")
         check.text=SetLan.Setlan("Are_you_sure_you_want_to_log_out")
         no.setTitle(SetLan.Setlan("cancel"), for: .normal)
         sure.setTitle(SetLan.Setlan("Yes"), for: .normal)
@@ -33,7 +33,6 @@ logout.text=SetLan.Setlan("Log_out")
     
 
     @IBAction func yes(_ sender: Any) {
-        JzActivity.getControlInstance.removePro()
        exit(0)
     }
 }
